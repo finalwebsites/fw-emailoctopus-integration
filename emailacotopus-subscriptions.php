@@ -57,6 +57,23 @@ class EmailOctopus_subscriptions {
 			$this->api_key = get_option('fw_emailoctopus_api_key');
 		}
 		$this->api_url = 'https://emailoctopus.com/api/1.6/';
+
+		if (empty($this->api_key)) {
+		/*
+		<?php
+		$url = 'http://example.com';
+		$link = sprintf( wp_kses( __( 'Check out this link to my <a href="%s">website</a> made with WordPress.', 'my-text-domain' ), array(  'a' => array( 'href' => array() ) ) ), esc_url( $url ) );
+		echo $link;
+		?>*/
+
+
+				echo '
+	<div class="notice notice-warning">
+        <p>'.__( 'For using the EmailOctopus Submission plugin, you need to enter a valid API key.', 'fw_emailoctopus_subscribe' ).'</p>
+    </div>';
+		} else {
+			add_action( 'plugins_loaded', array( $this, 'init' ) );
+		}
 		/*
 		if ( empty( $this->api_key ) ) {
 			throw new \Exception( 'Invalid API key.' );
@@ -64,7 +81,7 @@ class EmailOctopus_subscriptions {
 		if ( ! $this->is_valid_api_key() ) {
 			throw new \Exception( 'Invalid API key.' );
 		}*/
-		add_action( 'plugins_loaded', array( $this, 'init' ) );
+		
 	}
 
 	public function init() {
