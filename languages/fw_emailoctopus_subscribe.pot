@@ -1,0 +1,324 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Sendy Subscriptions\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-09 08:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.0; wp-5.2.2"
+
+#: index.php:270
+msgid "A form submission from your website"
+msgstr ""
+
+#: include/options.php:134
+msgid ""
+"Add here the goal ID for a manual goal you've already defined in Clicky."
+msgstr ""
+
+#: include/options.php:81
+msgid ""
+"Add here your text for the additional newsletter subscription checkbox. You "
+"need to create a custom field, name \"Newsletter\" in MailerLite to use this "
+"option."
+msgstr ""
+
+#: include/options.php:255
+msgid "All"
+msgstr ""
+
+#: index.php:216 index.php:231 index.php:306
+msgid "An unknown error occurred."
+msgstr ""
+
+#: include/widget.php:90
+msgid "Automatically add paragraphs"
+msgstr ""
+
+#: index.php:180
+msgid "Both fields are required to enter."
+msgstr ""
+
+#: include/options.php:72
+msgid "Custom fields"
+msgstr ""
+
+#: include/options.php:64
+msgid "Default mailing group"
+msgstr ""
+
+#: include/options.php:73
+msgid ""
+"Do you use custom fields for your mailing list? Add the fields below. Each "
+"field name must be exact the same as used for the field name in MailerLite."
+msgstr ""
+
+#: include/form-shortcodes.php:270
+msgid "Enter your email address and click the button to unsubscribe."
+msgstr ""
+
+#: include/options.php:117
+msgid "GDPR text"
+msgstr ""
+
+#: include/options.php:50
+msgid "General"
+msgstr ""
+
+#: include/options.php:51
+msgid "General settings and options for the MailerLite Subscriptions plugin."
+msgstr ""
+
+#: index.php:367
+msgid "Hide MailerLite (code) for this post."
+msgstr ""
+
+#: index.php:370
+msgid "Hide MailerLite form"
+msgstr ""
+
+#: include/options.php:271
+msgid "How to use?"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://www.finalwebsites.nl"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.olaflederer.com/"
+msgstr ""
+
+#: include/options.php:103
+msgid "Incl. JS/CSS for categories"
+msgstr ""
+
+#: include/options.php:110
+msgid "Incl. JS/CSS sitewide"
+msgstr ""
+
+#: include/options.php:89
+msgid "Include CSS"
+msgstr ""
+
+#: include/options.php:90
+msgid "Include the plugin's stylesheet for your subscribtion forms."
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Increase the count of new subscribers for your blog or website by using "
+"MailerLite and some professional subscription forms."
+msgstr ""
+
+#: index.php:97
+msgid "Loading..."
+msgstr ""
+
+#: include/options.php:55
+msgid "MailerLite API Key"
+msgstr ""
+
+#. Name of the plugin
+#: include/options.php:35 include/options.php:251
+msgid "MailerLite Subscriptions"
+msgstr ""
+
+#. Base ID
+#: include/widget.php:19
+msgid "MailerLite subscriptions"
+msgstr ""
+
+#: include/options.php:34
+msgid "MailerLite Subscriptions Settings"
+msgstr ""
+
+#. Author of the plugin
+msgid "Olaf Lederer"
+msgstr ""
+
+#: include/widget.php:86
+msgid "Optional: Add some promotional text (HTML allowed)."
+msgstr ""
+
+#: include/options.php:118
+msgid ""
+"Place here your GDPR info text. Don't change the link HTML code, we use the "
+"privacy URL which is set via \"Settings > Privacy\"."
+msgstr ""
+
+#: index.php:99 index.php:321
+msgid "Please enter your email address."
+msgstr ""
+
+#: index.php:98
+msgid "Please enter your name and email address."
+msgstr ""
+
+#: include/options.php:266
+msgid "Save Settings"
+msgstr ""
+
+#: include/form-shortcodes.php:41
+msgid "Select newsletter"
+msgstr ""
+
+#: include/options.php:43
+msgid "Settings"
+msgstr ""
+
+#: include/options.php:96
+msgid "Show for all posts"
+msgstr ""
+
+#: include/form-shortcodes.php:38 include/form-shortcodes.php:178
+#: include/widget.php:52
+msgid "Subscribe"
+msgstr ""
+
+#: include/form-shortcodes.php:303
+msgid "Subscribe again"
+msgstr ""
+
+#: include/form-shortcodes.php:35
+msgid "Subscribe now!"
+msgstr ""
+
+#: include/form-shortcodes.php:36
+msgid "Subscribe today and get future blog posts your email."
+msgstr ""
+
+#: include/options.php:80
+msgid "Text for subscribe checkbox"
+msgstr ""
+
+#: index.php:211
+msgid "thank you for your interest."
+msgstr ""
+
+#: index.php:304
+msgid "Thanks, for joining again!"
+msgstr ""
+
+#: index.php:228
+msgid "Thanks, for joining our mailing list!"
+msgstr ""
+
+#: include/options.php:65
+msgid ""
+"The default mailing group for your subscribers. You need to enter/save the "
+"API MailerLite API key first."
+msgstr ""
+
+#: index.php:100
+msgid "The entered email address is invalid."
+msgstr ""
+
+#: index.php:214
+msgid "The entered email address is not valid."
+msgstr ""
+
+#: include/widget.php:83
+msgid "Title:"
+msgstr ""
+
+#: include/options.php:252
+#, php-format
+msgid ""
+"To use this plugin you need a working MailerLite account. Subcribe for a new "
+"account here: <a href=\"%s\" target=\"_blank\">MailerLite, create email "
+"marketing your way</a>."
+msgstr ""
+
+#: include/options.php:126
+msgid ""
+"Track a page view in Google Analytics after the subscription form is "
+"submitted."
+msgstr ""
+
+#: include/options.php:133
+msgid "Track in Clicky"
+msgstr ""
+
+#: include/options.php:125
+msgid "Track in Google Analytics"
+msgstr ""
+
+#: include/form-shortcodes.php:271
+msgid "Unsubscribe"
+msgstr ""
+
+#: include/form-shortcodes.php:269
+msgid "Unsubscribe from our mailing list"
+msgstr ""
+
+#: include/options.php:97
+msgid ""
+"Use this checkbox to add the subscription form at the end of each blog post"
+msgstr ""
+
+#: include/options.php:111
+msgid ""
+"Use this option if you like to use the form on all your posts and pages."
+msgstr ""
+
+#: include/options.php:104
+msgid ""
+"Use this option if you like to use the form on your blog categorie pages."
+msgstr ""
+
+#: include/widget.php:21
+msgid ""
+"Use this widget to add a simple MailerLite subscription form to the "
+"different sidebars."
+msgstr ""
+
+#: index.php:183 index.php:292 index.php:324
+msgid "Verification error, try again."
+msgstr ""
+
+#: include/options.php:83
+msgid "Yes, please add me on your mailing list."
+msgstr ""
+
+#: include/options.php:56
+msgid ""
+"You can find this key in your MailerLite account on the profile settings "
+"page."
+msgstr ""
+
+#: include/options.php:272
+msgid ""
+"You can use a subscription form in every post (see setting above) or you can "
+"use the widget for  your theme's sidebar. It's also possible to add a "
+"shortcode to your pages and posts."
+msgstr ""
+
+#: include/form-shortcodes.php:125 include/form-shortcodes.php:126
+#: include/form-shortcodes.php:219 include/form-shortcodes.php:220
+#: include/form-shortcodes.php:289 include/form-shortcodes.php:290
+#: include/widget.php:47 include/widget.php:48
+msgid "Your email address"
+msgstr ""
+
+#: index.php:335
+msgid "Your email address is removed from our mailing list."
+msgstr ""
+
+#: include/form-shortcodes.php:121 include/form-shortcodes.php:122
+#: include/form-shortcodes.php:215 include/form-shortcodes.php:216
+#: include/widget.php:43 include/widget.php:44
+msgid "Your first name"
+msgstr ""
+
+#: include/options.php:141
+msgid "Your mailing groups"
+msgstr ""

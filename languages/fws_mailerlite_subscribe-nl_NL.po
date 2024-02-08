@@ -1,0 +1,358 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Sendy Subscriptions\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-22 16:17+0000\n"
+"PO-Revision-Date: 2022-03-09 08:26+0000\n"
+"Last-Translator: Olaf Lederer <admin@finalwebsites.com>\n"
+"Language-Team: Nederlands\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.1; wp-5.3.2"
+
+#: index.php:270
+msgid "A form submission from your website"
+msgstr ""
+
+#: include/options.php:134
+msgid ""
+"Add here the goal ID for a manual goal you've already defined in Clicky."
+msgstr ""
+"Plaats hier de ID van het manuele doel dat je eerder hebt gedefinieerd in "
+"Clicky."
+
+#: include/options.php:81
+msgid ""
+"Add here your text for the additional newsletter subscription checkbox. You "
+"need to create a custom field, name \"Newsletter\" in MailerLite to use this "
+"option."
+msgstr ""
+
+#: include/options.php:255
+msgid "All"
+msgstr "Alle"
+
+#: index.php:216 index.php:231 index.php:306
+msgid "An unknown error occurred."
+msgstr "Er deed zich een onbekende fout voor."
+
+#: include/widget.php:90
+msgid "Automatically add paragraphs"
+msgstr "Automatisch paragraaf regels toevoegen"
+
+#: index.php:180
+msgid "Both fields are required to enter."
+msgstr "Beide velden zijn vereist om in te voeren."
+
+#: include/options.php:72
+msgid "Custom fields"
+msgstr "Eigen velden"
+
+#: include/options.php:64
+#| msgid "Default mailing list"
+msgid "Default mailing group"
+msgstr "Standaard mailing groep"
+
+#: include/options.php:73
+msgid ""
+"Do you use custom fields for your mailing list? Add the fields below. Each "
+"field name must be exact the same as used for the field name in MailerLite."
+msgstr ""
+
+#: include/form-shortcodes.php:270
+msgid "Enter your email address and click the button to unsubscribe."
+msgstr ""
+"Voer je e-mailadres in en klik dan op de button om je uit te schrijven."
+
+#: include/options.php:117
+msgid "GDPR text"
+msgstr "AVG/GDPR tekst"
+
+#: include/options.php:50
+msgid "General"
+msgstr "Algemeen"
+
+#: include/options.php:51
+#| msgid "General settings and options for the Moosend Subscriptions plugin."
+msgid "General settings and options for the MailerLite Subscriptions plugin."
+msgstr ""
+"Algemene instellingen en opties voor de MailerLite Subscriptions plugin."
+
+#: index.php:367
+msgid "Hide MailerLite (code) for this post."
+msgstr ""
+
+#: index.php:370
+msgid "Hide MailerLite form"
+msgstr ""
+
+#: include/options.php:271
+msgid "How to use?"
+msgstr "Hoe te gebruiken?"
+
+#. URI of the plugin
+msgid "https://www.finalwebsites.nl"
+msgstr "https://www.finalwebsites.nl"
+
+#. Author URI of the plugin
+msgid "https://www.olaflederer.com/"
+msgstr "https://www.olaflederer.com/"
+
+#: include/options.php:103
+msgid "Incl. JS/CSS for categories"
+msgstr "JS/CSS voor categorieën bijvoegen"
+
+#: include/options.php:110
+msgid "Incl. JS/CSS sitewide"
+msgstr "JS/CSS overal bijvoegen"
+
+#: include/options.php:89
+msgid "Include CSS"
+msgstr "CSS insluiten"
+
+#: include/options.php:90
+msgid "Include the plugin's stylesheet for your subscribtion forms."
+msgstr ""
+"Het stijlbestand voor de inschrijvingsformulieren van de plugin gebruiken."
+
+#. Description of the plugin
+#| msgid ""
+#| "Increase the count of new subscribers for your blog or website by using "
+#| "Moosend and some professional subscription forms."
+msgid ""
+"Increase the count of new subscribers for your blog or website by using "
+"MailerLite and some professional subscription forms."
+msgstr ""
+"Verhoog het aantal aanmeldingen voor je blog of website met behulp van "
+"MailerLite en een professioneel inschrijfformulier."
+
+#: index.php:97
+msgid "Loading..."
+msgstr "Bezig…"
+
+#: include/options.php:55
+msgid "MailerLite API Key"
+msgstr ""
+
+#. Name of the plugin
+#: include/options.php:35 include/options.php:251
+msgid "MailerLite Subscriptions"
+msgstr ""
+
+#. Base ID
+#: include/widget.php:19
+msgid "MailerLite subscriptions"
+msgstr ""
+
+#: include/options.php:34
+msgid "MailerLite Subscriptions Settings"
+msgstr ""
+
+#. Author of the plugin
+msgid "Olaf Lederer"
+msgstr "Olaf Lederer"
+
+#: include/widget.php:86
+msgid "Optional: Add some promotional text (HTML allowed)."
+msgstr "Optioneel: Plaats een promotionele tekst (HTML is mogelijk)"
+
+#: include/options.php:118
+msgid ""
+"Place here your GDPR info text. Don't change the link HTML code, we use the "
+"privacy URL which is set via \"Settings > Privacy\"."
+msgstr ""
+"Plaats hier je AVG informatie. Wijzig niet de link HTML, wij gebruiken de "
+"URL van de privacyverklaring welke je kan instellen via \"Instellingen > "
+"Privacy\""
+
+#: index.php:99 index.php:321
+msgid "Please enter your email address."
+msgstr "Vul je e-mailadres in."
+
+#: index.php:98
+msgid "Please enter your name and email address."
+msgstr "Vul je naam en e-mailadres in."
+
+#: include/options.php:266
+msgid "Save Settings"
+msgstr "Instellingen opslaan"
+
+#: include/form-shortcodes.php:41
+msgid "Select newsletter"
+msgstr "Kies je nieuwsbrief"
+
+#: include/options.php:43
+msgid "Settings"
+msgstr "Instellingen"
+
+#: include/options.php:96
+msgid "Show for all posts"
+msgstr "Toon voor alle berichten"
+
+#: include/form-shortcodes.php:38 include/form-shortcodes.php:178
+#: include/widget.php:52
+msgid "Subscribe"
+msgstr "Inschrijven"
+
+#: include/form-shortcodes.php:303
+msgid "Subscribe again"
+msgstr "Opnieuw aanmelden"
+
+#: include/form-shortcodes.php:35
+msgid "Subscribe now!"
+msgstr "Meer tips ontvangen?"
+
+#: include/form-shortcodes.php:36
+msgid "Subscribe today and get future blog posts your email."
+msgstr ""
+"Schrijf je vandaag nog in en ontvang toekomstige blogposts in je mailbox."
+
+#: include/options.php:80
+msgid "Text for subscribe checkbox"
+msgstr "Tekst voor de aanmeld checkbox"
+
+#: index.php:211
+msgid "thank you for your interest."
+msgstr "Bedankt voor je interresse."
+
+#: index.php:304
+msgid "Thanks, for joining again!"
+msgstr "Bedankt, welkom terug!"
+
+#: index.php:228
+msgid "Thanks, for joining our mailing list!"
+msgstr "Bedankt, voor je inschrijving!"
+
+#: include/options.php:65
+msgid ""
+"The default mailing group for your subscribers. You need to enter/save the "
+"API MailerLite API key first."
+msgstr ""
+
+#: index.php:100
+msgid "The entered email address is invalid."
+msgstr "Het ingevoerde e-mailadres is ongeldig."
+
+#: index.php:214
+msgid "The entered email address is not valid."
+msgstr "Het ingevoerde e-mailadres is niet geldig."
+
+#: include/widget.php:83
+msgid "Title:"
+msgstr "Titel:"
+
+#: include/options.php:252
+#, php-format
+msgid ""
+"To use this plugin you need a working MailerLite account. Subcribe for a new "
+"account here: <a href=\"%s\" target=\"_blank\">MailerLite, create email "
+"marketing your way</a>."
+msgstr ""
+
+#: include/options.php:126
+msgid ""
+"Track a page view in Google Analytics after the subscription form is "
+"submitted."
+msgstr ""
+"Volg een paginaweergave in Google Analytics wanneer het inschrijfformulier "
+"wordt verzonden."
+
+#: include/options.php:133
+msgid "Track in Clicky"
+msgstr "In Clicky tracken"
+
+#: include/options.php:125
+msgid "Track in Google Analytics"
+msgstr "In Google Analytics tracken"
+
+#: include/form-shortcodes.php:271
+msgid "Unsubscribe"
+msgstr "Uitschrijven"
+
+#: include/form-shortcodes.php:269
+#| msgid "Unsubscribe from your mailing list"
+msgid "Unsubscribe from our mailing list"
+msgstr "Uitschrijven van onze mailinglijst"
+
+#: include/options.php:97
+msgid ""
+"Use this checkbox to add the subscription form at the end of each blog post"
+msgstr ""
+"Activeer deze checkbox om het inschrijfformulier aan het einde van elke "
+"blogpost te plaatsen"
+
+#: include/options.php:111
+msgid ""
+"Use this option if you like to use the form on all your posts and pages."
+msgstr ""
+"Gebruik deze optie wanneer je het formulier op elke pagina en post wil "
+"kunnen gebruiken."
+
+#: include/options.php:104
+msgid ""
+"Use this option if you like to use the form on your blog categorie pages."
+msgstr ""
+"Gebruik deze optie wanneer je het formulier ook op de blogcategorie pagina's "
+"wil kunnen gebruiken."
+
+#: include/widget.php:21
+#| msgid ""
+#| "Use this widget to add a simple Moosend subscription form to the "
+#| "different sidebars."
+msgid ""
+"Use this widget to add a simple MailerLite subscription form to the "
+"different sidebars."
+msgstr ""
+"Gebruik dit widget voor het toevoegen van een eenvoudig MailerLite "
+"inschrijfformulier aan diverse zijbalken."
+
+#: index.php:183 index.php:292 index.php:324
+msgid "Verification error, try again."
+msgstr "Verificatiefout, probeer het opnieuw."
+
+#: include/options.php:83
+msgid "Yes, please add me on your mailing list."
+msgstr "Ja, ik wil ook op de mailinglijst."
+
+#: include/options.php:56
+msgid ""
+"You can find this key in your MailerLite account on the profile settings "
+"page."
+msgstr ""
+"Je kan deze API key vinden via de profiel instellingen pagina van je "
+"MailerLite account."
+
+#: include/options.php:272
+msgid ""
+"You can use a subscription form in every post (see setting above) or you can "
+"use the widget for  your theme's sidebar. It's also possible to add a "
+"shortcode to your pages and posts."
+msgstr ""
+"Je kan het inschrijfformulier voor elke blogpost gebruiken (zie de "
+"instelling boven) of je gebruikt het widget in de zijbalk van he thema. Het "
+"is ook mogelijk om een shortcode in je pagina's en posts te plaatsen."
+
+#: include/form-shortcodes.php:125 include/form-shortcodes.php:126
+#: include/form-shortcodes.php:219 include/form-shortcodes.php:220
+#: include/form-shortcodes.php:289 include/form-shortcodes.php:290
+#: include/widget.php:47 include/widget.php:48
+msgid "Your email address"
+msgstr "Je e-mailadres"
+
+#: index.php:335
+msgid "Your email address is removed from our mailing list."
+msgstr "Je e-mailadres wordt verwijderd van onze lijst."
+
+#: include/form-shortcodes.php:121 include/form-shortcodes.php:122
+#: include/form-shortcodes.php:215 include/form-shortcodes.php:216
+#: include/widget.php:43 include/widget.php:44
+msgid "Your first name"
+msgstr "Je voornaam"
+
+#: include/options.php:141
+msgid "Your mailing groups"
+msgstr "Je mailing groepen"
