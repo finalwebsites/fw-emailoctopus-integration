@@ -66,11 +66,13 @@ class EmailOctopus_subscriptions {
 		echo $link;
 		?>*/
 
-
-				echo '
+			add_action('admin_notices', function() {
+				global $pagenow;
+    			if ( $pagenow != 'options-general.php' ) echo '
 	<div class="notice notice-warning">
-        <p>'.__( 'For using the EmailOctopus Submission plugin, you need to enter a valid API key.', 'fw_emailoctopus_subscribe' ).'</p>
+        <p>'.__( 'For using the EmailOctopus Submission plugin, you need to enter a valid API key.', 'fw_emailoctopus_subscribe' ).' <span class="dashicons dashicons-edit"></span> <a href="'.admin_url( 'options-general.php?page=fws-emailoctopus-settings').'">'.__('Plugin settings', 'fw_emailoctopus_subscribe').'</a></p>
     </div>';
+    		});
 		} else {
 			add_action( 'plugins_loaded', array( $this, 'init' ) );
 		}
