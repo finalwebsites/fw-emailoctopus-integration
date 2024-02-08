@@ -57,12 +57,13 @@ class EmailOctopus_subscriptions {
 			$this->api_key = get_option('fw_emailoctopus_api_key');
 		}
 		$this->api_url = 'https://emailoctopus.com/api/1.6/';
+		/*
 		if ( empty( $this->api_key ) ) {
 			throw new \Exception( 'Invalid API key.' );
 		}
 		if ( ! $this->is_valid_api_key() ) {
 			throw new \Exception( 'Invalid API key.' );
-		}
+		}*/
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
 	}
 

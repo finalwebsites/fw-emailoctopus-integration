@@ -55,7 +55,7 @@ if ( ! class_exists( 'FWS_Woo_EmailOctopus' ) ) {
 		 * Create a checkbox field for the checkout page.
 		 */
 		public function subscribe_checkbox_field() {
-			$label = (!empty($this->eo_settings['emailoctopus_subscribe_text'])) ? $this->eo_settings['emailoctopus_subscribe_text'] : __( 'Subscribe newsletter', 'fws-woo-emailoctopus' );
+			$label = (!empty($this->eo_settings['emailoctopus_subscribe_text'])) ? $this->eo_settings['emailoctopus_subscribe_text'] : __( 'Subscribe to our newsletter', 'fw_emailoctopus_subscribe' );
 			echo '<div class="fws_custom_class">';
 			woocommerce_form_field( 'fws_emailoctopus_checkbox', array(
 				'type'          => 'checkbox',
