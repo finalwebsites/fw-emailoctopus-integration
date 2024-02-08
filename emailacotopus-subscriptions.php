@@ -82,6 +82,11 @@ class EmailOctopus_subscriptions {
 			$FWS_Woo_EmailOctopus->init();
 		}
 		add_action( 'elementor_pro/forms/actions/register', array($this, 'add_emailoctopus_form_action') );
+		
+		if (function_exists('pll_register_string')) {
+			pll_register_string( 'text_newsletter', 'Yes, please add me to your mailing list.', 'fw_emailoctopus_subscribe', false );
+			pll_register_string( 'emailoctopus_subscribe_text', 'Please send me your newsletter.', 'fw_emailoctopus_subscribe', false );
+		}
 	}
 	
 	public function add_emailoctopus_form_action( $form_actions_registrar ) {
