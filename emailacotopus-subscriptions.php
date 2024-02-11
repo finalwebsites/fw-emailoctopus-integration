@@ -207,24 +207,9 @@ class EmailOctopus_subscriptions {
 		    'method'      => 'POST',
 		    'data_format' => 'body',
 		));
-		echo json_encode($field);
 	}
-	/*
-	public function check_existing_tags($tags, $list) {
-		if ($list_data = $this->get_list($list)) {
-			$update_tags = array();
-			foreach ($list_data['tags'] as $tag) {
-				if ($test != 'new') { // dit klopt niet
-					$update_tags = array();
-					foreach ($tags as $tag) {
-						$update_tags[$tag] = true;
-					}
-					$tags = $update_tags;
-				}
-			}
-		}
-	}
-	*/
+
+
 	public function add_subscriber($email, $list, $data, $return_all = false) {
 
 		if (!empty($email)) {
@@ -248,7 +233,7 @@ class EmailOctopus_subscriptions {
 					}
 				}
 			}
-
+			// klopt dit wel? Of is dat een functie alleen voor de shortcode?
 			if (!empty($data['extra'])) {
 				foreach ($data['extra'] as $key => $value) {
 					$key = strtolower($key);
@@ -271,6 +256,7 @@ class EmailOctopus_subscriptions {
 				$url .= '/'.$test;
 				$method = 'PUT';
 			} 
+			//file_put_contents(ABSPATH.'ele.txt', print_r(json_encode($post_array, JSON_PRETTY_PRINT), true));
 			$raw_response = wp_remote_post($url, array(
 			    'headers'     => array('Content-Type' => 'application/json; charset=utf-8'),
 			    'body'        => json_encode($post_array),
@@ -280,7 +266,6 @@ class EmailOctopus_subscriptions {
 			$response_body = wp_remote_retrieve_body( $raw_response );
 			$response = json_decode( $response_body, true );
 
-			file_put_contents(ABSPATH.'debug.txt', print_r(array($data, $post_array, $response_body), true));
 			if ($return_all) {
 				return $response;
 			} else {

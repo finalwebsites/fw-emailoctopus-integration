@@ -11,15 +11,6 @@ use ElementorPro\Modules\Forms\Classes\Integration_Base;
 class EmailOctopus_Action_After_Submit extends Integration_Base {
 
     /**
-     * @var string - Mailchimp API key.
-     */
-    private $api_key;
-
-    private function get_global_api_key() {
-        return get_option( 'fw_emailoctopus_api_key' );
-    }
-
-    /**
      * Get Name
      *
      * Return the action name
@@ -71,7 +62,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
             'emailoctopus_list',
             [
                 'label' => __( 'Mailing list', 'fw_emailoctopus_subscribe' ),
-                'type' => Controls_Manager::SELECT,
+                'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => $list_items,
                 'render_type' => 'none',
             ]
@@ -79,21 +70,12 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
 
         $emailoctopus_repeater = new \Elementor\Repeater();
 
-        $options_array = [
-            'email_address'     => __( 'Email address', 'fw_emailoctopus_subscribe' ),
-            'FirstName' => __( 'First Name', 'fw_emailoctopus_subscribe' ),
-            'LastName'  => __( 'Last Name', 'fw_emailoctopus_subscribe' ),
-            'Source'  => __( 'Source', 'fw_emailoctopus_subscribe' ),
-            'Newsletter'  => __( 'Newsletter', 'fw_emailoctopus_subscribe' ),
-        ];
-
-
         $emailoctopus_repeater->add_control(
             'list_options',
             [
                 'label'   => __( 'Merge Fields', 'fw_emailoctopus_subscribe' ),
                 'type'    => \Elementor\Controls_Manager::SELECT,
-                'options' => $options_array,
+                'options' => $this->get_emailoctopus_fields(),
             ]
         );
 
@@ -118,7 +100,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
                         'list_form_id' => 'email',
                     ],
                 ],
-                'title_field' => __( 'Email address', 'fw_emailoctopus_subscribe' ),
+                'title_field' => '{{{ list_options }}}',
                 'condition' => [
                     'emailoctopus_list!' => '',
                 ],
@@ -142,6 +124,20 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         $this->register_fields_map_control( $widget );
 
         $widget->end_controls_section();
+    }
+
+    public function get_emailoctopus_fields() {
+
+        $options_array = [
+            'email_address'     => __( 'Email address', 'fw_emailoctopus_subscribe' ),
+            'FirstName' => __( 'First Name', 'fw_emailoctopus_subscribe' ),
+            'LastName'  => __( 'Last Name', 'fw_emailoctopus_subscribe' ),
+            'Source'  => __( 'Source', 'fw_emailoctopus_subscribe' ),
+            'Newsletter'  => __( 'Newsletter', 'fw_emailoctopus_subscribe' ),
+            'Website'  => __( 'Website', 'fw_emailoctopus_subscribe' ),
+            'PhoneNumber'  => __( 'Phone number', 'fw_emailoctopus_subscribe' ),
+        ];
+        return $options_array;
     }
 
     /**
@@ -168,98 +164,82 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
      */
     public function run( $record, $ajax_handler ) {
         $settings = $record->get( 'form_settings' );
-
-
-        
+    
         // Data from the form in the frontend.
-        $subscriber_data = $this->map_fields( $record );
+        $subscriber = $this->map_fields( $record );
 
-        // Create or update a subscriber.
-        $subscriber = $this->create_or_update_subscriber( $subscriber_data, $form_settings );
 
-    }
-
-    /**
-     * Create or update a EmailOctopus subscriber.
-     *
-     * @param array $subscriber - Subscriber data from the form in the frontend.
-     * @param array $form_settings - Settings from the editor.
-     *
-     * @return array - An array that contains the newly created subscriber's data.
-     */
-    private function create_or_update_subscriber( array $subscriber, array $form_settings ) {
-
-        if ( ! empty( $form_settings['mailchimp_tags'] ) ) {
-            $subscriber['tags'] = explode( ',', trim( $form_settings['emailoctopus_tags'] ) );
+        if ( ! empty( $settings['emailoctopus_tags'] ) ) {
+            $tags = explode( ',', trim( $settings['emailoctopus_tags'] ) );
+            if (!empty($subscriber['tags'])) {
+                array_unshift($tags, $subscriber['tags']);
+            } 
+            $subscriber['tags'] = implode(',', $tags);
         }
 
-        $list = $form_settings['emailoctopus_list'];
-        //$email_hash = md5( strtolower( $subscriber['email_address'] ) );
-
-        $subscriber['status_if_new'] = 'subscribed';
-        $subscriber['status'] = 'subscribed';
+        $list = $settings['emailoctopus_list'];
+        //file_put_contents(ABSPATH.'ele.txt', print_r($subscriber, true));
+        $subscriber = $this->set_subscriber_data( $list, $subscriber['email_address'], $subscriber );
 
 
-        return $this->set_subscriber_data( $list, $subscriber['email_address'], $subscriber );
     }
 
+
     private function set_subscriber_data( $list, $email, $data ) {
-        $handler = new EmailOctopus_subscriptions($this->api_key );
+        $handler = new EmailOctopus_subscriptions();
 
-        $response = $handler->add_subscriber($email, $settings['emailoctopus_list'], $emailoctopus_data, true);
+        $response = $handler->add_subscriber($email, $list, $data, true);
 
-        if ( 200 !== $response['error']['code'] ) {
+        if (isset($response['error']['code'])) {
             $error = ! empty( $response['error']['message'] ) ? $response['error']['message'] : '';
             $code = $response['error']['code'];
 
             throw new \Exception( "HTTP {$code} - {$error}" );
         }
 
-        return $response;
     }
 
     /**
      * @param Form_Record $record
+     * 
      *
      * @return array
      */
     private function map_fields( $record ) {
         $subscriber = [];
         $fields = $record->get( 'fields' );
+        $settings = $record->get( 'form_settings' );
 
-        // Other form has a field mapping
-        foreach ( $record->get_form_settings( 'emailoctopus_fields_map' ) as $map_item ) {
-            if ( empty( $fields[ $map_item['local_id'] ]['value'] ) ) {
-                continue;
-            }
+        $eo_fields = $this->get_emailoctopus_fields();
 
-            $value = $fields[ $map_item['local_id'] ]['value'];
-            if ( 'email' === $map_item['remote_id'] ) {
-                $subscriber['email_address'] = $value;
+        $handler = new EmailOctopus_subscriptions();
+
+        $existing_fields = $handler->get_list_fields($settings['emailoctopus_list']);
+
+        foreach ( $settings['list'] as $list_field ) {
+            $eo_field = $list_field['list_options'];
+            $field_id = $list_field['list_form_id'];
+            $field_val = $fields[$field_id]['value'];
+            if ($eo_field == 'Newsletter') {
+                if ($field_val != '') $subscriber['tags'] = 'newsletter';
+            } elseif ($eo_field == 'email_address') {
+                $subscriber['email_address'] = $field_val;
             } else {
-                $subscriber['merge_fields'][ $map_item['remote_id'] ] = $value;
+                if (!in_array($eo_field, $existing_fields)) {
+                    $data = array(
+                        'label' => $eo_field,
+                        'tag' => $eo_field,
+                        'type' => 'TEXT'
+                    );
+                    $handler->create_list_field($data, $settings['emailoctopus_list']);
+                }
+                $subscriber[$eo_field] = $field_val;
             }
         }
 
         return $subscriber;
     }
 
-    public function handle_panel_request( array $data ) {
-
-        $api_key = $this->get_global_api_key();
-        
-        $handler = new EmailOctopus_subscriptions( $api_key );
-
-        switch ( $data['emailoctopus_action'] ) {
-            case 'lists':
-                return $handler->get_lists();
-
-            default:
-                return $handler->get_list_fields( $data['emailoctopus_list'] );
-
-        }
-        
-    }
 
     public function __construct() {
         
