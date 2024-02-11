@@ -10,16 +10,13 @@ use ElementorPro\Modules\Forms\Classes\Integration_Base;
 
 class EmailOctopus_Action_After_Submit extends Integration_Base {
 
-
-    const OPTION_NAME_API_KEY = 'pro_emailoctopus_api_key';
-
     /**
      * @var string - Mailchimp API key.
      */
     private $api_key;
 
     private function get_global_api_key() {
-        return get_option( 'elementor_' . self::OPTION_NAME_API_KEY );
+        return get_option( 'fw_emailoctopus_api_key' );
     }
 
     /**
@@ -43,7 +40,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
      * @return string
      */
     public function get_label() {
-        return __( 'EmailOctopus', 'text-domain' );
+        return __( 'EmailOctopus', 'fw_emailoctopus_subscribe' );
     }
 
     
@@ -60,7 +57,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         $widget->start_controls_section(
             'section_emailoctopus',
             [
-                'label' => __( 'EmailOctopus', 'text-domain' ),
+                'label' => __( 'EmailOctopus', 'fw_emailoctopus_subscribe' ),
                 'condition' => [
                     'submit_actions' => $this->get_name(),
                 ],
@@ -73,40 +70,28 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         $widget->add_control(
             'emailoctopus_list',
             [
-                'label' => __( 'Mailing list', 'text-domain' ),
+                'label' => __( 'Mailing list', 'fw_emailoctopus_subscribe' ),
                 'type' => Controls_Manager::SELECT,
                 'options' => $list_items,
                 'render_type' => 'none',
             ]
         );
 
-        $settings = $this->get_settings_for_display(); 
-
-        print_r($settings);
-
         $emailoctopus_repeater = new \Elementor\Repeater();
 
-        $customfields      = $handler->get_list_fields($list_items[0]['id']);
-
-        $customfield_array = [];
-
-        foreach ( $customfields as $id => $data ) {
-            $customfield_array[ $id ] = $data['name'];
-        }
-
-        $defaultfields_array = [
-            'email'     => __( 'Email', 'integrate-elementor-mailster' ),
-            'name' => __( 'Name', 'integrate-elementor-mailster' ),
-            'lastname'  => __( 'Last Name', 'integrate-elementor-mailster' ),
+        $options_array = [
+            'email_address'     => __( 'Email address', 'fw_emailoctopus_subscribe' ),
+            'FirstName' => __( 'First Name', 'fw_emailoctopus_subscribe' ),
+            'LastName'  => __( 'Last Name', 'fw_emailoctopus_subscribe' ),
+            'Source'  => __( 'Source', 'fw_emailoctopus_subscribe' ),
+            'Newsletter'  => __( 'Newsletter', 'fw_emailoctopus_subscribe' ),
         ];
 
-        // Create options array for repeater field.
-        $options_array = array_merge( $defaultfields_array, $customfield_array );
 
         $emailoctopus_repeater->add_control(
             'list_options',
             [
-                'label'   => __( 'Custom Fields', 'integrate-elementor-mailster' ),
+                'label'   => __( 'Merge Fields', 'fw_emailoctopus_subscribe' ),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'options' => $options_array,
             ]
@@ -115,7 +100,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         $emailoctopus_repeater->add_control(
             'list_form_id',
             [
-                'label'       => __( 'Field ID', 'integrate-elementor-mailster' ),
+                'label'       => __( 'Field ID', 'fw_emailoctopus_subscribe' ),
                 'type'        => \Elementor\Controls_Manager::TEXT,
                 'placeholder' => __( 'field ID', 'integrate-elementor-mailster' ),
             ]
@@ -124,16 +109,19 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         $widget->add_control(
             'list',
             [
-                'label'       => __( 'Custom Fields', 'integrate-elementor-mailster' ),
+                'label'       => __( 'List Field', 'fw_emailoctopus_subscribe' ),
                 'type'        => \Elementor\Controls_Manager::REPEATER,
                 'fields'      => $emailoctopus_repeater->get_controls(),
                 'default'     => [
                     [
-                        'list_options' => 'email',
+                        'list_options' => 'email_address',
                         'list_form_id' => 'email',
                     ],
                 ],
-                'title_field' => '{{{ list_options }}}',
+                'title_field' => __( 'Email address', 'fw_emailoctopus_subscribe' ),
+                'condition' => [
+                    'emailoctopus_list!' => '',
+                ],
             ]
         );
 
@@ -141,8 +129,8 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         $widget->add_control(
             'emailoctopus_tags',
             [
-                'label' => esc_html__( 'Tags', 'elementor-pro' ),
-                'description' => esc_html__( 'Add comma separated tags', 'elementor-pro' ),
+                'label' => esc_html__( 'Tags', 'fw_emailoctopus_subscribe' ),
+                'description' => esc_html__( 'Add comma separated tags', 'fw_emailoctopus_subscribe' ),
                 'type' => Controls_Manager::TEXT,
                 'render_type' => 'none',
                 'condition' => [
@@ -165,10 +153,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
      */
     public function on_export( $element ) {
         unset(
-            $element['settings']['emailoctopus_api_key_source'],
-            $element['settings']['emailoctopus_custom_api_key'],
-            $element['emailoctopus_list'],
-            $element['emailoctopus_fields_map']
+            $element['emailoctopus_list']
         );
     }
 
@@ -184,11 +169,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
     public function run( $record, $ajax_handler ) {
         $settings = $record->get( 'form_settings' );
 
-        if ( 'default' === $form_settings['emailoctopus_api_key_source'] ) {
-            $api_key = $this->get_global_api_key();
-        } else {
-            $api_key = $form_settings['emailoctopus_custom_api_key'];
-        }
+
         
         // Data from the form in the frontend.
         $subscriber_data = $this->map_fields( $record );
@@ -196,23 +177,6 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         // Create or update a subscriber.
         $subscriber = $this->create_or_update_subscriber( $subscriber_data, $form_settings );
 
-        /*
-        $emailoctopus_data = $this->get_emailoctopus_custom_fields( $record );
-        $email = $this->get_mapped_field( $record, 'EmailAddress' );
-
-        $eo_object = new EmailOctopus_subscriptions($api_key);
-        $eo_object->add_subscriber($email, $settings['emailoctopus_list'], $emailoctopus_data);
-        */
-    }
-
-    private function normalize_type( $type ) {
-        static $types = [
-            'TEXT' => 'text',
-            'NUMBER' => 'number',
-            'DATE' => 'text'
-        ];
-
-        return $types[ $type ];
     }
 
     /**
@@ -279,66 +243,11 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
 
         return $subscriber;
     }
-    /*
-    private function get_mapped_field( Form_Record $record, $field_id ) {
-        $fields = $record->get( 'fields' );
-        foreach ( $record->get_form_settings( 'emailoctopus_fields_map' ) as $map_item ) {
-            if ( empty( $fields[ $map_item['local_id'] ]['value'] ) ) {
-                continue;
-            }
-
-            if ( $field_id === $map_item['remote_id'] ) {
-                return $fields[ $map_item['local_id'] ]['value'];
-            }
-        }
-
-        return '';
-    }
-
-    public function get_list_and_fields( $list_id ) {
-
-        $lists = [
-            '' => esc_html__( 'Select...', 'elementor-pro' ),
-        ];
-        $handler = new EmailOctopus_subscriptions();
-        $all_lists = $handler->get_lists();
-        array_push($lists, $all_lists);
-
-        $results = $handler->get_list_fields($list_id);
-        $fields = array();
-
-        if ( ! empty( $results ) ) {
-            foreach ( $results as $field ) {
-                $fields[] = [
-                    'remote_label' => $field['label'],
-                    'remote_type' => $this->normalize_type( $field['type'] ),
-                    'remote_id' => $field['tag'],
-                    'remote_required' => false,
-                ];
-            }
-        }
-
-        $return_array = [
-            'lists' => $lists,
-            'fields' => $fields
-        ];
-
-        return $return_array;
-    }
-    */
 
     public function handle_panel_request( array $data ) {
 
-        if ( ! empty( $data['api_key'] ) && 'default' === $data['api_key'] ) {
-            $api_key = $this->get_global_api_key();
-        } elseif ( ! empty( $data['custom_api_key'] ) ) {
-            $api_key = $data['custom_api_key'];
-        }
-
-        if ( empty( $api_key ) ) {
-            throw new \Exception( '`API key` is required.', 400 );
-        }
-
+        $api_key = $this->get_global_api_key();
+        
         $handler = new EmailOctopus_subscriptions( $api_key );
 
         switch ( $data['emailoctopus_action'] ) {
@@ -352,57 +261,8 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         
     }
 
-    public function register_admin_fields( Settings $settings ) {
-        $settings->add_section( Settings::TAB_INTEGRATIONS, 'emailoctopus', [
-            'callback' => function() {
-                echo '<hr><h2>' . esc_html__( 'EmailOctopus', 'elementor-pro' ) . '</h2>';
-            },
-            'fields' => [
-                self::OPTION_NAME_API_KEY => [
-                    'label' => esc_html__( 'API Key', 'elementor-pro' ),
-                    'field_args' => [
-                        'type' => 'text',
-                        'desc' => sprintf(
-                            /* translators: 1: Link opening tag, 2: Link closing tag. */
-                            esc_html__( 'To integrate with our forms you need an %1$sAPI Key%2$s.', 'elementor-pro' ),
-                            '<a href="https://emailoctopus.com/api-documentation" target="_blank">',
-                            '</a>'
-                        ),
-                    ],
-                ],
-                'validate_api_data' => [
-                    'field_args' => [
-                        'type' => 'raw_html',
-                        'html' => sprintf( '<button data-action="%s" data-nonce="%s" class="button elementor-button-spinner" id="elementor_pro_emailoctopus_api_key_button">%s</button>', self::OPTION_NAME_API_KEY . '_validate', wp_create_nonce( self::OPTION_NAME_API_KEY ), esc_html__( 'Validate API Key', 'elementor-pro' ) ),
-                    ],
-                ],
-            ],
-        ] );
-    }
-
-    public function ajax_validate_api_key() {
-        check_ajax_referer( self::OPTION_NAME_API_KEY, '_nonce' );
-        if ( ! isset( $_POST['api_key'] ) ) {
-            wp_send_json_error();
-        }
-
-        if ( ! current_user_can( 'manage_options' ) ) {
-            wp_send_json_error( 'Permission denied' );
-        }
-
-        try {
-            new EmailOctopus_subscriptions( $_POST['api_key'] ); // phpcs:ignore -- No need to sanitize to support special characters.
-        } catch ( \Exception $exception ) {
-            wp_send_json_error();
-        }
-        wp_send_json_success();
-    }
-
     public function __construct() {
-        if ( is_admin() ) {
-            add_action( 'elementor/admin/after_create_settings/' . Settings::PAGE_ID, [ $this, 'register_admin_fields' ], 15 );
-        }
-        add_action( 'wp_ajax_' . self::OPTION_NAME_API_KEY . '_validate', [ $this, 'ajax_validate_api_key' ] );
+        
     }
 
 
