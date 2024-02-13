@@ -135,7 +135,11 @@ class Create_EmailOctopus_Forms extends EmailOctopus_Subscriptions {
 				</div>';
 		$html .= $extra_fields_html;
 		if ($atts['newsletter'] == 'y') {
-			$newsletter_text = get_option('fw_emailoctopus_text_newsletter');
+			if (function_exists('pll_register_string')) {
+				$newsletter_text = pll__( 'Yes, please add me to your mailing list.' );
+			} else {
+				$newsletter_text = get_option('fw_emailoctopus_text_newsletter');
+			}
 			$html .= '
 				<div class="checkbox">
 					<label>

@@ -1,16 +1,16 @@
 <?php
 /*
-Plugin Name: EmailOctopus Subscriptions
+Plugin Name: WP EmailOctopus integration
 Version: 1.0.1
-Plugin URI: https://www.finalwebsites.nl
-Description: Increase the count of new subscribers for your blog or website by using EmailOctopus and some professional subscription forms.
+Plugin URI: https://www.finalwebsites.com
+Description: Increase the count of new subscribers for your blog or website by using EmailOctopus and this integration plugin.
 Author: Olaf Lederer
 Author URI: https://www.olaflederer.com/
 Text Domain: fw_emailoctopus_subscribe
 Domain Path: /languages/
 License: GPL v3
 
-EmailOctopus Subscriptions
+WP EmailOctopus integration
 Copyright (C) 2024, Olaf Lederer - https://www.olaflederer.com/
 
 This program is free software: you can redistribute it and/or modify
@@ -27,16 +27,9 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-// Update URI:  https://finalwebhosting.com/fw-repo/emailoctopus-subscriptions_info.json
-
-
-define( 'PREFIX_PLUGIN_VERSION', '1.0.1' ); 
-define( 'PREFIX_DOMAIN', 'https://www.example.com' ); 
-define( 'PREFIX_REPOFOLDER', 'fw-repo' ); 
 
 define('FWEO_DIR', plugin_dir_path( __FILE__ ));
 
-//include_once STML_DIR.'include/auto-update.php';
 include_once FWEO_DIR.'include/options.php';
 include_once FWEO_DIR.'include/form-shortcodes.php';
 
@@ -70,19 +63,12 @@ class EmailOctopus_subscriptions {
 				global $pagenow;
     			if ( $pagenow != 'options-general.php' ) echo '
 	<div class="notice notice-warning">
-        <p>'.__( 'For using the EmailOctopus Submission plugin, you need to enter a valid API key.', 'fw_emailoctopus_subscribe' ).' <span class="dashicons dashicons-edit"></span> <a href="'.admin_url( 'options-general.php?page=fws-emailoctopus-settings').'">'.__('Plugin settings', 'fw_emailoctopus_subscribe').'</a></p>
+        <p>'.__( 'To use the WP EmailOctopus integration plugin, you need to enter a valid API key.', 'fw_emailoctopus_subscribe' ).' <span class="dashicons dashicons-edit"></span> <a href="'.admin_url( 'options-general.php?page=fws-emailoctopus-settings').'">'.__('Plugin settings', 'fw_emailoctopus_subscribe').'</a></p>
     </div>';
     		});
 		} else {
 			add_action( 'plugins_loaded', array( $this, 'init' ) );
 		}
-		/*
-		if ( empty( $this->api_key ) ) {
-			throw new \Exception( 'Invalid API key.' );
-		}
-		if ( ! $this->is_valid_api_key() ) {
-			throw new \Exception( 'Invalid API key.' );
-		}*/
 		
 	}
 
@@ -103,8 +89,8 @@ class EmailOctopus_subscriptions {
 		add_action( 'elementor_pro/forms/actions/register', array($this, 'add_emailoctopus_form_action') );
 		
 		if (function_exists('pll_register_string')) {
-			pll_register_string( 'text_newsletter', 'Yes, please add me to your mailing list.', 'fw_emailoctopus_subscribe', false );
-			pll_register_string( 'emailoctopus_subscribe_text', 'Please send me your newsletter.', 'fw_emailoctopus_subscribe', false );
+			pll_register_string( 'woo_text_newsletter', 'Please send me your newsletter.', 'fw_emailoctopus_subscribe', false );
+			pll_register_string( 'emailoctopus_subscribe_text', 'Yes, please add me to your mailing list.', 'fw_emailoctopus_subscribe', false );
 		}
 	}
 	

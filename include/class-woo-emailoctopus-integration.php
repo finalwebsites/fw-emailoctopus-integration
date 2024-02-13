@@ -50,7 +50,7 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
 			'emailoctopus_subscribe_text' => array(
 				'title'             => __( 'Subscription label', 'fw_emailoctopus_subscribe' ),
 				'type'              => 'text',
-				'default'           => '',
+				'default'           => 'Please send me your newsletter.',
 				'desc_tip'          => true,
 				'description'       => __( 'The text for the subscription on the checkout page.', 'fw_emailoctopus_subscribe' ),
 			),

@@ -1,10 +1,10 @@
-=== EmailOctopus Subscriptions ===
+=== WP EmailOctopus integration ===
 Contributors: finalwebsites
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: EmailOctopus, subscription, subscribe form, ajax forms, email marketing, mailing list, forms, api, ajax, email form, shortcode, clicky, Google Analytics, tracking
+Tags: EmailOctopus, subscription, subscribe form, elementor, email marketing, mailing list, woocommerce, form actions, api
 Requires at least: 5.4
-Tested up to: 6.4.2
+Tested up to: 6.4.3
 Stable tag: 1.0.0
 
 Increase the count of new subscribers for your blog or website by using EmailOctopus and a professional subscription form.
