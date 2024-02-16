@@ -82,7 +82,7 @@ class EmailOctopus_integration {
 
 		if ( class_exists( 'WooCommerce') ) {
 			// Include the integration class.
-			include_once FWEO_DIR . 'woo-extend-emailoctopus.php';
+			include_once FWEO_DIR . 'woo-emailoctopus-integration.php';
 			$FWS_Woo_EmailOctopus = new FWS_Woo_EmailOctopus();
 			$FWS_Woo_EmailOctopus->init();
 		}

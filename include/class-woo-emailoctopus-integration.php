@@ -91,7 +91,7 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
         parent::process_admin_options();
      	$settings = get_option('woocommerce_fws-woo-emailoctopus_settings');
      	if (isset($settings['list']) && (!empty($settings['em_store_last_purchase']) || !empty($settings['em_send_language']))) {
-     		$eo = new EmailOctopus_subscriptions();
+     		$eo = new EmailOctopus_integration();
 			if ($api_response = $eo->get_list_fields($settings['list'], true)) {
 				$last_purchase = false;
 				$language = false;
@@ -125,7 +125,7 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
     }
 
 	public function get_list_options() {
-		$eo = new EmailOctopus_subscriptions();
+		$eo = new EmailOctopus_integration();
 		$first = array( '' => __('Choose one...', 'fw_emailoctopus_integration' ) );
 		$resp = $eo->get_lists();
 		$options = array_merge($first, $resp);
@@ -186,7 +186,7 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
 		}
 		if (count($tags) > 0) $fields['tags'] = implode(',', $tags);
 		
-		$handler = new EmailOctopus_subscriptions();
+		$handler = new EmailOctopus_integration();
 		$response = $handler->add_subscriber($billing_email, $settings['list'], $fields, true);
 		
 		if (isset($response['error']['code'])) {
