@@ -31,8 +31,8 @@ class EmailOctopus_Plugin_Settings {
 
 	public function add_menu_item() {
 		$page = add_options_page(
-			__( 'WP EmailOctopus Integration Settings', 'fw_emailoctopus_integration' ),
-			__( 'WP EmailOctopus Integration', 'fw_emailoctopus_integration' ),
+			__( 'EmailOctopus Integration Settings', 'fw_emailoctopus_integration' ),
+			__( 'EmailOctopus Integration', 'fw_emailoctopus_integration' ),
 			'manage_options',
 			'fws-emailoctopus-settings',
 			array($this, 'settings_page')
@@ -48,7 +48,7 @@ class EmailOctopus_Plugin_Settings {
 	private function settings_fields() {
 		$settings['standard'] = array(
 			'title'					=> __( 'General', 'fw_emailoctopus_integration' ),
-			'description'			=> __( 'General settings and options for the WP EmailOctopus Integration plugin.', 'fw_emailoctopus_integration' ),
+			'description'			=> __( 'General settings and options for the EmailOctopus Integration plugin.', 'fw_emailoctopus_integration' ),
 			'fields'				=> array(
 				array(
 					'id' 			=> 'api_key',
@@ -208,7 +208,7 @@ class EmailOctopus_Plugin_Settings {
 			return;
 		}
 		$html = '<div class="wrap" id="plugin_settings">' . "\n";
-			$html .= '<h2>WP EmailOctopus Integration</h2>' . "\n";
+			$html .= '<h2>FW EmailOctopus Integration</h2>' . "\n";
 			$html .= '<p>'.sprintf ( __( 'To use this plugin you need a working EmailOctopus account. Subcribe for a new account here: <a href="%s" target="_blank">EmailOctopus, create email marketing your way</a>.', 'fw_emailoctopus_integration' ), esc_url( 'https://emailoctopus.com/' ) ).'</p>' . "\n";
 			$html .= '<form method="post" action="options.php">' . "\n";
 				$html .= '<ul id="settings-sections" class="subsubsub hide-if-no-js">' . "\n";

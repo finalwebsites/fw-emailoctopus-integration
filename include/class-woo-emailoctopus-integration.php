@@ -1,6 +1,6 @@
 <?php
 /**
- * Extend EmailOctopus for WooCommerce
+ * EmailOctopus Integration for WooCommerce
  *
  * @package  FWS_Woo_EmailOctopus_Integration
  * @category Integration
