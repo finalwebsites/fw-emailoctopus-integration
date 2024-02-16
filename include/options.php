@@ -31,8 +31,8 @@ class EmailOctopus_Plugin_Settings {
 
 	public function add_menu_item() {
 		$page = add_options_page(
-			__( 'EmailOctopus Subscriptions Settings', 'fw_emailoctopus_integration' ),
-			__( 'EmailOctopus Subscriptions', 'fw_emailoctopus_integration' ),
+			__( 'WP EmailOctopus Integration Settings', 'fw_emailoctopus_integration' ),
+			__( 'WP EmailOctopus Integration', 'fw_emailoctopus_integration' ),
 			'manage_options',
 			'fws-emailoctopus-settings',
 			array($this, 'settings_page')
@@ -48,7 +48,7 @@ class EmailOctopus_Plugin_Settings {
 	private function settings_fields() {
 		$settings['standard'] = array(
 			'title'					=> __( 'General', 'fw_emailoctopus_integration' ),
-			'description'			=> __( 'General settings and options for the EmailOctopus Subscriptions plugin.', 'fw_emailoctopus_integration' ),
+			'description'			=> __( 'General settings and options for the WP EmailOctopus Integration plugin.', 'fw_emailoctopus_integration' ),
 			'fields'				=> array(
 				array(
 					'id' 			=> 'api_key',
