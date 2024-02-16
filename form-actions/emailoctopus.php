@@ -31,7 +31,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
      * @return string
      */
     public function get_label() {
-        return __( 'EmailOctopus', 'fw_emailoctopus_subscribe' );
+        return 'EmailOctopus';
     }
 
     
@@ -48,7 +48,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         $widget->start_controls_section(
             'section_emailoctopus',
             [
-                'label' => __( 'EmailOctopus', 'fw_emailoctopus_subscribe' ),
+                'label' => 'EmailOctopus',
                 'condition' => [
                     'submit_actions' => $this->get_name(),
                 ],
@@ -61,7 +61,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         $widget->add_control(
             'emailoctopus_list',
             [
-                'label' => __( 'Mailing list', 'fw_emailoctopus_subscribe' ),
+                'label' => __( 'Mailing list', 'fw_emailoctopus_integration' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => $list_items,
                 'render_type' => 'none',
@@ -73,7 +73,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         $emailoctopus_repeater->add_control(
             'list_options',
             [
-                'label'   => __( 'Merge Fields', 'fw_emailoctopus_subscribe' ),
+                'label'   => __( 'Merge Fields', 'fw_emailoctopus_integration' ),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'options' => $this->get_emailoctopus_fields(),
             ]
@@ -82,7 +82,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         $emailoctopus_repeater->add_control(
             'list_form_id',
             [
-                'label'       => __( 'Field ID', 'fw_emailoctopus_subscribe' ),
+                'label'       => __( 'Field ID', 'fw_emailoctopus_integration' ),
                 'type'        => \Elementor\Controls_Manager::TEXT,
                 'placeholder' => __( 'field ID', 'integrate-elementor-mailster' ),
             ]
@@ -91,7 +91,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         $widget->add_control(
             'list',
             [
-                'label'       => __( 'List Field', 'fw_emailoctopus_subscribe' ),
+                'label'       => __( 'List Field', 'fw_emailoctopus_integration' ),
                 'type'        => \Elementor\Controls_Manager::REPEATER,
                 'fields'      => $emailoctopus_repeater->get_controls(),
                 'default'     => [
@@ -111,8 +111,8 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         $widget->add_control(
             'emailoctopus_tags',
             [
-                'label' => esc_html__( 'Tags', 'fw_emailoctopus_subscribe' ),
-                'description' => esc_html__( 'Add comma separated tags', 'fw_emailoctopus_subscribe' ),
+                'label' => esc_html__( 'Tags', 'fw_emailoctopus_integration' ),
+                'description' => esc_html__( 'Add comma separated tags', 'fw_emailoctopus_integration' ),
                 'type' => Controls_Manager::TEXT,
                 'render_type' => 'none',
                 'condition' => [
@@ -129,13 +129,13 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
     public function get_emailoctopus_fields() {
 
         $options_array = [
-            'email_address'     => __( 'Email address', 'fw_emailoctopus_subscribe' ),
-            'FirstName' => __( 'First Name', 'fw_emailoctopus_subscribe' ),
-            'LastName'  => __( 'Last Name', 'fw_emailoctopus_subscribe' ),
-            'Source'  => __( 'Source', 'fw_emailoctopus_subscribe' ),
-            'Newsletter'  => __( 'Newsletter', 'fw_emailoctopus_subscribe' ),
-            'Website'  => __( 'Website', 'fw_emailoctopus_subscribe' ),
-            'PhoneNumber'  => __( 'Phone number', 'fw_emailoctopus_subscribe' ),
+            'email_address'     => __( 'Email address', 'fw_emailoctopus_integration' ),
+            'FirstName' => __( 'First Name', 'fw_emailoctopus_integration' ),
+            'LastName'  => __( 'Last Name', 'fw_emailoctopus_integration' ),
+            'Source'  => __( 'Source', 'fw_emailoctopus_integration' ),
+            'Newsletter'  => __( 'Newsletter', 'fw_emailoctopus_integration' ),
+            'Website'  => __( 'Website', 'fw_emailoctopus_integration' ),
+            'PhoneNumber'  => __( 'Phone number', 'fw_emailoctopus_integration' ),
         ];
         return $options_array;
     }

@@ -14,8 +14,8 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
 	 */
 	public function __construct() {
 		$this->id = 'fws-woo-emailoctopus';
-		$this->method_title = __( 'EmailOctopus', 'fw_emailoctopus_subscribe' );
-		$this->method_description = __( 'Add newsletter subscribers to a specific EmailOctopus list', 'fw_emailoctopus_subscribe' );
+		$this->method_title = __( 'EmailOctopus', 'fw_emailoctopus_integration' );
+		$this->method_description = __( 'Add newsletter subscribers to a specific EmailOctopus list', 'fw_emailoctopus_integration' );
 		// Load the settings.
 		$this->init_form_fields();
 		$this->init_settings();	
@@ -27,62 +27,62 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
 	public function init_form_fields() {
 		$this->form_fields = array(
 			'list' => array(
-                'title' 		=> __( 'List', 'fw_emailoctopus_subscribe' ),
+                'title' 		=> __( 'List', 'fw_emailoctopus_integration' ),
                 'type' 			=> 'select',
                 'class'         => 'wc-enhanced-select',
-                'description' => __( 'The default list which will be taken for new subscribers', 'fw_emailoctopus_subscribe' ),
+                'description' => __( 'The default list which will be taken for new subscribers', 'fw_emailoctopus_integration' ),
                 'default' 		=> '',
                 'options'		=> $this->get_list_options(),
                 'desc_tip' => true
             ),
             'checkout_position' => array(
-				'title' 		=> __( 'Position', 'fw_emailoctopus_subscribe' ),
+				'title' 		=> __( 'Position', 'fw_emailoctopus_integration' ),
 				'type' 			=> 'select',
 				'class'         => 'wc-enhanced-select',
 				'default' 		=> 'checkout_billing',
 				'options'		=> array(
-					'checkout_billing' => __( 'After billing details', 'fw_emailoctopus_subscribe' ),
-					'checkout_shipping' => __( 'After shipping details', 'fw_emailoctopus_subscribe' ),
-					'checkout_after_customer_details' => __( 'After customer details', 'fw_emailoctopus_subscribe' ),
-					'checkout_after_terms_and_conditions' => __( 'After terms and conditions', 'fw_emailoctopus_subscribe' )
+					'checkout_billing' => __( 'After billing details', 'fw_emailoctopus_integration' ),
+					'checkout_shipping' => __( 'After shipping details', 'fw_emailoctopus_integration' ),
+					'checkout_after_customer_details' => __( 'After customer details', 'fw_emailoctopus_integration' ),
+					'checkout_after_terms_and_conditions' => __( 'After terms and conditions', 'fw_emailoctopus_integration' )
 				),
 			),
 			'emailoctopus_subscribe_text' => array(
-				'title'             => __( 'Subscription label', 'fw_emailoctopus_subscribe' ),
+				'title'             => __( 'Subscription label', 'fw_emailoctopus_integration' ),
 				'type'              => 'text',
 				'default'           => 'Please send me your newsletter.',
 				'desc_tip'          => true,
-				'description'       => __( 'The text for the subscription on the checkout page.', 'fw_emailoctopus_subscribe' ),
+				'description'       => __( 'The text for the subscription on the checkout page.', 'fw_emailoctopus_integration' ),
 			),
 			'em_store_categories' => array(
-				'title'             => __( 'Store product categories', 'fw_emailoctopus_subscribe' ),
+				'title'             => __( 'Store product categories', 'fw_emailoctopus_integration' ),
 				'type'              => 'checkbox',
 				'default'           => '',
-				'label'       => __( 'Use the product categories from an order as tags in EmailOctopus.', 'fw_emailoctopus_subscribe' ),
+				'label'       => __( 'Use the product categories from an order as tags in EmailOctopus.', 'fw_emailoctopus_integration' ),
 			),
 			'em_store_used_coupon' => array(
-				'title'             => __( 'Store coupon', 'fw_emailoctopus_subscribe' ),
+				'title'             => __( 'Store coupon', 'fw_emailoctopus_integration' ),
 				'type'              => 'checkbox',
 				'default'           => '',
-				'label'       => __( 'Send the "coupon" tag to EmailOctopus whenever a coupon is used during a checkout.', 'fw_emailoctopus_subscribe' ),
+				'label'       => __( 'Send the "coupon" tag to EmailOctopus whenever a coupon is used during a checkout.', 'fw_emailoctopus_integration' ),
 			),
 			'em_store_last_purchase' => array(
-				'title'             => __( 'Last order', 'fw_emailoctopus_subscribe' ),
+				'title'             => __( 'Last order', 'fw_emailoctopus_integration' ),
 				'type'              => 'checkbox',
 				'default'           => '',
-				'label'       => __( 'Store the last order date in EmailOctopus.', 'fw_emailoctopus_subscribe' ),
+				'label'       => __( 'Store the last order date in EmailOctopus.', 'fw_emailoctopus_integration' ),
 			),
 			'em_store_all_customers' => array(
-				'title'             => __( 'Subscribe everyone', 'fw_emailoctopus_subscribe' ),
+				'title'             => __( 'Subscribe everyone', 'fw_emailoctopus_integration' ),
 				'type'              => 'checkbox',
 				'default'           => '',
-				'label'       => __( 'Check this option if you need to send one or more after-sales emails to your customers. For commercial emails it\'s still required to ask for their consent first!', 'fw_emailoctopus_subscribe' ),
+				'label'       => __( 'Check this option if you need to send one or more after-sales emails to your customers. For commercial emails it\'s still required to ask for their consent first!', 'fw_emailoctopus_integration' ),
 			),
 			'em_send_language' => array(
-				'title'             => __( 'Submit language', 'fw_emailoctopus_subscribe' ),
+				'title'             => __( 'Submit language', 'fw_emailoctopus_integration' ),
 				'type'              => 'checkbox',
 				'default'           => '',
-				'label'       => __( 'Submit the language code to Emailoctopus if your shop supports multiple languages. You can use that code to send emails in different languages.', 'fw_emailoctopus_subscribe' ),
+				'label'       => __( 'Submit the language code to Emailoctopus if your shop supports multiple languages. You can use that code to send emails in different languages.', 'fw_emailoctopus_integration' ),
 			)
 		);
 	}
@@ -126,7 +126,7 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
 
 	public function get_list_options() {
 		$eo = new EmailOctopus_subscriptions();
-		$first = array( '' => __('Choose one...', 'fw_emailoctopus_subscribe' ) );
+		$first = array( '' => __('Choose one...', 'fw_emailoctopus_integration' ) );
 		$resp = $eo->get_lists();
 		$options = array_merge($first, $resp);
 		return $options;
@@ -196,24 +196,4 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
 		}
 	}
 	
-
-	/*
-    public function get_response($response) {
-        if ( ! is_wp_error($response) ) {
-            $this->response = wp_remote_retrieve_body($response);
-            $this->response_code = wp_remote_retrieve_response_code($response);
-            if ( ! is_wp_error($this->response)) {
-                $response = json_decode($this->response);
-                if (json_last_error() == JSON_ERROR_NONE) {
-                    if ( ! isset($response->error)) {
-                        return $response;
-                    }
-                }
-            }
-        } else {
-            $this->response = $response->get_error_message();
-            $this->response_code = 0;
-        }
-    }
-    */
 }

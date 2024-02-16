@@ -31,8 +31,8 @@ class EmailOctopus_Plugin_Settings {
 
 	public function add_menu_item() {
 		$page = add_options_page(
-			__( 'EmailOctopus Subscriptions Settings', 'fw_emailoctopus_subscribe' ),
-			__( 'EmailOctopus Subscriptions', 'fw_emailoctopus_subscribe' ),
+			__( 'EmailOctopus Subscriptions Settings', 'fw_emailoctopus_integration' ),
+			__( 'EmailOctopus Subscriptions', 'fw_emailoctopus_integration' ),
 			'manage_options',
 			'fws-emailoctopus-settings',
 			array($this, 'settings_page')
@@ -40,20 +40,20 @@ class EmailOctopus_Plugin_Settings {
 	}
 
 	public function add_settings_link( $links ) {
-		$settings_link = '<a href="options-general.php?page=fws-emailoctopus-settings">' . __( 'Settings', 'fw_emailoctopus_subscribe' ) . '</a>';
+		$settings_link = '<a href="options-general.php?page=fws-emailoctopus-settings">' . __( 'Settings', 'fw_emailoctopus_integration' ) . '</a>';
   		array_push( $links, $settings_link );
   		return $links;
 	}
 
 	private function settings_fields() {
 		$settings['standard'] = array(
-			'title'					=> __( 'General', 'fw_emailoctopus_subscribe' ),
-			'description'			=> __( 'General settings and options for the EmailOctopus Subscriptions plugin.', 'fw_emailoctopus_subscribe' ),
+			'title'					=> __( 'General', 'fw_emailoctopus_integration' ),
+			'description'			=> __( 'General settings and options for the EmailOctopus Subscriptions plugin.', 'fw_emailoctopus_integration' ),
 			'fields'				=> array(
 				array(
 					'id' 			=> 'api_key',
-					'label'			=> __( 'EmailOctopus API Key' , 'fw_emailoctopus_subscribe' ),
-					'description'	=> __( '<br />You can find this key in your EmailOctopus account on the profile settings page.', 'fw_emailoctopus_subscribe' ),
+					'label'			=> __( 'EmailOctopus API Key' , 'fw_emailoctopus_integration' ),
+					'description'	=> __( '<br />You can find this key in your EmailOctopus account on the profile settings page.', 'fw_emailoctopus_integration' ),
 					'type'			=> 'text',
 					'default'		=> '',
 					'placeholder'	=> '',
@@ -61,56 +61,56 @@ class EmailOctopus_Plugin_Settings {
 				),
 				array(
 					'id' 			=> 'list_id',
-					'label'			=> __( 'Default mailing list' , 'fw_emailoctopus_subscribe' ),
-					'description'	=> __( '<br />The default mailing list for your subscribers. You need to enter/save the API EmailOctopus API key first.', 'fw_emailoctopus_subscribe' ),
+					'label'			=> __( 'Default mailing list' , 'fw_emailoctopus_integration' ),
+					'description'	=> __( '<br />The default mailing list for your subscribers. You need to enter/save the API EmailOctopus API key first.', 'fw_emailoctopus_integration' ),
 					'type'			=> 'select_lists',
 					'options'		=> '',
 					'default'		=> ''
 				),
 				array(
 					'id' 			=> 'extra_fields',
-					'label'			=> __( 'Custom fields' , 'fw_emailoctopus_subscribe' ),
-					'description'	=> __( 'Do you use custom fields for your mailing list? Add the fields below. Each field name must be exact the same as used for the field name in EmailOctopus. If you add such a <strong>field name</strong> as a shortcode <code>extra_fields</code> attribute, a text field including the label from here will be created.', 'fw_emailoctopus_subscribe' ),
+					'label'			=> __( 'Custom fields' , 'fw_emailoctopus_integration' ),
+					'description'	=> __( 'Do you use custom fields for your mailing list? Add the fields below. Each field name must be exact the same as used for the field name in EmailOctopus. If you add such a <strong>field name</strong> as a shortcode <code>extra_fields</code> attribute, a text field including the label from here will be created.', 'fw_emailoctopus_integration' ),
 					'type'			=> 'textarea',
 					'default'		=> '',
 					'placeholder'	=> 'field name|form label'
 				),
 				array(
 					'id' 			=> 'text_newsletter',
-					'label'			=> __( 'Text for subscribe checkbox', 'fw_emailoctopus_subscribe' ),
-					'description'	=> __( '<br />Add here your text for the additional newsletter subscription checkbox. If the subscriber has checked the newsletter box a tag with the name "newsletter" will be created for a subscriber in EmailOctopus.', 'fw_emailoctopus_subscribe' ),
+					'label'			=> __( 'Text for subscribe checkbox', 'fw_emailoctopus_integration' ),
+					'description'	=> __( '<br />Add here your text for the additional newsletter subscription checkbox. If the subscriber has checked the newsletter box a tag with the name "newsletter" will be created for a subscriber in EmailOctopus.', 'fw_emailoctopus_integration' ),
 					'type'			=> 'text',
-					'default'		=> __('Yes, please add me to your mailing list.', 'fw_emailoctopus_subscribe'),
+					'default'		=> __('Yes, please add me to your mailing list.', 'fw_emailoctopus_integration'),
 					'placeholder'	=> '',
 					'css_class'		=> 'regular-text'
 				),
 				array(
 					'id' 			=> 'include_css',
-					'label'			=> __( 'Include CSS', 'fw_emailoctopus_subscribe' ),
-					'description'	=> __( 'Include the plugin\'s stylesheet for your subscribtion forms.', 'fw_emailoctopus_subscribe' ),
+					'label'			=> __( 'Include CSS', 'fw_emailoctopus_integration' ),
+					'description'	=> __( 'Include the plugin\'s stylesheet for your subscribtion forms.', 'fw_emailoctopus_integration' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
 				array(
 					'id' 			=> 'gdpr_text',
-					'label'			=> __( 'GDPR text' , 'fw_emailoctopus_subscribe' ),
-					'description'	=> __( 'Place here your GDPR info text. Don\'t change the link HTML code, we use the privacy URL which is set via "Settings > Privacy".', 'fw_emailoctopus_subscribe' ),
+					'label'			=> __( 'GDPR text' , 'fw_emailoctopus_integration' ),
+					'description'	=> __( 'Place here your GDPR info text. Don\'t change the link HTML code, we use the privacy URL which is set via "Settings > Privacy".', 'fw_emailoctopus_integration' ),
 					'type'			=> 'textarea',
 					'default'		=> __('We use your personal data according our <a href="%s">privacy statement</a>.'),
 					'placeholder'	=> ''
 				),
 				array(
 					'id' 			=> 'google_analytics',
-					'label'			=> __( 'Track in Google Analytics' , 'fw_emailoctopus_subscribe' ),
-					'description'	=> __( 'Track a page view in Google Analytics after the subscription form is submitted.', 'fw_emailoctopus_subscribe' ),
+					'label'			=> __( 'Track in Google Analytics' , 'fw_emailoctopus_integration' ),
+					'description'	=> __( 'Track a page view in Google Analytics after the subscription form is submitted.', 'fw_emailoctopus_integration' ),
 					'type'			=> 'text',
 					'default'		=> '',
 					'placeholder'	=> '/subscription/submitted.html'
 				),
 				array(
 					'id' 			=> 'clicky',
-					'label'			=> __( 'Track in Clicky' , 'fw_emailoctopus_subscribe' ),
-					'description'	=> __( 'Add here the goal ID for a manual goal you\'ve already defined in Clicky.', 'fw_emailoctopus_subscribe' ),
+					'label'			=> __( 'Track in Clicky' , 'fw_emailoctopus_integration' ),
+					'description'	=> __( 'Add here the goal ID for a manual goal you\'ve already defined in Clicky.', 'fw_emailoctopus_integration' ),
 					'type'			=> 'text',
 					'default'		=> '',
 					'placeholder'	=> ''
@@ -208,11 +208,11 @@ class EmailOctopus_Plugin_Settings {
 			return;
 		}
 		$html = '<div class="wrap" id="plugin_settings">' . "\n";
-			$html .= '<h2>' . __( 'EmailOctopus Subscriptions' , 'fw_emailoctopus_subscribe' ) . '</h2>' . "\n";
-			$html .= '<p>'.sprintf ( __( 'To use this plugin you need a working EmailOctopus account. Subcribe for a new account here: <a href="%s" target="_blank">EmailOctopus, create email marketing your way</a>.', 'fw_emailoctopus_subscribe' ), esc_url( 'https://emailoctopus.com/?ali=cb359bbf-1b33-11ea-be00-06b4694bee2a' ) ).'</p>' . "\n";
+			$html .= '<h2>WP EmailOctopus Integration</h2>' . "\n";
+			$html .= '<p>'.sprintf ( __( 'To use this plugin you need a working EmailOctopus account. Subcribe for a new account here: <a href="%s" target="_blank">EmailOctopus, create email marketing your way</a>.', 'fw_emailoctopus_integration' ), esc_url( 'https://emailoctopus.com/' ) ).'</p>' . "\n";
 			$html .= '<form method="post" action="options.php">' . "\n";
 				$html .= '<ul id="settings-sections" class="subsubsub hide-if-no-js">' . "\n";
-					$html .= '<li><a class="tab all current" href="#all">' . __( 'All' , 'fw_emailoctopus_subscribe' ) . '</a></li>' . "\n";
+					$html .= '<li><a class="tab all current" href="#all">' . __( 'All' , 'fw_emailoctopus_integration' ) . '</a></li>' . "\n";
 					foreach( $this->settings as $section => $data ) {
 						$html .= '<li>| <a class="tab" href="#' . $section . '">' . $data['title'] . '</a></li>' . "\n";
 					}
@@ -223,13 +223,13 @@ class EmailOctopus_Plugin_Settings {
 				do_settings_sections( 'fw_emailoctopus_plugin_settings' );
 				$html .= ob_get_clean();
 				$html .= '<p class="submit">' . "\n";
-					$html .= '<input name="Submit" type="submit" class="button-primary" value="' . esc_attr( __( 'Save Settings' , 'fw_emailoctopus_subscribe' ) ) . '" />' . "\n";
+					$html .= '<input name="Submit" type="submit" class="button-primary" value="' . esc_attr( __( 'Save Settings' , 'fw_emailoctopus_integration' ) ) . '" />' . "\n";
 				$html .= '</p>' . "\n";
 			$html .= '</form>' . "\n";
 			$option_name = $this->settings_base . 'api_key';
 			if (get_option($option_name)) $html .= '
-			<h3>'.__( 'How to use?', 'fw_emailoctopus_subscribe' ).'</h3>
-			<p>'.__( 'Add a shortcode to your pages and posts, here are some examples.', 'fw_emailoctopus_subscribe' ).'</p>
+			<h3>'.__( 'How to use the shortcode?', 'fw_emailoctopus_integration' ).'</h3>
+			<p>'.__( 'Add a shortcode to your pages and posts, here are some examples.', 'fw_emailoctopus_integration' ).'</p>
 			<p><code>[FWEmailOctopusSubForm]</code></p>
 			<p><code>[FWEmailOctopusSubForm source="blogpost" title="Subscribe today" description="Subscribe now and get future updates in your mailbox."]</code></p>
 			<p><code>[FWEmailOctopusSubForm source="blogpost" extra_fields="LastName" newsletter="y"]</code></p>

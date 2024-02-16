@@ -1,13 +1,13 @@
-=== WP EmailOctopus integration ===
+=== WP EmailOctopus Integration ===
 Contributors: finalwebsites
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: EmailOctopus, subscription, subscribe form, elementor, email marketing, mailing list, woocommerce, form actions, api
+Tags: EmailOctopus, integration, opt-in form, elementor, email marketing, mailing list, woocommerce, form actions, api
 Requires at least: 5.4
 Tested up to: 6.4.3
 Stable tag: 1.0.0
 
-Increase the count of new subscribers for your blog or website by using EmailOctopus and a professional subscription form.
+Increase the count of new subscribers for your blog, shop or website by using EmailOctopus and this professional integration plugin for WordPress, Elementor and WooCommerce.
 
 == Description ==
 
@@ -16,7 +16,7 @@ Email marketing is still one of the best ways to drive traffic to your website. 
 *To use this plugin, you need access to a EmailOctopus account. You can get a free account from the [EmailOctopus](https://emailoctopus.com/) website. The free account allows you use 2500 active subscribers and has a few limitations on the account features.*
 
 
-= These are the features: =
+= These are the features =
 
 * Add the subscription form by using a shortcode
 * Integration for Elementor form actions (with support for custom list fields)
@@ -40,7 +40,7 @@ The quickest method for installing the plugin is:
 1. Automatically install using the built-in WordPress Plugin installer or...
 1. Upload the entire plugin directory to the `/wp-content/plugins/` directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
-1. Create in EmailOctopus a mailing group and add this custom field:  Source (or more if you want).
+1. Create in EmailOctopus one ore more mailing lists and add also an API key.
 1. Enter your EmailOctopus API key, choose the mailing list ID and the other options on the plugin settings page.
 
 === WooCommerce integration ===
@@ -50,11 +50,11 @@ If your want to use the EmailOctopus integration for WooCommerce, you need to fo
 1. Goto WooCommerce > Settings > Integrations > EmailOctopus
 1. Choose the Mailing list you prefer for the subscription feature on your checkout page
 1. Check the other features to include addtional order information with each subscription
-1. Enable the option "Subscribe everyone" if you like to use Emailoctopus for none copmmercial emails (too).
+1. Enable the option "Subscribe everyone" if you like to use Emailoctopus for none commercial emails (too).
 
 === Elementor integration ===
 
-If you use Elementor Pro, it's possible to add the EmailOctopus subscriptions as form action.
+If you use Elementor Pro, it's possible to add the EmailOctopus subscription as form action.
 
 1. Add the Elementor form as usual and choose "EmailOctopus" from "Actions after submit".
 1. Now point the diifferent mailing list fields to the form fields, by entering the field ID.
@@ -73,7 +73,7 @@ If you use a Clicky premium plan it's possible to track Goals.
 1. Check the "Manual Goal" checkbox and click Submit
 1. Copy/paste the ID into the corresponding field on the plugin options page
 
-How does the "Subscribe everyone" feature work?
+= How does the "Subscribe everyone" feature work? =
 
 For webshop owners is it possible to use the WooCommerce integration and EmailOctopus, to send emails related to an order. For example usage instructions or a request for a review. To make this work, you need to sync all email addresses and not only the addresses from people subscibed to the newsletter. Use the Automation feature in EmailOctopus for this kind of after-sale campaigns.
 
