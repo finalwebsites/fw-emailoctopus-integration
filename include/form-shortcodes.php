@@ -1,6 +1,6 @@
 <?php
 
-class Create_EmailOctopus_Forms extends EmailOctopus_Subscriptions {
+class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 
 	public function __construct() {
 		parent::__construct();
@@ -12,13 +12,13 @@ class Create_EmailOctopus_Forms extends EmailOctopus_Subscriptions {
 
 		$atts = shortcode_atts(
 			array(
-				'title' => __( 'Subscribe now!', 'fw_emailoctopus_subscribe' ),
-				'description' => __( 'Subscribe today and get future blog posts your email.', 'fw_emailoctopus_subscribe' ),
+				'title' => __( 'Subscribe now!', 'fw_emailoctopus_integration' ),
+				'description' => __( 'Subscribe today and get future blog posts your email.', 'fw_emailoctopus_integration' ),
 				'gdpr_text' => get_option('fw_emailoctopus_gdpr_text'),
-				'btnlabel' => __('Subscribe', 'fw_emailoctopus_subscribe'),
+				'btnlabel' => __('Subscribe', 'fw_emailoctopus_integration'),
 				'thank_you_text' => '',
 				'btnclass' => '',
-				'title_select' => __('Select newsletter', 'fw_emailoctopus_subscribe'),
+				'title_select' => __('Select Mailing List', 'fw_emailoctopus_integration'),
 				'listid' => '',
 				'bs_icon' => '',
 				'fsize' => '',
@@ -118,20 +118,20 @@ class Create_EmailOctopus_Forms extends EmailOctopus_Subscriptions {
 		$html .= '
 			<form id="fw-subscribeform-'.$unique_id.'" role="form" class="'.$atts['form_class'].'">
 				<div class="form-group">
-					<label class="sr-only" for="FirstName-'.$unique_id.'">'.__( 'Your first name', 'fw_emailoctopus_subscribe' ).'</label>
-					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your first name', 'fw_emailoctopus_subscribe' ).'" id="FirstName-'.$unique_id.'" name="FirstName" autocomplete="off">
+					<label class="sr-only" for="FirstName-'.$unique_id.'">'.__( 'Your first name', 'fw_emailoctopus_integration' ).'</label>
+					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your first name', 'fw_emailoctopus_integration' ).'" id="FirstName-'.$unique_id.'" name="FirstName" autocomplete="off">
 				</div>';
 		if ($last_name) {
 			$html .= '
 				<div class="form-group">
-					<label class="sr-only" for="LastName-'.$unique_id.'">'.__( 'Your last name', 'fw_emailoctopus_subscribe' ).'</label>
-					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your last name', 'fw_emailoctopus_subscribe' ).'" id="LastName-'.$unique_id.'" name="LastName" autocomplete="off">
+					<label class="sr-only" for="LastName-'.$unique_id.'">'.__( 'Your last name', 'fw_emailoctopus_integration' ).'</label>
+					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your last name', 'fw_emailoctopus_integration' ).'" id="LastName-'.$unique_id.'" name="LastName" autocomplete="off">
 				</div>';
 		}
 		$html .= '
 				<div class="form-group">
-					<label class="sr-only" for="email-'.$unique_id.'">'.__( 'Your email address', 'fw_emailoctopus_subscribe' ).'</label>
-					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your email address', 'fw_emailoctopus_subscribe' ).'" id="email-'.$unique_id.'" name="email" autocomplete="off">
+					<label class="sr-only" for="email-'.$unique_id.'">'.__( 'Your email address', 'fw_emailoctopus_integration' ).'</label>
+					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your email address', 'fw_emailoctopus_integration' ).'" id="email-'.$unique_id.'" name="email" autocomplete="off">
 				</div>';
 		$html .= $extra_fields_html;
 		if ($atts['newsletter'] == 'y') {

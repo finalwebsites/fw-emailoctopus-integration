@@ -141,7 +141,7 @@ class EmailOctopus_Plugin_Settings {
 
 	public function create_list_items() {
 		if ($api_key = get_option('fw_emailoctopus_api_key')) {
-			$mainObj = new EmailOctopus_Subscriptions();
+			$mainObj = new EmailOctopus_integration();
 			$lists = $mainObj->get_lists();
 
 			if ($lists) {

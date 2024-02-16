@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP EmailOctopus Integration
-Version: 1.0.1
+Version: 1.0.0
 Plugin URI: https://www.finalwebsites.com
 Description: Increase the count of new subscribers for your blog or website by using EmailOctopus and this integration plugin.
 Author: Olaf Lederer
@@ -393,4 +393,4 @@ class EmailOctopus_integration {
 }
 
 $fw_emailoctopus_settings = new EmailOctopus_Plugin_Settings( __FILE__ );
-$fw_emailoctopus = new EmailOctopus_integration();
+$fw_emailoctopus = new Create_EmailOctopus_Forms();
