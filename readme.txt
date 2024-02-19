@@ -2,13 +2,13 @@
 Contributors: finalwebsites
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: EmailOctopus, integration, opt-in form, elementor, email marketing, mailing list, woocommerce, form actions, api
+Tags: EmailOctopus, integration, elementor, woocommerce, form actions
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.4.3
 Stable tag: 1.0.0
 
-Increase the count of new subscribers for your blog, shop or website by using EmailOctopus and this professional integration plugin for WordPress, Elementor and WooCommerce.
+Increase the subscribers for your website by using EmailOctopus and this professional integration plugin for WordPress, Elementor and WooCommerce.
 
 == Description ==
 

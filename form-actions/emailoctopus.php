@@ -194,7 +194,7 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
             $error = ! empty( $response['error']['message'] ) ? $response['error']['message'] : '';
             $code = $response['error']['code'];
 
-            throw new \Exception( "HTTP {$code} - {$error}" );
+            throw new \Exception( esc_html ( "HTTP {$code} - {$error}" ) );
         }
 
     }

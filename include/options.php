@@ -96,7 +96,8 @@ class EmailOctopus_Plugin_Settings {
 					'label'			=> __( 'GDPR text' , 'fw_emailoctopus_integration' ),
 					'description'	=> __( 'Place here your GDPR info text. Don\'t change the link HTML code, we use the privacy URL which is set via "Settings > Privacy".', 'fw_emailoctopus_integration' ),
 					'type'			=> 'textarea',
-					'default'		=> __('We use your personal data according our <a href="%s">privacy statement</a>.'),
+					/* translators: %s - the global privacy URL */
+					'default'		=>  __('We use your personal data according our <a href="%s">privacy statement</a>.', 'fw_emailoctopus_integration'), 
 					'placeholder'	=> ''
 				),
 				array(
@@ -135,8 +136,8 @@ class EmailOctopus_Plugin_Settings {
 	}
 
 	public function settings_section( $section ) {
-		$html = '<p> ' . $this->settings[ $section['id'] ]['description'] . '</p>' . "\n";
-		echo $html;
+		$html =   '<p> ' . $this->settings[ $section['id'] ]['description'] . '</p>' . "\n";
+		echo esc_html( $html );
 	}
 
 	public function create_list_items() {
@@ -198,8 +199,8 @@ class EmailOctopus_Plugin_Settings {
 			break;
 
 		}
-		$html .= '<label for="' . esc_attr( $field['id'] ) . '"><span class="description">' . $field['description'] . '</span></label>' . "\n";
-		echo $html;
+		$html .= '<label for="' . esc_attr( $field['id'] ) . '"><span class="description">' .  $field['description']  . '</span></label>' . "\n";
+		echo esc_html( $html );
 	}
 
 	public function settings_page() {
@@ -209,6 +210,7 @@ class EmailOctopus_Plugin_Settings {
 		}
 		$html = '<div class="wrap" id="plugin_settings">' . "\n";
 			$html .= '<h2>FW EmailOctopus Integration</h2>' . "\n";
+			/* translators: %s - https://emailoctopus.com/  */
 			$html .= '<p>'.sprintf ( __( 'To use this plugin you need a working EmailOctopus account. Subcribe for a new account here: <a href="%s" target="_blank">EmailOctopus, create email marketing your way</a>.', 'fw_emailoctopus_integration' ), esc_url( 'https://emailoctopus.com/' ) ).'</p>' . "\n";
 			$html .= '<form method="post" action="options.php">' . "\n";
 				$html .= '<ul id="settings-sections" class="subsubsub hide-if-no-js">' . "\n";
@@ -235,6 +237,6 @@ class EmailOctopus_Plugin_Settings {
 			<p><code>[FWEmailOctopusSubForm source="blogpost" extra_fields="LastName" newsletter="y"]</code></p>
 			<p>&nbsp;</p>';
 		$html .= '</div>' . "\n";
-		echo $html;
+		echo esc_html( $html );
 	}
 }

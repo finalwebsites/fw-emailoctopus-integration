@@ -6,7 +6,7 @@ Plugin URI: https://www.finalwebsites.com
 Description: Increase the count of new subscribers for your blog or website by using EmailOctopus and this integration plugin.
 Author: Olaf Lederer
 Author URI: https://www.olaflederer.com/
-Text Domain: fw_emailoctopus_integration
+Text Domain: fw-emailoctopus-integration
 Domain Path: /languages/
 License: GPL v3
 
@@ -29,6 +29,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 define('FWEO_DIR', plugin_dir_path( __FILE__ ));
+define('FW_EA_VER', '1.0.0');
 
 include_once FWEO_DIR.'include/options.php';
 include_once FWEO_DIR.'include/form-shortcodes.php';
@@ -63,7 +64,7 @@ class EmailOctopus_integration {
 				global $pagenow;
     			if ( $pagenow != 'options-general.php' ) echo '
 	<div class="notice notice-warning">
-        <p>'.__( 'To use the WP EmailOctopus integration plugin, you need to enter a valid API key.', 'fw_emailoctopus_integration' ).' <span class="dashicons dashicons-edit"></span> <a href="'.admin_url( 'options-general.php?page=fws-emailoctopus-settings').'">'.__('Plugin settings', 'fw_emailoctopus_integration').'</a></p>
+        <p>'.esc_html__( 'To use the WP EmailOctopus integration plugin, you need to enter a valid API key.', 'fw_emailoctopus_integration' ).' <span class="dashicons dashicons-edit"></span> <a href="'.esc_attr ( admin_url( 'options-general.php?page=fws-emailoctopus-settings') ).'">'.esc_html__('Plugin settings', 'fw_emailoctopus_integration').'</a></p>
     </div>';
     		});
 		} else {
@@ -112,7 +113,7 @@ class EmailOctopus_integration {
 
 
 		if ($show) {
-			wp_enqueue_script('fw-emailoctopus', plugin_dir_url(__FILE__).'include/emailoctopus.js', array('jquery'), '', true );
+			wp_enqueue_script('fw-emailoctopus', plugin_dir_url(__FILE__).'include/emailoctopus.js', array('jquery'), FW_EA_VER, true );
 			wp_localize_script( 'fw-emailoctopus', 'eo_ajax_object',
 				array(
 					'ajax_url' => admin_url( 'admin-ajax.php' ),
@@ -125,7 +126,7 @@ class EmailOctopus_integration {
 				)
 			);
 			if (get_option('fw_emailoctopus_include_css')) {
-				wp_enqueue_style( 'fw-emailoctopus-style', plugin_dir_url(__FILE__).'include/style.css' );
+				wp_enqueue_style( 'fw-emailoctopus-style', plugin_dir_url(__FILE__).'include/style.css', array(), FW_EA_VER );
 			}
 		}
 	}
@@ -189,7 +190,7 @@ class EmailOctopus_integration {
 		$url = $this->api_url.'lists/'.$list.'/fields';
     	$data = wp_remote_post($url, array(
 		    'headers'     => array('Content-Type' => 'application/json; charset=utf-8'),
-		    'body'        => json_encode($fields),
+		    'body'        => wp_json_encode($fields),
 		    'method'      => 'POST',
 		    'data_format' => 'body',
 		));
@@ -245,7 +246,7 @@ class EmailOctopus_integration {
 			//file_put_contents(ABSPATH.'ele.txt', print_r(json_encode($post_array, JSON_PRETTY_PRINT), true));
 			$raw_response = wp_remote_post($url, array(
 			    'headers'     => array('Content-Type' => 'application/json; charset=utf-8'),
-			    'body'        => json_encode($post_array),
+			    'body'        => wp_json_encode($post_array),
 			    'method'      => $method,
 			    'data_format' => 'body',
 			));
@@ -340,7 +341,7 @@ class EmailOctopus_integration {
 		}
 		$resp = array('status' => $status, 'errmessage' => $error, 'clickyanalytics' => $goal);
 		header( "Content-Type: application/json" );
-		echo json_encode($resp);
+		echo wp_json_encode($resp);
 		die();
 	}
 

@@ -75,7 +75,7 @@ if ( ! class_exists( 'FWS_Woo_EmailOctopus' ) ) {
 		}
 
 		public function checkout_order_meta( $order_id ) {
-			if (!empty($_POST['fws_emailoctopus_checkbox'])) {
+			if (!empty($_POST['fws_emailoctopus_checkbox'])) { // phpcs:ignore WordPress.Security.NonceVerification
 				update_post_meta( $order_id, 'emailoctopus_subscribed', 'check');
 			} else {
 				if ($this->eo_settings['em_store_all_customers'] == 'yes') {

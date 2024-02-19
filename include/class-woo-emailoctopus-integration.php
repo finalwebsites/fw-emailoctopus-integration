@@ -182,7 +182,7 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
 			$fields['Language'] = $language;
 		}
 		if ($settings['em_store_last_purchase'] == 'yes') {
-			$fields['LastPurchase'] = date('Y-m-d');
+			$fields['LastPurchase'] = gmdate('Y-m-d');
 		}
 		if (count($tags) > 0) $fields['tags'] = implode(',', $tags);
 		
