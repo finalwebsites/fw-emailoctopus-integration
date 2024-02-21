@@ -53,7 +53,7 @@ class EmailOctopus_Plugin_Settings {
 				array(
 					'id' 			=> 'api_key',
 					'label'			=> __( 'EmailOctopus API Key' , 'fw_emailoctopus_integration' ),
-					'description'	=> __( '<br />You can find this key in your EmailOctopus account on the profile settings page.', 'fw_emailoctopus_integration' ),
+					'description'	=> __( 'You can find this key in your EmailOctopus account on the profile settings page.', 'fw_emailoctopus_integration' ),
 					'type'			=> 'text',
 					'default'		=> '',
 					'placeholder'	=> '',
@@ -62,7 +62,7 @@ class EmailOctopus_Plugin_Settings {
 				array(
 					'id' 			=> 'list_id',
 					'label'			=> __( 'Default mailing list' , 'fw_emailoctopus_integration' ),
-					'description'	=> __( '<br />The default mailing list for your subscribers. You need to enter/save the API EmailOctopus API key first.', 'fw_emailoctopus_integration' ),
+					'description'	=> __( 'The default mailing list for your subscribers. You need to enter/save the API EmailOctopus API key first.', 'fw_emailoctopus_integration' ),
 					'type'			=> 'select_lists',
 					'options'		=> '',
 					'default'		=> ''
@@ -78,7 +78,7 @@ class EmailOctopus_Plugin_Settings {
 				array(
 					'id' 			=> 'text_newsletter',
 					'label'			=> __( 'Text for subscribe checkbox', 'fw_emailoctopus_integration' ),
-					'description'	=> __( '<br />Add here your text for the additional newsletter subscription checkbox. If the subscriber has checked the newsletter box a tag with the name "newsletter" will be created for a subscriber in EmailOctopus.', 'fw_emailoctopus_integration' ),
+					'description'	=> __( 'Add here your text for the additional newsletter subscription checkbox. If the subscriber has checked the newsletter box a tag with the name "newsletter" will be created for a subscriber in EmailOctopus.', 'fw_emailoctopus_integration' ),
 					'type'			=> 'text',
 					'default'		=> __('Yes, please add me to your mailing list.', 'fw_emailoctopus_integration'),
 					'placeholder'	=> '',
@@ -158,7 +158,6 @@ class EmailOctopus_Plugin_Settings {
 
 	public function display_field( $args ) {
 		$field = $args['field'];
-		$html = '';
 		$option_name = $this->settings_base . $field['id'];
 		$option = get_option( $option_name );
 		$data = '';
@@ -170,37 +169,36 @@ class EmailOctopus_Plugin_Settings {
 		}
 		switch( $field['type'] ) {
 			case 'textarea':
-				$html .= '<textarea id="' . esc_attr( $field['id'] ) . '" rows="5" cols="50" name="' . esc_attr( $option_name ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '">' . $data . '</textarea><br />'. "\n";
+				echo '<textarea id="' . esc_attr( $field['id'] ) . '" rows="5" cols="50" name="' . esc_attr( $option_name ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '">' . esc_html( $data ) . '</textarea>';
 			break;
 			case 'checkbox':
 				$checked = '';
 				if( $option && 'on' == $option ){
 					$checked = 'checked="checked"';
 				}
-				$html .= '<input id="' . esc_attr( $field['id'] ) . '" type="' . $field['type'] . '" name="' . esc_attr( $option_name ) . '" ' . $checked . '/>' . "\n";
+				echo '<input id="' . esc_attr( $field['id'] ) . '" type="' . esc_attr( $field['type'] ) . '" name="' . esc_attr( $option_name ) . '" ' . esc_attr( $checked ) . '/>';
 			break;
 			case 'select_lists':
 				$options = $this->create_list_items();
-				$html .= '<select name="' . esc_attr( $option_name ) . '" id="' . esc_attr( $field['id'] ) . '">';
+				echo '<select name="' . esc_attr( $option_name ) . '" id="' . esc_attr( $field['id'] ) . '">';
 				if (is_array($options)) {
 					foreach( $options as $k => $v ) {
 						$selected = false;
 						if( $k == $data ) {
 							$selected = true;
 						}
-						$html .= '<option ' . selected( $selected, true, false ) . ' value="' . esc_attr( $k ) . '">' . $v . '</option>';
+						echo '<option ' . selected( $selected, true, false ) . ' value="' . esc_attr( $k ) . '">' . esc_attr( $v ) . '</option>';
 					}
 				}
 				$html .= '</select> ';
 			break;
 			default:
 				$css = (isset($field['css_class'])) ? $field['css_class'] : '';
-				$html .= '<input id="' . esc_attr( $field['id'] ) . '" type="' . $field['type'] . '" name="' . esc_attr( $option_name ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '" value="' . $data . '" class="'.$css.'" />' . "\n";
+				echo '<input id="' . esc_attr( $field['id'] ) . '" type="' . esc_attr( $field['type'] ) . '" name="' . esc_attr( $option_name ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '" value="' . esc_attr( $data ) . '" class="'.esc_attr( $css ).'" />';
 			break;
 
 		}
-		$html .= '<label for="' . esc_attr( $field['id'] ) . '"><span class="description">' .  $field['description']  . '</span></label>' . "\n";
-		echo wp_kses( $html, 'data' );
+		echo '<label for="' . esc_attr( $field['id'] ) . '"><br><span class="description">' .  esc_html( $field['description'] ) . '</span></label>';
 	}
 
 	public function settings_page() {
@@ -208,35 +206,9 @@ class EmailOctopus_Plugin_Settings {
 		if ( $screen->id != 'settings_page_fws-emailoctopus-settings' ) {
 			return;
 		}
-		$html = '<div class="wrap" id="plugin_settings">' . "\n";
-			$html .= '<h2>FW EmailOctopus Integration</h2>' . "\n";
-			/* translators: %s - https://emailoctopus.com/  */
-			$html .= '<p>'.sprintf ( __( 'To use this plugin you need a working EmailOctopus account. Subcribe for a new account here: <a href="%s" target="_blank">EmailOctopus, create email marketing your way</a>.', 'fw_emailoctopus_integration' ), esc_url( 'https://emailoctopus.com/' ) ).'</p>' . "\n";
-			$html .= '<form method="post" action="options.php">' . "\n";
-				$html .= '<ul id="settings-sections" class="subsubsub hide-if-no-js">' . "\n";
-					$html .= '<li><a class="tab all current" href="#all">' . __( 'All' , 'fw_emailoctopus_integration' ) . '</a></li>' . "\n";
-					foreach( $this->settings as $section => $data ) {
-						$html .= '<li>| <a class="tab" href="#' . $section . '">' . $data['title'] . '</a></li>' . "\n";
-					}
-				$html .= '</ul>' . "\n";
-				$html .= '<div class="clear"></div>' . "\n";
-				ob_start();
-				settings_fields( 'fw_emailoctopus_plugin_settings' );
-				do_settings_sections( 'fw_emailoctopus_plugin_settings' );
-				$html .= ob_get_clean();
-				$html .= '<p class="submit">' . "\n";
-					$html .= '<input name="Submit" type="submit" class="button-primary" value="' . esc_attr( __( 'Save Settings' , 'fw_emailoctopus_integration' ) ) . '" />' . "\n";
-				$html .= '</p>' . "\n";
-			$html .= '</form>' . "\n";
-			$option_name = $this->settings_base . 'api_key';
-			if (get_option($option_name)) $html .= '
-			<h3>'.__( 'How to use the shortcode?', 'fw_emailoctopus_integration' ).'</h3>
-			<p>'.__( 'Add a shortcode to your pages and posts, here are some examples.', 'fw_emailoctopus_integration' ).'</p>
-			<p><code>[FWEmailOctopusSubForm]</code></p>
-			<p><code>[FWEmailOctopusSubForm source="blogpost" title="Subscribe today" description="Subscribe now and get future updates in your mailbox."]</code></p>
-			<p><code>[FWEmailOctopusSubForm source="blogpost" extra_fields="LastName" newsletter="y"]</code></p>
-			<p>&nbsp;</p>';
-		$html .= '</div>' . "\n";
-		echo wp_kses( $html, 'post' );
+		$settings = $this->settings;
+		$option_name = $this->settings_base . 'api_key';
+		$is_api_key = (get_option($option_name)) ? true : false;
+		include_once FWEO_DIR.'include/tpl-options.php';
 	}
 }
