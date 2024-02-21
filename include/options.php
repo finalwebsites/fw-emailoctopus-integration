@@ -137,7 +137,7 @@ class EmailOctopus_Plugin_Settings {
 
 	public function settings_section( $section ) {
 		$html =   '<p> ' . $this->settings[ $section['id'] ]['description'] . '</p>' . "\n";
-		echo esc_html( $html );
+		echo wp_kses( $html, 'post' );
 	}
 
 	public function create_list_items() {
@@ -200,7 +200,7 @@ class EmailOctopus_Plugin_Settings {
 
 		}
 		$html .= '<label for="' . esc_attr( $field['id'] ) . '"><span class="description">' .  $field['description']  . '</span></label>' . "\n";
-		echo esc_html( $html );
+		echo wp_kses( $html, 'data' );
 	}
 
 	public function settings_page() {
@@ -237,6 +237,6 @@ class EmailOctopus_Plugin_Settings {
 			<p><code>[FWEmailOctopusSubForm source="blogpost" extra_fields="LastName" newsletter="y"]</code></p>
 			<p>&nbsp;</p>';
 		$html .= '</div>' . "\n";
-		echo esc_html( $html );
+		echo wp_kses( $html, 'post' );
 	}
 }
