@@ -29,7 +29,8 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 				'extra_fields' => '',
 				'hidden_fields' => '',
 				'clicky' => get_option('fw_emailoctopus_clicky'),
-				'cookie_name' => 'fw_ml_subscribed'
+				'cookie_name' => 'fw_ml_subscribed',
+				'form_only' => 'n'
 			),
 			$atts
 		);
@@ -85,6 +86,7 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 			}
 		}
 		$last_name = false;
+		$unique_id = wp_unique_id();
 		if ($atts['extra_fields'] != '') {
 			$fields = explode('|', $atts['extra_fields']);
 			$extra_fields = explode(PHP_EOL, get_option('fw_emailoctopus_extra_fields'));
@@ -103,7 +105,7 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 				}
 			}
 		}
-		$unique_id = wp_unique_id();
+		
 		if ($atts['gdpr_text'] == '') {
 			$gdpr_info = '';
 		} else {
@@ -111,10 +113,12 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 		}
 		$html = '
 		<div class="'.$atts['container_class'].'">';
-		if ($atts['title'] != '') $html .= '
-			<h3>'.$atts['title'].'</h3>';
-		if ($atts['description']) $html .= '
-			<p>'.$atts['description'].'</p>';
+		if ($atts['form_only'] == 'n') {
+			if ($atts['title'] != '') $html .= '
+				<h3>'.$atts['title'].'</h3>';
+			if ($atts['description']) $html .= '
+				<p>'.$atts['description'].'</p>';
+		}
 		$html .= '
 			<form id="fw-subscribeform-'.$unique_id.'" role="form" class="'.$atts['form_class'].'">
 				<div class="form-group">
@@ -167,8 +171,12 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 		}
 		$html .= '
 				<button class="btn btn-primary emailoctopus-subscr-fw'.$btn_size.' '.$atts['btnclass'].'" type="button">'.$btn_lbl.'</button>
-			</form>
-			<p class="privacy">'.$gdpr_info.'</p>
+			</form>';
+		if ($atts['form_only'] == 'n') {
+			$html .= '
+			<p class="privacy">'.$gdpr_info.'</p>';
+		}
+		$html .= '
 			<div class="error-message"></div>
 		</div>
 		';
