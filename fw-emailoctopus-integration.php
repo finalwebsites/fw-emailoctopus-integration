@@ -6,7 +6,7 @@ Plugin URI: https://www.finalwebsites.com
 Description: Increase the count of new subscribers for your blog or website by using EmailOctopus and this integration plugin.
 Author: Olaf Lederer
 Author URI: https://www.olaflederer.com/
-Text Domain: fw-emailoctopus-integration
+Text Domain: fw_emailoctopus_integration
 Domain Path: /languages/
 License: GPL v3
 
@@ -105,13 +105,16 @@ class EmailOctopus_integration {
 		global $post;
 		$show = false;
 		
-		if (is_singular(array('post', 'page'))) {
-			if (is_a( $post, 'WP_Post' ) && (has_shortcode( $post->post_content, 'FWEmailOctopusSubForm') || has_shortcode( $post->post_content, 'FWEmailOctopusFormOnly')) ) {
-				$show = true;
+		if (get_option('fw_emailoctopus_show_all_pages')) {
+			$show = true;
+		} else {
+			if (is_singular(array('post', 'page'))) {
+				if (is_a( $post, 'WP_Post' ) && (has_shortcode( $post->post_content, 'FWEmailOctopusSubForm')) ) {
+					$show = true;
+				}
 			}
+			$show = apply_filters( 'fw_emailoctopus_show_static', $show, $post );
 		}
-
-
 		if ($show) {
 			wp_enqueue_script('fw-emailoctopus', plugin_dir_url(__FILE__).'include/emailoctopus.js', array('jquery'), FW_EA_VER, true );
 			wp_localize_script( 'fw-emailoctopus', 'eo_ajax_object',
@@ -277,64 +280,78 @@ class EmailOctopus_integration {
 			if (!wp_verify_nonce($_POST['_fwsml_subnonce'], 'fwsml_subform')) {
 				$error = __( 'Verification error, try again.', 'fw_emailoctopus_integration' );
 			} else {
-				$email = sanitize_email($_POST['email']);
-				$data = array();
-				$data['FirstName'] = sanitize_text_field($_POST['FirstName']);
-				$data['source'] = sanitize_text_field($_POST['source']);
-				$thank_you = sanitize_text_field($_POST['thank_you']);
-				$cookie_name = sanitize_text_field($_POST['cookie_name']);
-				if (!empty($_POST['clicky'])) $goal = intval($_POST['clicky']);
-				if (!empty($_POST['newsletter'])) $data['tags'] = 'newsletter';
-
-				$list = get_option('fw_emailoctopus_list_id');
-				if (!empty($_POST['listid'])) {
-					$list = sanitize_text_field($_POST['listid']);
+				$valid_captcha = true;
+				if (!empty($_POST['Salutation'])) {
+					$error = __( 'The form is currently closed for an unknown reason.', 'fw_emailoctopus_integration' );
+					$valid_captcha = false;
 				}
+				if (function_exists('wpa_check_is_spam')) {
+                	if (wpa_check_is_spam($_POST)) {
+	                    do_action('wpa_handle_spammers','EmailOctopus Subscription Form', $_POST);
+	                    $error = $GLOBALS['wpa_error_message'];
+	                    $valid_captcha = false;
+	                }
+	            }
+	            if ($valid_captcha) {
+					$email = sanitize_email($_POST['email']);
+					$data = array();
+					$data['FirstName'] = sanitize_text_field($_POST['FirstName']);
+					$data['Source'] = sanitize_text_field($_POST['source']);
+					$thank_you = sanitize_text_field($_POST['thank_you']);
+					$cookie_name = sanitize_text_field($_POST['cookie_name']);
+					if (!empty($_POST['clicky'])) $goal = intval($_POST['clicky']);
+					if (!empty($_POST['newsletter'])) $data['tags'] = 'newsletter';
 
-		
-				if ($extra_fields_list = get_option('fw_emailoctopus_extra_fields')) {
-					$extra_fields = explode(PHP_EOL,$extra_fields_list);
-					foreach ($extra_fields as $extra) {
-						$parts = explode('|', $extra);
-						if (!empty($_POST[$parts[0]])) {
-							$data[$parts[0]] = sanitize_text_field($_POST[$parts[0]]);
+					$list = get_option('fw_emailoctopus_list_id');
+					if (!empty($_POST['listid'])) {
+						$list = sanitize_text_field($_POST['listid']);
+					}
+
+			
+					if ($extra_fields_list = get_option('fw_emailoctopus_extra_fields')) {
+						$extra_fields = explode(PHP_EOL,$extra_fields_list);
+						foreach ($extra_fields as $extra) {
+							$parts = explode('|', $extra);
+							if (!empty($_POST[$parts[0]])) {
+								$data[$parts[0]] = sanitize_text_field($_POST[$parts[0]]);
+							}
 						}
 					}
-				}
-				if (!empty($_POST['hidden'])) {
-					foreach ($_POST['hidden'] as $key => $val) {
-						$data[$key] = $val;
-					}
-				}
-                $data = apply_filters( 'fwmls_add_extra_data_fields', $data );
-                //print_r($data['extra']);
-				if ($_POST['report_only'] == 'o') {
-					$response = $this->report_submission($email, $list, $data);
-					if ($response == 'send') {
-						$status = 'success';
-						$error = __( 'Thanks, for your interest.', 'fw_emailoctopus_integration' );
-						if ($thank_you != '') $error = $thank_you;
-					} elseif ($response == 'invalidmail') {
-						$error = __( 'The entered email address is not valid.', 'fw_emailoctopus_integration' );
-					} else {
-						$error = __( 'An unknown error occurred.', 'fw_emailoctopus_integration' );
-					}
-				} else {
-					if ($_POST['report_only'] == 'y') {
-						$this->report_submission($email, $list, $data);
-					}
-					if ($result = $this->add_subscriber($email, $list, $data)) {
-                        
-
-						//print_r($cookie_name);
-						$status = 'success';
-						if ($cookie_name != '') {
-							setcookie( $cookie_name, 'yes', strtotime( '+365 days' ) );
+					if (!empty($_POST['hidden'])) {
+						foreach ($_POST['hidden'] as $key => $val) {
+							$data[$key] = $val;
 						}
-						$error = __( 'Thanks, for joining our mailing list!', 'fw_emailoctopus_integration' );
-						if ($thank_you != '') $error = $thank_you;
+					}
+	                $data = apply_filters( 'fweo_add_extra_data_fields', $data );
+	                //print_r($data);
+					if ($_POST['report_only'] == 'o') {
+						$response = $this->report_submission($email, $list, $data);
+						if ($response == 'send') {
+							$status = 'success';
+							$error = __( 'Thanks, for your interest.', 'fw_emailoctopus_integration' );
+							if ($thank_you != '') $error = $thank_you;
+						} elseif ($response == 'invalidmail') {
+							$error = __( 'The entered email address is not valid.', 'fw_emailoctopus_integration' );
+						} else {
+							$error = __( 'An unknown error occurred.', 'fw_emailoctopus_integration' );
+						}
 					} else {
-						$error = __( 'An unknown error occurred.', 'fw_emailoctopus_integration' );
+						if ($_POST['report_only'] == 'y') {
+							$this->report_submission($email, $list, $data);
+						}
+						if ($result = $this->add_subscriber($email, $list, $data)) {
+	                        
+
+							//print_r($cookie_name);
+							$status = 'success';
+							if ($cookie_name != '') {
+								setcookie( $cookie_name, 'yes', strtotime( '+365 days' ) );
+							}
+							$error = __( 'Thanks, for joining our mailing list!', 'fw_emailoctopus_integration' );
+							if ($thank_you != '') $error = $thank_you;
+						} else {
+							$error = __( 'An unknown error occurred.', 'fw_emailoctopus_integration' );
+						}
 					}
 				}
 			}
@@ -345,22 +362,14 @@ class EmailOctopus_integration {
 		die();
 	}
 
-	public function report_submission($mail, $list, $data) {
+	public function report_submission($email, $list, $data) {
 		if ( is_email( $email ) ) {
 			
 			$msg = __('Email address: ', 'fw_emailoctopus_integration').$email.PHP_EOL;
 			foreach ($data as $key => $val) {
-				if (!in_array($key, $invalid)) {
-					if ($key == 'extra') {
-						foreach ($val as $k => $v) {
-							$msg .= $k.': '.$v.PHP_EOL;
-						}
-					} else {
-						$msg .= $key.': '.$val.PHP_EOL;
-					}
-				}
+				$msg .= $key.': '.$val.PHP_EOL;
 			}
-			$all_lists = get_option('fw_mailing_lists');
+			$all_lists = $this->get_lists();
 			$msg .= __('List name: ', 'fw_emailoctopus_integration').$all_lists[$list].PHP_EOL;
 			
 			$msg .= 'IP address: '.$this->get_client_ip();

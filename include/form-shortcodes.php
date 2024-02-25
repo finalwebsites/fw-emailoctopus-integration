@@ -17,6 +17,7 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 				'gdpr_text' => get_option('fw_emailoctopus_gdpr_text'),
 				'btnlabel' => __('Subscribe', 'fw_emailoctopus_integration'),
 				'thank_you_text' => '',
+				'report_only' => 'n',
 				'btnclass' => '',
 				'title_select' => __('Select Mailing List', 'fw_emailoctopus_integration'),
 				'listid' => '',
@@ -29,7 +30,7 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 				'extra_fields' => '',
 				'hidden_fields' => '',
 				'clicky' => get_option('fw_emailoctopus_clicky'),
-				'cookie_name' => 'fw_ml_subscribed',
+				'cookie_name' => 'fw_eo_subscribed',
 				'form_only' => 'n'
 			),
 			$atts
@@ -123,6 +124,8 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 			<form id="fw-subscribeform-'.$unique_id.'" role="form" class="'.$atts['form_class'].'">
 				<div class="form-group">
 					<label class="sr-only" for="FirstName-'.$unique_id.'">'.__( 'Your first name', 'fw_emailoctopus_integration' ).'</label>
+
+					<input type="text" class="form-control'.$field_size.'" placeholder="" id="Salutation-'.$unique_id.'" name="Salutation">
 					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your first name', 'fw_emailoctopus_integration' ).'" id="FirstName-'.$unique_id.'" name="FirstName" autocomplete="off">
 				</div>';
 		if ($last_name) {
@@ -157,20 +160,25 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 		$html .= wp_nonce_field('fwsml_subform', '_fwsml_subnonce', true, false);
 		$html .= '
 				<input type="hidden" name="action" value="emailoctopus_subscribeform_action" />
-				<input type="hidden" name="thank_you" value="'.$atts['thank_you_text'].'" />
-				<input type="hidden" name="source" value="'.$atts['source'].'" />
-				<input type="hidden" name="cookie_name" value="'.$atts['cookie_name'].'" />
-				<input type="hidden" name="clicky" value="'.$atts['clicky'].'" />';
+				<input type="hidden" name="thank_you" value="'.esc_attr($atts['thank_you_text']).'" />
+				<input type="hidden" name="report_only" value="'.esc_attr($atts['report_only']).'" />
+				<input type="hidden" name="source" value="'.esc_attr($atts['source']).'" />
+				<input type="hidden" name="cookie_name" value="'.esc_attr($atts['cookie_name']).'" />
+				<input type="hidden" name="clicky" value="'.intval($atts['clicky']).'" />';
+		if (function_exists('wpa_check_is_spam')) {
+	        $html .= '
+	            <input type="hidden" id="wpa_initiator" class="wpa_initiator" name="wpa_initiator" value="" />';
+	    }
 		if ($atts['hidden_fields'] != '') {
 			$hidden = explode(',', $atts['hidden_fields']);
 			foreach ($hidden as $field) {
 				$hiddenparts = explode('|', trim($field));
 				$html .= '
-				<input type="hidden" name="hidden['.$hiddenparts[0].']" value="'.$hiddenparts[1].'" />';
+				<input type="hidden" name="hidden['.$hiddenparts[0].']" value="'.esc_attr($hiddenparts[1]).'" />';
 			}
 		}
 		$html .= '
-				<button class="btn btn-primary emailoctopus-subscr-fw'.$btn_size.' '.$atts['btnclass'].'" type="button">'.$btn_lbl.'</button>
+				<button class="btn btn-primary emailoctopus-subscr-fw'.esc_attr($btn_size.' '.$atts['btnclass']).'" type="button">'.$btn_lbl.'</button>
 			</form>';
 		if ($atts['form_only'] == 'n') {
 			$html .= '

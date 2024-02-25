@@ -87,7 +87,14 @@ class EmailOctopus_Plugin_Settings {
 				array(
 					'id' 			=> 'include_css',
 					'label'			=> __( 'Include CSS', 'fw_emailoctopus_integration' ),
-					'description'	=> __( 'Include the plugin\'s stylesheet for your subscribtion forms.', 'fw_emailoctopus_integration' ),
+					'description'	=> __( 'Include the plugin\'s stylesheet for your subscribtion forms. Add this (spam trap) rule to your CSS file if you don\'t use our CSS file: <code>input[name=Salutation] {display:none; }</code>', 'fw_emailoctopus_integration' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
+				array(
+					'id' 			=> 'show_all_pages',
+					'label'			=> __( 'Incl. JS/CSS sitewide', 'fws_mailerlite_subscribe' ),
+					'description'	=> __( 'Use this option if you like to use the form on all your posts and pages.', 'fw_emailoctopus_integration' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
