@@ -23,6 +23,7 @@ Email marketing is still one of the best ways to drive traffic to your website. 
 * Integration for Elementor form actions (with support for custom list fields)
 * WooCommerce integration (store order related info in EmailOctopus)
 * Easy to use, custom list fields will be automatically created if the don't exists
+* Spam protect your forms with the plugin [WP Armour - Honeypot Anti Spam](https://wordpress.org/plugins/honeypot/)
 * The visitor stays on your website while submitting the form data
 * Support for mutliple mailing lists
 * You can change/translate all plugin text by using a localization tool (Loco Translate is our favorite)
