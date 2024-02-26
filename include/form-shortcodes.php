@@ -24,7 +24,7 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 				'bs_icon' => '',
 				'fsize' => '',
 				'newsletter' => 'n',
-				'container_class' => 'emailoctopus-optin',
+				'container_class' => '',
 				'form_class' => 'form-inline',
 				'source' => '',
 				'extra_fields' => '',
@@ -46,45 +46,11 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 		} else {
 			$btn_lbl = $atts['btnlabel'];
 		}
-		$list_radio_html = '';
 		$extra_fields_html = '';
-		$list_hidden_html = '
-		<input type="hidden" name="listid" value="" />';
+		$list_hidden_html = '';
 		if ($atts['listid'] != '') {
-			$lists = explode(',', $atts['listid']);
-			if (is_array($lists) && count($lists) > 1) {
-				$all_lists = get_option('fw_mailing_lists');
-				$default = get_option('fw_emailoctopus_list_id'); // dit klopt niet
-				if ($atts['title_select'] != '') $list_radio_html .= '
-				<h4>'.$atts['title_select'].'</h4>';
-				$list_radio_html .= '
-				<div class="mailing_lists">';
-				foreach ($all_lists as $list) {
-					if (in_array($list->id, $lists)) {
-						$list_radio_html .= '
-					<div class="radio">
-					  <label>
-					    <input type="radio" name="listid" value="'.$list->id.'"';
-						if ($default == $list->id) $list_radio_html .= ' checked';
-						$name_parts = explode('|', $list->name);
-						if (count($name_parts) == 2) {
-							$name = '<strong>'.trim($name_parts[0]).':</strong> '.trim($name_parts[1]);
-						} else {
-							$name = $list->name;
-						}
-						$list_radio_html .= '>
-						   	'.$name.'
-					  </label>
-					</div>';
-					}
-				}
-				$list_radio_html .= '
-				</div>';
-				$list_hidden_html = '';
-			} else {
-				$list_hidden_html = '
-				<input type="hidden" name="listid" value="'.$lists[0].'" />';
-			}
+			$list_hidden_html = '
+				<input type="hidden" name="listid" value="'.$atts['listid'].'" />';
 		}
 		$last_name = false;
 		$unique_id = wp_unique_id();
@@ -113,7 +79,7 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 			$gdpr_info = sprintf( wp_kses( $atts['gdpr_text'], array(  'a' => array( 'href' => array() ), 'br' ) ), esc_url( get_privacy_policy_url() ) );
 		}
 		$html = '
-		<div class="'.$atts['container_class'].'">';
+		<div class="emailoctopus-optin '.$atts['container_class'].'">';
 		if ($atts['form_only'] == 'n') {
 			if ($atts['title'] != '') $html .= '
 				<h3>'.$atts['title'].'</h3>';
@@ -125,7 +91,7 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 				<div class="form-group">
 					<label class="sr-only" for="FirstName-'.$unique_id.'">'.__( 'Your first name', 'fw_emailoctopus_integration' ).'</label>
 
-					<input type="text" class="form-control'.$field_size.'" placeholder="" id="Salutation-'.$unique_id.'" name="Salutation">
+					
 					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your first name', 'fw_emailoctopus_integration' ).'" id="FirstName-'.$unique_id.'" name="FirstName" autocomplete="off">
 				</div>';
 		if ($last_name) {

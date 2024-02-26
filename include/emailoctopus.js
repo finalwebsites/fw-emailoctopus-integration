@@ -6,6 +6,11 @@ function isValidEmailAddress(emailAddress) {
 
 jQuery(document).ready(function($) {
 
+	$('.emailoctopus-optin form').each(function(i, obj) {
+		var curr_id = $(this).attr('id');
+	    $('#' + curr_id + ' input[name="action"]').after('<input type="hidden" name="aftersubmit" value="1">');
+	});
+
 	$('.emailoctopus-subscr-fw').click(function() {
 		var subform = $(this).closest('form');
 		var msgContainer = subform.nextAll('.error-message');

@@ -246,7 +246,7 @@ class EmailOctopus_integration {
 				$url .= '/'.$test;
 				$method = 'PUT';
 			} 
-			//file_put_contents(ABSPATH.'ele.txt', print_r(json_encode($post_array, JSON_PRETTY_PRINT), true));
+			
 			$raw_response = wp_remote_post($url, array(
 			    'headers'     => array('Content-Type' => 'application/json; charset=utf-8'),
 			    'body'        => wp_json_encode($post_array),
@@ -272,7 +272,7 @@ class EmailOctopus_integration {
 	public function subform_action_callback() {
 		$error = '';
 		$status = 'error';
-		$gloal = '';
+		$goal = '';
 
 		if (empty($_POST['FirstName']) || empty($_POST['email'])) {
 			$error = __( 'Both fields are required to enter.', 'fw_emailoctopus_integration' );
@@ -281,7 +281,7 @@ class EmailOctopus_integration {
 				$error = __( 'Verification error, try again.', 'fw_emailoctopus_integration' );
 			} else {
 				$valid_captcha = true;
-				if (!empty($_POST['Salutation'])) {
+				if (empty($_POST['aftersubmit'])) {
 					$error = __( 'The form is currently closed for an unknown reason.', 'fw_emailoctopus_integration' );
 					$valid_captcha = false;
 				}
@@ -293,6 +293,7 @@ class EmailOctopus_integration {
 	                }
 	            }
 	            if ($valid_captcha) {
+	            	file_put_contents(ABSPATH.'ele.txt', print_r(json_encode($_POST, JSON_PRETTY_PRINT), true));
 					$email = sanitize_email($_POST['email']);
 					$data = array();
 					$data['FirstName'] = sanitize_text_field($_POST['FirstName']);
