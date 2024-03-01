@@ -87,7 +87,7 @@ class EmailOctopus_Plugin_Settings {
 				array(
 					'id' 			=> 'include_css',
 					'label'			=> __( 'Include CSS', 'fw_emailoctopus_integration' ),
-					'description'	=> __( 'Include the plugin\'s stylesheet for your subscribtion forms. Add this (spam trap) rule to your CSS file if you don\'t use our CSS file: <code>input[name=Salutation] {display:none; }</code>', 'fw_emailoctopus_integration' ),
+					'description'	=> __( 'Include the plugin\'s stylesheet for your subscribtion forms.', 'fw_emailoctopus_integration' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
@@ -176,7 +176,7 @@ class EmailOctopus_Plugin_Settings {
 		}
 		switch( $field['type'] ) {
 			case 'textarea':
-				echo '<textarea id="' . esc_attr( $field['id'] ) . '" rows="5" cols="50" name="' . esc_attr( $option_name ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '">' . esc_html( $data ) . '</textarea>';
+				echo '<textarea id="' . esc_attr( $field['id'] ) . '" rows="5" cols="50" name="' . esc_attr( $option_name ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '">' . esc_textarea( $data ) . '</textarea>';
 			break;
 			case 'checkbox':
 				$checked = '';
@@ -197,7 +197,7 @@ class EmailOctopus_Plugin_Settings {
 						echo '<option ' . selected( $selected, true, false ) . ' value="' . esc_attr( $k ) . '">' . esc_attr( $v ) . '</option>';
 					}
 				}
-				$html .= '</select> ';
+				echo '</select> ';
 			break;
 			default:
 				$css = (isset($field['css_class'])) ? $field['css_class'] : '';
@@ -205,7 +205,7 @@ class EmailOctopus_Plugin_Settings {
 			break;
 
 		}
-		echo '<label for="' . esc_attr( $field['id'] ) . '"><br><span class="description">' .  esc_html( $field['description'] ) . '</span></label>';
+		echo '<label for="' . esc_attr( $field['id'] ) . '"><br><span class="description">' .  wp_kses_post( $field['description'] ) . '</span></label>';
 	}
 
 	public function settings_page() {

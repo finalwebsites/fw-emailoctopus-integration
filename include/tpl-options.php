@@ -34,6 +34,6 @@
 	<p><code>[FWEmailOctopusSubForm]</code></p>
 	<p><code>[FWEmailOctopusSubForm source="blogpost" title="Subscribe today" description="Subscribe now and get future updates in your mailbox."]</code></p>
 	<p><code>[FWEmailOctopusSubForm source="blogpost" extra_fields="LastName" newsletter="y"]</code></p>
-	<p>&nbsp;</p>';
+	<p>&nbsp;</p>
 	<?php } ?>
 </div>

@@ -5,7 +5,7 @@ function isValidEmailAddress(emailAddress) {
 
 
 jQuery(document).ready(function($) {
-
+	$.get( eo_ajax_object.ajax_url, { action: "eo_loadtime" } );
 	$('.emailoctopus-optin form').each(function(i, obj) {
 		var curr_id = $(this).attr('id');
 	    $('#' + curr_id + ' input[name="action"]').after('<input type="hidden" name="aftersubmit" value="1">');

@@ -87,7 +87,7 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 				<p>'.$atts['description'].'</p>';
 		}
 		$html .= '
-			<form id="fw-subscribeform-'.$unique_id.'" role="form" class="'.$atts['form_class'].'">
+			<form id="fw-subscribeform-'.$unique_id.'" class="'.$atts['form_class'].'">
 				<div class="form-group">
 					<label class="sr-only" for="FirstName-'.$unique_id.'">'.__( 'Your first name', 'fw_emailoctopus_integration' ).'</label>
 
@@ -121,9 +121,8 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 					</label>
 				</div>';
 		}
-		$html .= $list_radio_html;
 		$html .= $list_hidden_html;
-		$html .= wp_nonce_field('fwsml_subform', '_fwsml_subnonce', true, false);
+		$html .= wp_nonce_field('fwseo_subform', '_fwseo_subnonce', true, false);
 		$html .= '
 				<input type="hidden" name="action" value="emailoctopus_subscribeform_action" />
 				<input type="hidden" name="thank_you" value="'.esc_attr($atts['thank_you_text']).'" />
@@ -131,10 +130,6 @@ class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 				<input type="hidden" name="source" value="'.esc_attr($atts['source']).'" />
 				<input type="hidden" name="cookie_name" value="'.esc_attr($atts['cookie_name']).'" />
 				<input type="hidden" name="clicky" value="'.intval($atts['clicky']).'" />';
-		if (function_exists('wpa_check_is_spam')) {
-	        $html .= '
-	            <input type="hidden" id="wpa_initiator" class="wpa_initiator" name="wpa_initiator" value="" />';
-	    }
 		if ($atts['hidden_fields'] != '') {
 			$hidden = explode(',', $atts['hidden_fields']);
 			foreach ($hidden as $field) {

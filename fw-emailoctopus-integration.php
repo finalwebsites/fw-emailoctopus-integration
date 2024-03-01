@@ -81,6 +81,9 @@ class EmailOctopus_integration {
 		add_action( 'wp_ajax_emailoctopus_subscribeform_action', array($this, 'subform_action_callback') );
 		add_action( 'wp_ajax_nopriv_emailoctopus_subscribeform_action', array($this, 'subform_action_callback') );
 
+		add_action( 'wp_ajax_eo_loadtime', array($this, 'subform_loadtime_callback' ));
+		add_action( 'wp_ajax_nopriv_eo_loadtime', array($this, 'subform_loadtime_callback' ));
+
 		if ( class_exists( 'WooCommerce') ) {
 			// Include the integration class.
 			include_once FWEO_DIR . 'woo-emailoctopus-integration.php';
@@ -269,6 +272,15 @@ class EmailOctopus_integration {
 		}
 	}
 
+	public function subform_loadtime_callback() {
+		if (isset($_COOKIE['eosub_loadtime'])) {
+			return;
+		} else {
+			setcookie("eosub_loadtime", time(), 0, '/', $_SERVER['HTTP_HOST']);
+		}
+	}
+
+
 	public function subform_action_callback() {
 		$error = '';
 		$status = 'error';
@@ -277,21 +289,18 @@ class EmailOctopus_integration {
 		if (empty($_POST['FirstName']) || empty($_POST['email'])) {
 			$error = __( 'Both fields are required to enter.', 'fw_emailoctopus_integration' );
 		} else {
-			if (!wp_verify_nonce($_POST['_fwsml_subnonce'], 'fwsml_subform')) {
+			if (!wp_verify_nonce($_POST['_fwseo_subnonce'], 'fwseo_subform')) {
 				$error = __( 'Verification error, try again.', 'fw_emailoctopus_integration' );
 			} else {
 				$valid_captcha = true;
-				if (empty($_POST['aftersubmit'])) {
+				if (empty($_COOKIE['eosub_loadtime']) || $_COOKIE['eosub_loadtime'] > (time()-15)) {
+                    $valid_captcha = false;
+                    $error = __( 'Invalid form submission, please try again.', 'fw_emailoctopus_integration' );
+                } 
+                if (empty($_POST['aftersubmit'])) {
 					$error = __( 'The form is currently closed for an unknown reason.', 'fw_emailoctopus_integration' );
 					$valid_captcha = false;
 				}
-				if (function_exists('wpa_check_is_spam')) {
-                	if (wpa_check_is_spam($_POST)) {
-	                    do_action('wpa_handle_spammers','EmailOctopus Subscription Form', $_POST);
-	                    $error = $GLOBALS['wpa_error_message'];
-	                    $valid_captcha = false;
-	                }
-	            }
 	            if ($valid_captcha) {
 	            	file_put_contents(ABSPATH.'ele.txt', print_r(json_encode($_POST, JSON_PRETTY_PRINT), true));
 					$email = sanitize_email($_POST['email']);
