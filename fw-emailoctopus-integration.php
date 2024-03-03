@@ -164,7 +164,7 @@ class EmailOctopus_integration {
 		$url = $this->api_url.'lists?api_key='.$this->api_key;
 		$raw = wp_remote_get( esc_url_raw( $url ) );		
 		$response = json_decode( wp_remote_retrieve_body( $raw ), true );
-		if ($response) {
+		if (isset($response['data'])) {
 			$lists = array();
 			foreach ($response['data'] as $list) {
 				$lists[$list['id']] = $list['name'];

@@ -128,8 +128,12 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
 		$eo = new EmailOctopus_integration();
 		$first = array( '' => __('Choose one...', 'fw_emailoctopus_integration' ) );
 		$resp = $eo->get_lists();
-		$options = array_merge($first, $resp);
-		return $options;
+		if (is_array($resp)) {
+			$options = array_merge($first, $resp);
+			return $options;
+		} else {
+			return __('Can\'t retrieve any list.', 'fw_emailoctopus_integration' );
+		}
 	}
 
 	public function get_product_categories($order) {
