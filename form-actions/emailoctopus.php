@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * FW EmailOctopus Integration
+ *
+ * @package  EmailOctopus_Action_After_Submit
+ * @category Integration
+ * @author   Olaf Lederer
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 
 use ElementorPro\Plugin;
 use Elementor\Controls_Manager;

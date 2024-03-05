@@ -1,4 +1,13 @@
 <?php
+/**
+ * FW EmailOctopus Integration
+ *
+ * @package  Create_EmailOctopus_Forms
+ * @category Shortcodes
+ * @author   Olaf Lederer
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 class Create_EmailOctopus_Forms extends EmailOctopus_integration {
 

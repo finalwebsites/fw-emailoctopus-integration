@@ -1,9 +1,15 @@
 <?php
 
+/**
+ * FW EmailOctopus Integration
+ *
+ * @package  FWS_Woo_EmailOctopus
+ * @category Integration
+ * @author   Olaf Lederer
+ */
 
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( ! class_exists( 'FWS_Woo_EmailOctopus' ) ) {
 
 	class FWS_Woo_EmailOctopus {

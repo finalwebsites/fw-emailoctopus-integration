@@ -1,11 +1,13 @@
 <?php
 /**
- * EmailOctopus Integration for WooCommerce
+ * FW EmailOctopus Integration
  *
  * @package  FWS_Woo_EmailOctopus_Integration
  * @category Integration
  * @author   Olaf Lederer
  */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
 

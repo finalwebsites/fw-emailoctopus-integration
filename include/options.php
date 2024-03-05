@@ -1,9 +1,12 @@
 <?php
 
-/*
- * This option page is based on the class script from Hugh Lashbrooke
- * https://gist.github.com/hlashbrooke/9267467
-*/
+/**
+ * FW EmailOctopus Integration
+ *
+ * @package  EmailOctopus_Plugin_Settings
+ * @category Options
+ * @author   Olaf Lederer
+ */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 

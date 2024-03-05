@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <div class="wrap" id="plugin_settings">
 	<h2>FW EmailOctopus Integration</h2>
 	<p>
