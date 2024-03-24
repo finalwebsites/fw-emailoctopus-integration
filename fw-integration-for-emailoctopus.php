@@ -26,6 +26,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly      
 
 
 define('FWEO_DIR', plugin_dir_path( __FILE__ ));
@@ -81,8 +82,8 @@ class FWEO_EmailOctopus_integration {
 		if ( class_exists( 'WooCommerce') ) {
 			// Include the integration class.
 			include_once FWEO_DIR . 'woo-emailoctopus-integration.php';
-			$FWS_Woo_EmailOctopus = new FWS_Woo_EmailOctopus();
-			$FWS_Woo_EmailOctopus->init();
+			$FWEO_Woo_EmailOctopus = new FWEO_Woo_EmailOctopus();
+			$FWEO_Woo_EmailOctopus->init();
 		}
 		add_action( 'elementor_pro/forms/actions/register', array($this, 'add_emailoctopus_form_action') );
 		
@@ -94,7 +95,7 @@ class FWEO_EmailOctopus_integration {
 	
 	public function add_emailoctopus_form_action( $form_actions_registrar ) {
 		include_once FWEO_DIR.'form-actions/emailoctopus.php';
-		$form_actions_registrar->register( new EmailOctopus_Action_After_Submit() );
+		$form_actions_registrar->register( new FWEO_EmailOctopus_Action_After_Submit() );
 
 	}
 	
@@ -102,15 +103,15 @@ class FWEO_EmailOctopus_integration {
 		global $post;
 		$show = false;
 		
-		if (get_option('fw_emailoctopus_show_all_pages')) {
+		if (get_option('fweo_emailoctopus_show_all_pages')) {
 			$show = true;
 		} else {
 			if (is_singular(array('post', 'page'))) {
-				if (is_a( $post, 'WP_Post' ) && (has_shortcode( $post->post_content, 'FWEmailOctopusSubForm')) ) {
+				if (is_a( $post, 'WP_Post' ) && (has_shortcode( $post->post_content, 'FWEO_EmailOctopusSubForm')) ) {
 					$show = true;
 				}
 			}
-			$show = apply_filters( 'fw_emailoctopus_show_static', $show, $post );
+			$show = apply_filters( 'fweo_emailoctopus_show_static', $show, $post );
 		}
 		if ($show) {
 			wp_enqueue_script('fw-emailoctopus', plugin_dir_url(__FILE__).'include/emailoctopus.js', array('jquery'), FW_EO_VER, true );
@@ -125,7 +126,7 @@ class FWEO_EmailOctopus_integration {
 					'googleanalytics' => get_option('fw_emailoctopus_google_analytics')
 				)
 			);
-			if (get_option('fw_emailoctopus_include_css')) {
+			if (get_option('fweo_emailoctopus_include_css')) {
 				wp_enqueue_style( 'fw-emailoctopus-style', plugin_dir_url(__FILE__).'include/style.css', array(), FW_EO_VER );
 			}
 		}
@@ -287,7 +288,7 @@ class FWEO_EmailOctopus_integration {
 				$error = __( 'Verification error, try again.', 'fw_emailoctopus_integration' );
 			} else {
 				$valid_captcha = true;
-				if (empty($_COOKIE['eosub_loadtime']) || $_COOKIE['eosub_loadtime'] > (time()-15)) {
+				if (empty($_COOKIE['eosub_loadtime']) || (int)$_COOKIE['eosub_loadtime'] > (time()-15)) {
                     $valid_captcha = false;
                     $error = __( 'Invalid form submission, please try again.', 'fw_emailoctopus_integration' );
                 } 
@@ -296,7 +297,6 @@ class FWEO_EmailOctopus_integration {
 					$valid_captcha = false;
 				}
 	            if ($valid_captcha) {
-	            	file_put_contents(ABSPATH.'ele.txt', print_r(json_encode($_POST, JSON_PRETTY_PRINT), true));
 					$email = sanitize_email($_POST['email']);
 					$data = array();
 					$data['FirstName'] = sanitize_text_field($_POST['FirstName']);
@@ -306,13 +306,13 @@ class FWEO_EmailOctopus_integration {
 					if (!empty($_POST['clicky'])) $goal = intval($_POST['clicky']);
 					if (!empty($_POST['newsletter'])) $data['tags'] = 'newsletter';
 
-					$list = get_option('fw_emailoctopus_list_id');
+					$list = get_option('fweo_emailoctopus_list_id');
 					if (!empty($_POST['listid'])) {
 						$list = sanitize_text_field($_POST['listid']);
 					}
 
 			
-					if ($extra_fields_list = get_option('fw_emailoctopus_extra_fields')) {
+					if ($extra_fields_list = get_option('fweo_emailoctopus_extra_fields')) {
 						$extra_fields = explode(PHP_EOL,$extra_fields_list);
 						foreach ($extra_fields as $extra) {
 							$parts = explode('|', $extra);

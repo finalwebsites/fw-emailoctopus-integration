@@ -3,7 +3,7 @@
 /**
  * FW EmailOctopus Integration
  *
- * @package  EmailOctopus_Action_After_Submit
+ * @package  FWEO_EmailOctopus_Action_After_Submit
  * @category Integration
  * @author   Olaf Lederer
  */
@@ -18,7 +18,7 @@ use ElementorPro\Core\Utils;
 use ElementorPro\Modules\Forms\Classes\Form_Record;
 use ElementorPro\Modules\Forms\Classes\Integration_Base;
 
-class EmailOctopus_Action_After_Submit extends Integration_Base {
+class FWEO_EmailOctopus_Action_After_Submit extends Integration_Base {
 
     /**
      * Get Name
@@ -270,7 +270,7 @@ add_action( 'elementor_pro/init', function() {
 
 
 // Instantiate the action class
-    $emailoctopus_action = new EmailOctopus_Action_After_Submit();
+    $emailoctopus_action = new FWEO_EmailOctopus_Action_After_Submit();
 
 // Register the action with form widget
     \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'forms' )->add_form_action( $emailoctopus_action->get_name(), $emailoctopus_action );

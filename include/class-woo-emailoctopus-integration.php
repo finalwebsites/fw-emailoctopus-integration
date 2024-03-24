@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
+class FWEO_Woo_EmailOctopus_Integration extends WC_Integration {
 
 	/**
 	 * Init and hook in the integration.
@@ -91,9 +91,9 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
 
 	public function custom_process_admin_options() {    
         parent::process_admin_options();
-     	$settings = get_option('woocommerce_fws-woo-emailoctopus_settings');
+     	$settings = get_option('woocommerce_fweo-woo-emailoctopus_settings');
      	if (isset($settings['list']) && (!empty($settings['em_store_last_purchase']) || !empty($settings['em_send_language']))) {
-     		$eo = new EmailOctopus_integration();
+     		$eo = new FWEO_EmailOctopus_integration();
 			if ($api_response = $eo->get_list_fields($settings['list'], true)) {
 				$last_purchase = false;
 				$language = false;
@@ -127,7 +127,7 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
     }
 
 	public function get_list_options() {
-		$eo = new EmailOctopus_integration();
+		$eo = new FWEO_EmailOctopus_integration();
 		$first = array( '' => __('Choose one...', 'fw_emailoctopus_integration' ) );
 		$resp = $eo->get_lists();
 		if (is_array($resp)) {
@@ -151,12 +151,12 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
 	}
 
 	public function add_subscriber_callback( $order_id) {
-		$subscribed = get_post_meta($order_id, 'emailoctopus_subscribed', true);
+		$subscribed = get_post_meta($order_id, 'fweo_emailoctopus_subscribed', true);
 		if (empty($subscribed)) return; // don't subscribe again if the order status is changed
 		$order = wc_get_order( $order_id );
 		
 
-		$settings = get_option('woocommerce_fws-woo-emailoctopus_settings');
+		$settings = get_option('woocommerce_fweo-woo-emailoctopus_settings');
 		$billing_email  = $order->get_billing_email();
 		$first_name = $order->get_billing_first_name();
 		$last_name = $order->get_billing_last_name();
@@ -191,7 +191,7 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
 		}
 		if (count($tags) > 0) $fields['tags'] = implode(',', $tags);
 		
-		$handler = new EmailOctopus_integration();
+		$handler = new FWEO_EmailOctopus_integration();
 		$response = $handler->add_subscriber($billing_email, $settings['list'], $fields, true);
 		
 		if (isset($response['error']['code'])) {

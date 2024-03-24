@@ -14,7 +14,7 @@ class FWEO_Create_EmailOctopus_Forms extends FWEO_EmailOctopus_integration {
 	public function __construct() {
 		parent::__construct();
 
-		add_shortcode('FWEmailOctopusSubForm', array($this, 'create_emailoctopus_subform'));
+		add_shortcode('FWEO_EmailOctopusSubForm', array($this, 'create_emailoctopus_subform'));
 	}
 
 	public function create_emailoctopus_subform($atts = null) {

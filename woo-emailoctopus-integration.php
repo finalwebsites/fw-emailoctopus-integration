@@ -10,9 +10,9 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! class_exists( 'FWS_Woo_EmailOctopus' ) ) {
+if ( ! class_exists( 'FWEO_Woo_EmailOctopus' ) ) {
 
-	class FWS_Woo_EmailOctopus {
+	class FWEO_Woo_EmailOctopus {
 
 		public $eo_settings;
 
@@ -49,7 +49,7 @@ if ( ! class_exists( 'FWS_Woo_EmailOctopus' ) ) {
 		 * Add a new integration to WooCommerce.
 		 */
 		public function add_integration( $integrations ) {
-			$integrations[] = 'FWS_Woo_EmailOctopus_Integration';
+			$integrations[] = 'FWEO_Woo_EmailOctopus_Integration';
 			return $integrations;
 		}
 
@@ -78,10 +78,10 @@ if ( ! class_exists( 'FWS_Woo_EmailOctopus' ) ) {
 
 		public function checkout_order_meta( $order_id ) {
 			if (!empty($_POST['fws_emailoctopus_checkbox'])) { // phpcs:ignore WordPress.Security.NonceVerification
-				update_post_meta( $order_id, 'emailoctopus_subscribed', 'check');
+				update_post_meta( $order_id, 'fweo_emailoctopus_subscribed', 'check');
 			} else {
 				if ($this->eo_settings['em_store_all_customers'] == 'yes') {
-					update_post_meta( $order_id, 'emailoctopus_subscribed', 'all');
+					update_post_meta( $order_id, 'fweo_emailoctopus_subscribed', 'all');
 				}
 			}
 		}

@@ -19,7 +19,7 @@ class FWEO_EmailOctopus_Plugin_Settings {
 
 	public function __construct( $file ) {
 		$this->file = $file;
-		$this->settings_base = 'fw_emailoctopus_';
+		$this->settings_base = 'fweo_emailoctopus_';
 		add_action( 'admin_init', array( $this, 'init' ) );
 		add_action( 'admin_init' , array( $this, 'register_settings' ) );
 		add_action( 'admin_menu' , array( $this, 'add_menu_item' ) );
@@ -37,13 +37,13 @@ class FWEO_EmailOctopus_Plugin_Settings {
 			__( 'Integration for EmailOctopus Settings', 'fw_emailoctopus_integration' ),
 			__( 'Integration for EmailOctopus', 'fw_emailoctopus_integration' ),
 			'manage_options',
-			'fws-emailoctopus-settings',
+			'fweo-emailoctopus-settings',
 			array($this, 'settings_page')
 		);
 	}
 
 	public function add_settings_link( $links ) {
-		$settings_link = '<a href="options-general.php?page=fws-emailoctopus-settings">' . __( 'Settings', 'fw_emailoctopus_integration' ) . '</a>';
+		$settings_link = '<a href="options-general.php?page=fweo-emailoctopus-settings">' . __( 'Settings', 'fw_emailoctopus_integration' ) . '</a>';
   		array_push( $links, $settings_link );
   		return $links;
 	}
@@ -135,11 +135,11 @@ class FWEO_EmailOctopus_Plugin_Settings {
 	public function register_settings() {
 		if( is_array( $this->settings ) ) {
 			foreach( $this->settings as $section => $data ) {
-				add_settings_section( $section, $data['title'], array( $this, 'settings_section' ), 'fw_emailoctopus_plugin_settings' );
+				add_settings_section( $section, $data['title'], array( $this, 'settings_section' ), 'fweo_emailoctopus_plugin_settings' );
 				foreach( $data['fields'] as $field ) {
 					$option_name = $this->settings_base . $field['id'];
-					register_setting( 'fw_emailoctopus_plugin_settings', $option_name );
-					add_settings_field( $field['id'], $field['label'], array( $this, 'display_field' ), 'fw_emailoctopus_plugin_settings', $section, array( 'field' => $field ) );
+					register_setting( 'fweo_emailoctopus_plugin_settings', $option_name );
+					add_settings_field( $field['id'], $field['label'], array( $this, 'display_field' ), 'fweo_emailoctopus_plugin_settings', $section, array( 'field' => $field ) );
 				}
 			}
 		}
@@ -151,13 +151,13 @@ class FWEO_EmailOctopus_Plugin_Settings {
 	}
 
 	public function create_list_items() {
-		if ($api_key = get_option('fw_emailoctopus_api_key')) {
-			$mainObj = new EmailOctopus_integration();
+		if ($api_key = get_option('fweo_emailoctopus_api_key')) {
+			$mainObj = new FWEO_EmailOctopus_integration();
 			$lists = $mainObj->get_lists();
 
 			if ($lists) {
-				if (!update_option('fw_mailing_lists', $lists)) {
-					add_option('fw_mailing_lists', $lists);
+				if (!update_option('fweo_mailing_lists', $lists)) {
+					add_option('fweo_mailing_lists', $lists);
 				}
 				return $lists;
 			}
@@ -213,7 +213,7 @@ class FWEO_EmailOctopus_Plugin_Settings {
 
 	public function settings_page() {
 		$screen = get_current_screen();
-		if ( $screen->id != 'settings_page_fws-emailoctopus-settings' ) {
+		if ( $screen->id != 'settings_page_fweo-emailoctopus-settings' ) {
 			return;
 		}
 		$settings = $this->settings;
