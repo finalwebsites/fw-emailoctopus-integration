@@ -65,7 +65,7 @@ class FWEO_EmailOctopus_Action_After_Submit extends Integration_Base {
             ]
         );
 
-        $handler = new EmailOctopus_integration();
+        $handler = new FWEO_EmailOctopus_integration();
         $list_items = $handler->get_lists();
 
         $widget->add_control(
@@ -195,7 +195,7 @@ class FWEO_EmailOctopus_Action_After_Submit extends Integration_Base {
 
 
     private function set_subscriber_data( $list, $email, $data ) {
-        $handler = new EmailOctopus_integration();
+        $handler = new FWEO_EmailOctopus_integration();
 
         $response = $handler->add_subscriber($email, $list, $data, true);
 
@@ -221,7 +221,7 @@ class FWEO_EmailOctopus_Action_After_Submit extends Integration_Base {
 
         $eo_fields = $this->get_emailoctopus_fields();
 
-        $handler = new EmailOctopus_integration();
+        $handler = new FWEO_EmailOctopus_integration();
 
         $existing_fields = $handler->get_list_fields($settings['emailoctopus_list']);
 

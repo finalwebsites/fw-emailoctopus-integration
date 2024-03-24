@@ -270,7 +270,7 @@ class FWEO_EmailOctopus_integration {
 		if (isset($_COOKIE['eosub_loadtime'])) {
 			return;
 		} else {
-			$host = ssanitize_text_field($_SERVER['HTTP_HOST']);
+			$host = sanitize_text_field($_SERVER['HTTP_HOST']);
 			setcookie("eosub_loadtime", time(), 0, '/', $host);
 		}
 	}

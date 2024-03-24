@@ -6,7 +6,7 @@ Increase the count of new subscribers for your blog, shop or website by using Em
 
 Email marketing is still one of the best ways to drive traffic to your website. You can use this WordPress plugin to add a newsletter subscription form below your blog, right in your articles or on other places using Elementor forms or a shortcode. Use the WooCommerce integration and submit order related information together with each subscription.
 
-*To use this plugin, you need access to a EmailOctopus account. You can get a free account from the [EmailOctopus](https://emailoctopus.com/?ali=cb359bbf-1b33-11ea-be00-06b4694bee2a) website. The free account allows you use 2500 active subscribers and has a few limitations on the account features.*
+*To use this plugin, you need to create an API key. You can do this via your EmailOctopus account. You can get a free account from the [EmailOctopus](https://emailoctopus.com/?ali=cb359bbf-1b33-11ea-be00-06b4694bee2a) website. The free account allows you to add 2500 active subscribers and has a few limitations on the account features.*
 
 ### These are the features
 
