@@ -154,7 +154,6 @@ class FWS_Woo_EmailOctopus_Integration extends WC_Integration {
 		$subscribed = get_post_meta($order_id, 'emailoctopus_subscribed', true);
 		if (empty($subscribed)) return; // don't subscribe again if the order status is changed
 		$order = wc_get_order( $order_id );
-		//error_log(print_r($order, true));
 		
 
 		$settings = get_option('woocommerce_fws-woo-emailoctopus_settings');

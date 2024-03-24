@@ -188,7 +188,6 @@ class EmailOctopus_Action_After_Submit extends Integration_Base {
         }
 
         $list = $settings['emailoctopus_list'];
-        //file_put_contents(ABSPATH.'ele.txt', print_r($subscriber, true));
         $subscriber = $this->set_subscriber_data( $list, $subscriber['email_address'], $subscriber );
 
 

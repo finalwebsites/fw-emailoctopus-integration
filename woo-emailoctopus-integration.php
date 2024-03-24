@@ -21,7 +21,6 @@ if ( ! class_exists( 'FWS_Woo_EmailOctopus' ) ) {
 		*/
 		public function __construct() {
 
-			//add_action( 'plugins_loaded', array( $this, 'init' ) );
 		}
 
 		/**
@@ -34,7 +33,6 @@ if ( ! class_exists( 'FWS_Woo_EmailOctopus' ) ) {
 			include_once FWEO_DIR . 'include/class-woo-emailoctopus-integration.php';
 
 			$this->eo_settings = get_option('woocommerce_fws-woo-emailoctopus_settings');
-			//print_r($this->eo_settings);
 
 			// Register the integration.
 			add_filter( 'woocommerce_integrations', array( $this, 'add_integration' ) );
@@ -44,8 +42,6 @@ if ( ! class_exists( 'FWS_Woo_EmailOctopus' ) ) {
 			}
 
 			add_action('woocommerce_checkout_update_order_meta', array( $this, 'checkout_order_meta'));
-
-			//$eo_obj = new EmailOctopus_subscriptions();
 
 		}
 

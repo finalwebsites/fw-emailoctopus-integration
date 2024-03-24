@@ -11,7 +11,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 
-class EmailOctopus_Plugin_Settings {
+class FWEO_EmailOctopus_Plugin_Settings {
 
 	private $file;
 	private $settings_base;

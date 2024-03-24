@@ -29,7 +29,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 define('FWEO_DIR', plugin_dir_path( __FILE__ ));
-define('FW_EA_VER', '1.0.0');
+define('FW_EO_VER', '1.0.0');
 
 include_once FWEO_DIR.'include/options.php';
 include_once FWEO_DIR.'include/form-shortcodes.php';
@@ -39,7 +39,7 @@ include_once FWEO_DIR.'include/form-shortcodes.php';
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class EmailOctopus_integration {
+class FWEO_EmailOctopus_integration {
 
 	private $api_key;
 	private $api_url;
@@ -113,7 +113,7 @@ class EmailOctopus_integration {
 			$show = apply_filters( 'fw_emailoctopus_show_static', $show, $post );
 		}
 		if ($show) {
-			wp_enqueue_script('fw-emailoctopus', plugin_dir_url(__FILE__).'include/emailoctopus.js', array('jquery'), FW_EA_VER, true );
+			wp_enqueue_script('fw-emailoctopus', plugin_dir_url(__FILE__).'include/emailoctopus.js', array('jquery'), FW_EO_VER, true );
 			wp_localize_script( 'fw-emailoctopus', 'eo_ajax_object',
 				array(
 					'ajax_url' => admin_url( 'admin-ajax.php' ),
@@ -126,7 +126,7 @@ class EmailOctopus_integration {
 				)
 			);
 			if (get_option('fw_emailoctopus_include_css')) {
-				wp_enqueue_style( 'fw-emailoctopus-style', plugin_dir_url(__FILE__).'include/style.css', array(), FW_EA_VER );
+				wp_enqueue_style( 'fw-emailoctopus-style', plugin_dir_url(__FILE__).'include/style.css', array(), FW_EO_VER );
 			}
 		}
 	}
@@ -220,7 +220,6 @@ class EmailOctopus_integration {
 					}
 				}
 			}
-			// klopt dit wel? Of is dat een functie alleen voor de shortcode?
 			if (!empty($data['extra'])) {
 				foreach ($data['extra'] as $key => $value) {
 					$key = strtolower($key);
@@ -270,7 +269,8 @@ class EmailOctopus_integration {
 		if (isset($_COOKIE['eosub_loadtime'])) {
 			return;
 		} else {
-			setcookie("eosub_loadtime", time(), 0, '/', $_SERVER['HTTP_HOST']);
+			$host = ssanitize_text_field($_SERVER['HTTP_HOST']);
+			setcookie("eosub_loadtime", time(), 0, '/', $host);
 		}
 	}
 
@@ -283,7 +283,7 @@ class EmailOctopus_integration {
 		if (empty($_POST['FirstName']) || empty($_POST['email'])) {
 			$error = __( 'Both fields are required to enter.', 'fw_emailoctopus_integration' );
 		} else {
-			if (!wp_verify_nonce($_POST['_fwseo_subnonce'], 'fwseo_subform')) {
+			if ( !isset( $_POST['_fwseo_subnonce'] ) || !wp_verify_nonce( sanitize_text_field( wp_unslash ( $_POST['_fwseo_subnonce'] ) ) , 'fwseo_subform' ) ) {
 				$error = __( 'Verification error, try again.', 'fw_emailoctopus_integration' );
 			} else {
 				$valid_captcha = true;
@@ -323,7 +323,7 @@ class EmailOctopus_integration {
 					}
 					if (!empty($_POST['hidden'])) {
 						foreach ($_POST['hidden'] as $key => $val) {
-							$data[$key] = $val;
+							$data[$key] = sanitize_text_field($val);
 						}
 					}
 	                $data = apply_filters( 'fweo_add_extra_data_fields', $data );
@@ -345,8 +345,6 @@ class EmailOctopus_integration {
 						}
 						if ($result = $this->add_subscriber($email, $list, $data)) {
 	                        
-
-							//print_r($cookie_name);
 							$status = 'success';
 							if ($cookie_name != '') {
 								setcookie( $cookie_name, 'yes', strtotime( '+365 days' ) );
@@ -406,5 +404,5 @@ class EmailOctopus_integration {
 
 }
 
-$fw_emailoctopus_settings = new EmailOctopus_Plugin_Settings( __FILE__ );
-$fw_emailoctopus = new Create_EmailOctopus_Forms();
+$fw_emailoctopus_settings = new FWEO_EmailOctopus_Plugin_Settings( __FILE__ );
+$fw_emailoctopus = new FWEO_Create_EmailOctopus_Forms();

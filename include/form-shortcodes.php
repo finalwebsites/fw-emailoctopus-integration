@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class Create_EmailOctopus_Forms extends EmailOctopus_integration {
+class FWEO_Create_EmailOctopus_Forms extends FWEO_EmailOctopus_integration {
 
 	public function __construct() {
 		parent::__construct();
