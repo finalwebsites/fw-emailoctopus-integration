@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: FW EmailOctopus Integration
+Plugin Name: Integration for EmailOctopus
 Version: 1.0.0
 Plugin URI: https://www.finalwebsites.com
 Description: Increase the count of new subscribers for your blog or website by using EmailOctopus and this integration plugin.
@@ -10,7 +10,7 @@ Text Domain: fw_emailoctopus_integration
 Domain Path: /languages/
 License: GPL v3
 
-WP EmailOctopus Integration
+Integration for EmailOctopus
 Copyright (C) 2024, Olaf Lederer - https://www.olaflederer.com/
 
 This program is free software: you can redistribute it and/or modify
@@ -53,12 +53,6 @@ class EmailOctopus_integration {
 		$this->api_url = 'https://emailoctopus.com/api/1.6/';
 
 		if (empty($this->api_key)) {
-		/*
-		<?php
-		$url = 'http://example.com';
-		$link = sprintf( wp_kses( __( 'Check out this link to my <a href="%s">website</a> made with WordPress.', 'my-text-domain' ), array(  'a' => array( 'href' => array() ) ) ), esc_url( $url ) );
-		echo $link;
-		?>*/
 
 			add_action('admin_notices', function() {
 				global $pagenow;

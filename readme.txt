@@ -1,4 +1,4 @@
-=== FW EmailOctopus Integration ===
+=== Integration for EmailOctopus ===
 Contributors: finalwebsites
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html

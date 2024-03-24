@@ -1,6 +1,6 @@
 <?php
 /**
- * FW EmailOctopus Integration
+ * Integration for EmailOctopus
  *
  * @package  Create_EmailOctopus_Forms
  * @category Shortcodes

@@ -1,6 +1,6 @@
 <?php
 /**
- * FW EmailOctopus Integration
+ * Integration for EmailOctopus
  *
  * @package  FWS_Woo_EmailOctopus_Integration
  * @category Integration

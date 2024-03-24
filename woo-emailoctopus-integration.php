@@ -1,7 +1,7 @@
 <?php
 
 /**
- * FW EmailOctopus Integration
+ * Integration for EmailOctopus
  *
  * @package  FWS_Woo_EmailOctopus
  * @category Integration

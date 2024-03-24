@@ -1,6 +1,6 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <div class="wrap" id="plugin_settings">
-	<h2>FW EmailOctopus Integration</h2>
+	<h2><?php esc_html_e( 'Integration for EmailOctopus', 'fw_emailoctopus_integration' ); ?></h2>
 	<p>
 		<?php 
 		/* translators: %s - https://emailoctopus.com/  */ 
