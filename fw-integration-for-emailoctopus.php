@@ -6,7 +6,7 @@ Plugin URI: https://www.finalwebsites.com
 Description: Increase the count of new subscribers for your blog or website by using EmailOctopus and this integration plugin.
 Author: Olaf Lederer
 Author URI: https://www.olaflederer.com/
-Text Domain: fw_emailoctopus_integration
+Text Domain: fw-integration-for-emailoctopus
 Domain Path: /languages/
 License: GPL v3
 
@@ -59,7 +59,7 @@ class FWEO_EmailOctopus_integration {
 				global $pagenow;
     			if ( $pagenow != 'options-general.php' ) echo '
 	<div class="notice notice-warning">
-        <p>'.esc_html__( 'To use the WP EmailOctopus integration plugin, you need to enter a valid API key.', 'fw_emailoctopus_integration' ).' <span class="dashicons dashicons-edit"></span> <a href="'.esc_attr ( admin_url( 'options-general.php?page=fws-emailoctopus-settings') ).'">'.esc_html__('Plugin settings', 'fw_emailoctopus_integration').'</a></p>
+        <p>'.esc_html__( 'To use the WP EmailOctopus integration plugin, you need to enter a valid API key.', 'fw-integration-for-emailoctopus' ).' <span class="dashicons dashicons-edit"></span> <a href="'.esc_attr ( admin_url( 'options-general.php?page=fweo-emailoctopus-settings') ).'">'.esc_html__('Plugin settings', 'fw-integration-for-emailoctopus').'</a></p>
     </div>';
     		});
 		} else {
@@ -69,7 +69,7 @@ class FWEO_EmailOctopus_integration {
 	}
 
 	public function init() {
-		load_plugin_textdomain( 'fw_emailoctopus_integration', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'fw-integration-for-emailoctopus', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 		add_action('wp_enqueue_scripts', array($this, 'add_assets'));
 
@@ -88,8 +88,8 @@ class FWEO_EmailOctopus_integration {
 		add_action( 'elementor_pro/forms/actions/register', array($this, 'add_emailoctopus_form_action') );
 		
 		if (function_exists('pll_register_string')) {
-			pll_register_string( 'woo_text_newsletter', 'Please send me your newsletter.', 'fw_emailoctopus_integration', false );
-			pll_register_string( 'emailoctopus_subscribe_text', 'Yes, please add me to your mailing list.', 'fw_emailoctopus_integration', false );
+			pll_register_string( 'woo_text_newsletter', 'Please send me your newsletter.', 'fw-integration-for-emailoctopus', false );
+			pll_register_string( 'emailoctopus_subscribe_text', 'Yes, please add me to your mailing list.', 'fw-integration-for-emailoctopus', false );
 		}
 	}
 	
@@ -119,10 +119,10 @@ class FWEO_EmailOctopus_integration {
 				array(
 					'ajax_url' => admin_url( 'admin-ajax.php' ),
 					'plugin_base_path' => plugin_dir_url(__FILE__),
-					'js_alt_loading' => __( 'Loading...', 'fw_emailoctopus_integration' ),
-					'js_msg_enter_email_name' => __( 'Please enter your name and email address.', 'fw_emailoctopus_integration' ),
-					'js_msg_enter_email' => __( 'Please enter your email address.', 'fw_emailoctopus_integration' ),
-					'js_msg_invalid_email' => __( 'The entered email address is invalid.', 'fw_emailoctopus_integration' ),
+					'js_alt_loading' => __( 'Loading...', 'fw-integration-for-emailoctopus' ),
+					'js_msg_enter_email_name' => __( 'Please enter your name and email address.', 'fw-integration-for-emailoctopus' ),
+					'js_msg_enter_email' => __( 'Please enter your email address.', 'fw-integration-for-emailoctopus' ),
+					'js_msg_invalid_email' => __( 'The entered email address is invalid.', 'fw-integration-for-emailoctopus' ),
 					'googleanalytics' => get_option('fw_emailoctopus_google_analytics')
 				)
 			);
@@ -282,18 +282,18 @@ class FWEO_EmailOctopus_integration {
 		$goal = '';
 
 		if (empty($_POST['FirstName']) || empty($_POST['email'])) {
-			$error = __( 'Both fields are required to enter.', 'fw_emailoctopus_integration' );
+			$error = __( 'Both fields are required to enter.', 'fw-integration-for-emailoctopus' );
 		} else {
 			if ( !isset( $_POST['_fwseo_subnonce'] ) || !wp_verify_nonce( sanitize_text_field( wp_unslash ( $_POST['_fwseo_subnonce'] ) ) , 'fwseo_subform' ) ) {
-				$error = __( 'Verification error, try again.', 'fw_emailoctopus_integration' );
+				$error = __( 'Verification error, try again.', 'fw-integration-for-emailoctopus' );
 			} else {
 				$valid_captcha = true;
 				if (empty($_COOKIE['eosub_loadtime']) || (int)$_COOKIE['eosub_loadtime'] > (time()-15)) {
                     $valid_captcha = false;
-                    $error = __( 'Invalid form submission, please try again.', 'fw_emailoctopus_integration' );
+                    $error = __( 'Invalid form submission, please try again.', 'fw-integration-for-emailoctopus' );
                 } 
                 if (empty($_POST['aftersubmit'])) {
-					$error = __( 'The form is currently closed for an unknown reason.', 'fw_emailoctopus_integration' );
+					$error = __( 'The form is currently closed for an unknown reason.', 'fw-integration-for-emailoctopus' );
 					$valid_captcha = false;
 				}
 	            if ($valid_captcha) {
@@ -332,12 +332,12 @@ class FWEO_EmailOctopus_integration {
 						$response = $this->report_submission($email, $list, $data);
 						if ($response == 'send') {
 							$status = 'success';
-							$error = __( 'Thanks, for your interest.', 'fw_emailoctopus_integration' );
+							$error = __( 'Thanks, for your interest.', 'fw-integration-for-emailoctopus' );
 							if ($thank_you != '') $error = $thank_you;
 						} elseif ($response == 'invalidmail') {
-							$error = __( 'The entered email address is not valid.', 'fw_emailoctopus_integration' );
+							$error = __( 'The entered email address is not valid.', 'fw-integration-for-emailoctopus' );
 						} else {
-							$error = __( 'An unknown error occurred.', 'fw_emailoctopus_integration' );
+							$error = __( 'An unknown error occurred.', 'fw-integration-for-emailoctopus' );
 						}
 					} else {
 						if ($_POST['report_only'] == 'y') {
@@ -349,10 +349,10 @@ class FWEO_EmailOctopus_integration {
 							if ($cookie_name != '') {
 								setcookie( $cookie_name, 'yes', strtotime( '+365 days' ) );
 							}
-							$error = __( 'Thanks, for joining our mailing list!', 'fw_emailoctopus_integration' );
+							$error = __( 'Thanks, for joining our mailing list!', 'fw-integration-for-emailoctopus' );
 							if ($thank_you != '') $error = $thank_you;
 						} else {
-							$error = __( 'An unknown error occurred.', 'fw_emailoctopus_integration' );
+							$error = __( 'An unknown error occurred.', 'fw-integration-for-emailoctopus' );
 						}
 					}
 				}
@@ -367,15 +367,15 @@ class FWEO_EmailOctopus_integration {
 	public function report_submission($email, $list, $data) {
 		if ( is_email( $email ) ) {
 			
-			$msg = __('Email address: ', 'fw_emailoctopus_integration').$email.PHP_EOL;
+			$msg = __('Email address: ', 'fw-integration-for-emailoctopus').$email.PHP_EOL;
 			foreach ($data as $key => $val) {
 				$msg .= $key.': '.$val.PHP_EOL;
 			}
 			$all_lists = $this->get_lists();
-			$msg .= __('List name: ', 'fw_emailoctopus_integration').$all_lists[$list].PHP_EOL;
+			$msg .= __('List name: ', 'fw-integration-for-emailoctopus').$all_lists[$list].PHP_EOL;
 			
 			$msg .= 'IP address: '.$this->get_client_ip();
-			$subject = __('A form submission from your website', 'fw_emailoctopus_integration');
+			$subject = __('A form submission from your website', 'fw-integration-for-emailoctopus');
 			$mailto = get_option('admin_email');
 			if (wp_mail( $mailto, $subject, $msg )) {
 				return 'send';

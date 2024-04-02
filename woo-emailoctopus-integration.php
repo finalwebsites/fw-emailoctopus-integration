@@ -63,7 +63,7 @@ if ( ! class_exists( 'FWEO_Woo_EmailOctopus' ) ) {
 				if (!empty($this->eo_settings['emailoctopus_subscribe_text'])) {
 					$label = $this->eo_settings['emailoctopus_subscribe_text'];
 				} else {
-					$label = __( 'Please send me your newsletter.', 'fw_emailoctopus_integration' );
+					$label = __( 'Please send me your newsletter.', 'fw-integration-for-emailoctopus' );
 				}
 			}
 			

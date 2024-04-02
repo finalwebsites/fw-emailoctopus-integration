@@ -21,14 +21,14 @@ class FWEO_Create_EmailOctopus_Forms extends FWEO_EmailOctopus_integration {
 
 		$atts = shortcode_atts(
 			array(
-				'title' => __( 'Subscribe now!', 'fw_emailoctopus_integration' ),
-				'description' => __( 'Subscribe today and get future blog posts your email.', 'fw_emailoctopus_integration' ),
+				'title' => __( 'Subscribe now!', 'fw-integration-for-emailoctopus' ),
+				'description' => __( 'Subscribe today and get future blog posts your email.', 'fw-integration-for-emailoctopus' ),
 				'gdpr_text' => get_option('fw_emailoctopus_gdpr_text'),
-				'btnlabel' => __('Subscribe', 'fw_emailoctopus_integration'),
+				'btnlabel' => __('Subscribe', 'fw-integration-for-emailoctopus'),
 				'thank_you_text' => '',
 				'report_only' => 'n',
 				'btnclass' => '',
-				'title_select' => __('Select Mailing List', 'fw_emailoctopus_integration'),
+				'title_select' => __('Select Mailing List', 'fw-integration-for-emailoctopus'),
 				'listid' => '',
 				'bs_icon' => '',
 				'fsize' => '',
@@ -98,22 +98,22 @@ class FWEO_Create_EmailOctopus_Forms extends FWEO_EmailOctopus_integration {
 		$html .= '
 			<form id="fw-subscribeform-'.$unique_id.'" class="'.$atts['form_class'].'">
 				<div class="form-group">
-					<label class="sr-only" for="FirstName-'.$unique_id.'">'.__( 'Your first name', 'fw_emailoctopus_integration' ).'</label>
+					<label class="sr-only" for="FirstName-'.$unique_id.'">'.__( 'Your first name', 'fw-integration-for-emailoctopus' ).'</label>
 
 					
-					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your first name', 'fw_emailoctopus_integration' ).'" id="FirstName-'.$unique_id.'" name="FirstName" autocomplete="off">
+					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your first name', 'fw-integration-for-emailoctopus' ).'" id="FirstName-'.$unique_id.'" name="FirstName" autocomplete="off">
 				</div>';
 		if ($last_name) {
 			$html .= '
 				<div class="form-group">
-					<label class="sr-only" for="LastName-'.$unique_id.'">'.__( 'Your last name', 'fw_emailoctopus_integration' ).'</label>
-					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your last name', 'fw_emailoctopus_integration' ).'" id="LastName-'.$unique_id.'" name="LastName" autocomplete="off">
+					<label class="sr-only" for="LastName-'.$unique_id.'">'.__( 'Your last name', 'fw-integration-for-emailoctopus' ).'</label>
+					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your last name', 'fw-integration-for-emailoctopus' ).'" id="LastName-'.$unique_id.'" name="LastName" autocomplete="off">
 				</div>';
 		}
 		$html .= '
 				<div class="form-group">
-					<label class="sr-only" for="email-'.$unique_id.'">'.__( 'Your email address', 'fw_emailoctopus_integration' ).'</label>
-					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your email address', 'fw_emailoctopus_integration' ).'" id="email-'.$unique_id.'" name="email" autocomplete="off">
+					<label class="sr-only" for="email-'.$unique_id.'">'.__( 'Your email address', 'fw-integration-for-emailoctopus' ).'</label>
+					<input type="text" class="form-control'.$field_size.'" placeholder="'.__( 'Your email address', 'fw-integration-for-emailoctopus' ).'" id="email-'.$unique_id.'" name="email" autocomplete="off">
 				</div>';
 		$html .= $extra_fields_html;
 		if ($atts['newsletter'] == 'y') {

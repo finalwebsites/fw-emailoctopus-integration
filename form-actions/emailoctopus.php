@@ -71,7 +71,7 @@ class FWEO_EmailOctopus_Action_After_Submit extends Integration_Base {
         $widget->add_control(
             'emailoctopus_list',
             [
-                'label' => __( 'Mailing list', 'fw_emailoctopus_integration' ),
+                'label' => __( 'Mailing list', 'fw-integration-for-emailoctopus' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => $list_items,
                 'render_type' => 'none',
@@ -83,7 +83,7 @@ class FWEO_EmailOctopus_Action_After_Submit extends Integration_Base {
         $emailoctopus_repeater->add_control(
             'list_options',
             [
-                'label'   => __( 'Merge Fields', 'fw_emailoctopus_integration' ),
+                'label'   => __( 'Merge Fields', 'fw-integration-for-emailoctopus' ),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'options' => $this->get_emailoctopus_fields(),
             ]
@@ -92,16 +92,16 @@ class FWEO_EmailOctopus_Action_After_Submit extends Integration_Base {
         $emailoctopus_repeater->add_control(
             'list_form_id',
             [
-                'label'       => __( 'Field ID', 'fw_emailoctopus_integration' ),
+                'label'       => __( 'Field ID', 'fw-integration-for-emailoctopus' ),
                 'type'        => \Elementor\Controls_Manager::TEXT,
-                'placeholder' => __( 'field ID', 'integrate-elementor-mailster' ),
+                'placeholder' => __( 'field ID', 'fw-integration-for-emailoctopus' ),
             ]
         );
 
         $widget->add_control(
             'list',
             [
-                'label'       => __( 'List Field', 'fw_emailoctopus_integration' ),
+                'label'       => __( 'List Field', 'fw-integration-for-emailoctopus' ),
                 'type'        => \Elementor\Controls_Manager::REPEATER,
                 'fields'      => $emailoctopus_repeater->get_controls(),
                 'default'     => [
@@ -121,8 +121,8 @@ class FWEO_EmailOctopus_Action_After_Submit extends Integration_Base {
         $widget->add_control(
             'emailoctopus_tags',
             [
-                'label' => esc_html__( 'Tags', 'fw_emailoctopus_integration' ),
-                'description' => esc_html__( 'Add comma separated tags', 'fw_emailoctopus_integration' ),
+                'label' => esc_html__( 'Tags', 'fw-integration-for-emailoctopus' ),
+                'description' => esc_html__( 'Add comma separated tags', 'fw-integration-for-emailoctopus' ),
                 'type' => Controls_Manager::TEXT,
                 'render_type' => 'none',
                 'condition' => [
@@ -139,13 +139,13 @@ class FWEO_EmailOctopus_Action_After_Submit extends Integration_Base {
     public function get_emailoctopus_fields() {
 
         $options_array = [
-            'email_address'     => __( 'Email address', 'fw_emailoctopus_integration' ),
-            'FirstName' => __( 'First Name', 'fw_emailoctopus_integration' ),
-            'LastName'  => __( 'Last Name', 'fw_emailoctopus_integration' ),
-            'Source'  => __( 'Source', 'fw_emailoctopus_integration' ),
-            'Newsletter'  => __( 'Newsletter', 'fw_emailoctopus_integration' ),
-            'Website'  => __( 'Website', 'fw_emailoctopus_integration' ),
-            'PhoneNumber'  => __( 'Phone number', 'fw_emailoctopus_integration' ),
+            'email_address'     => __( 'Email address', 'fw-integration-for-emailoctopus' ),
+            'FirstName' => __( 'First Name', 'fw-integration-for-emailoctopus' ),
+            'LastName'  => __( 'Last Name', 'fw-integration-for-emailoctopus' ),
+            'Source'  => __( 'Source', 'fw-integration-for-emailoctopus' ),
+            'Newsletter'  => __( 'Newsletter', 'fw-integration-for-emailoctopus' ),
+            'Website'  => __( 'Website', 'fw-integration-for-emailoctopus' ),
+            'PhoneNumber'  => __( 'Phone number', 'fw-integration-for-emailoctopus' ),
         ];
         return $options_array;
     }

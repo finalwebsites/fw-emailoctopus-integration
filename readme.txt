@@ -35,6 +35,16 @@ Email marketing is still one of the best ways to drive traffic to your website. 
 * Using nonces for simple form value validation
 
 
+== About EmailOctopus ==
+
+This plugin communicates with the email marketing service EmailOctopus via the API. An active account is required to use this plugin.
+
+For more information:
+
+* Privacy Statement - [Privacy Statement](https://emailoctopus.com/legal/privacy) - EmailOctopus.com
+* Terms of use - [Terms of Use](https://emailoctopus.com/legal/terms) - EmailOctopus.com
+* API - [Documentation](https://emailoctopus.com/api-documentation) - EmailOctopus.com
+
 == Installation ==
 
 The quickest method for installing the plugin is:
