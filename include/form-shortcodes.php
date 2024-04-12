@@ -123,11 +123,13 @@ class FWEO_Create_EmailOctopus_Forms extends FWEO_EmailOctopus_integration {
 				$newsletter_text = get_option('fw_emailoctopus_text_newsletter');
 			}
 			$html .= '
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" value="1" name="newsletter">
-						'.$newsletter_text.'
-					</label>
+				<div class="form-group">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="1" name="newsletter">
+							'.$newsletter_text.'
+						</label>
+					</div>
 				</div>';
 		}
 		$html .= $list_hidden_html;
