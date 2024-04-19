@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: Integration for EmailOctopus
-Version: 1.0.0
+Plugin Name: EO4WP: EmailOctopus for WordPress
+Version: 1.0.1
 Plugin URI: https://www.finalwebsites.com
 Description: Increase the count of new subscribers for your blog or website by using EmailOctopus and this integration plugin.
 Author: Olaf Lederer
@@ -10,7 +10,7 @@ Text Domain: fw-integration-for-emailoctopus
 Domain Path: /languages/
 License: GPL v3
 
-Integration for EmailOctopus
+EO4WP: EmailOctopus for WordPress
 Copyright (C) 2024, Olaf Lederer - https://www.olaflederer.com/
 
 This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 define('FWEO_DIR', plugin_dir_path( __FILE__ ));
-define('FW_EO_VER', '1.0.0');
+define('FW_EO_VER', '1.0.1');
 
 include_once FWEO_DIR.'include/options.php';
 include_once FWEO_DIR.'include/form-shortcodes.php';
@@ -49,7 +49,7 @@ class FWEO_EmailOctopus_integration {
 		if ($apikey != '') {
 			$this->api_key = $apikey;
 		} else {
-			$this->api_key = get_option('fw_emailoctopus_api_key');
+			$this->api_key = get_option('fweo_emailoctopus_api_key');
 		}
 		$this->api_url = 'https://emailoctopus.com/api/1.6/';
 
@@ -123,7 +123,7 @@ class FWEO_EmailOctopus_integration {
 					'js_msg_enter_email_name' => __( 'Please enter your name and email address.', 'fw-integration-for-emailoctopus' ),
 					'js_msg_enter_email' => __( 'Please enter your email address.', 'fw-integration-for-emailoctopus' ),
 					'js_msg_invalid_email' => __( 'The entered email address is invalid.', 'fw-integration-for-emailoctopus' ),
-					'googleanalytics' => get_option('fw_emailoctopus_google_analytics')
+					'googleanalytics' => get_option('fweo_emailoctopus_google_analytics')
 				)
 			);
 			if (get_option('fweo_emailoctopus_include_css')) {
