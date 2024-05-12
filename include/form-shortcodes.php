@@ -28,7 +28,6 @@ class FWEO_Create_EmailOctopus_Forms extends FWEO_EmailOctopus_integration {
 				'thank_you_text' => '',
 				'report_only' => 'n',
 				'btnclass' => '',
-				'title_select' => __('Select Mailing List', 'fw-integration-for-emailoctopus'),
 				'listid' => '',
 				'bs_icon' => '',
 				'fsize' => '',
