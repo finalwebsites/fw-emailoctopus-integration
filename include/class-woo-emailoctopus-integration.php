@@ -1,6 +1,6 @@
 <?php
 /**
- * Integration for EmailOctopus
+ * EO4WP: EmailOctopus for WordPress
  *
  * @package  FWS_Woo_EmailOctopus_Integration
  * @category Integration

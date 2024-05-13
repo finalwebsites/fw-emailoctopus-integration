@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Integration for EmailOctopus
+ * EO4WP: EmailOctopus for WordPress
  *
  * @package  EmailOctopus_Plugin_Settings
  * @category Options
@@ -34,8 +34,8 @@ class FWEO_EmailOctopus_Plugin_Settings {
 
 	public function add_menu_item() {
 		$page = add_options_page(
-			__( 'Integration for EmailOctopus Settings', 'fw-integration-for-emailoctopus' ),
-			__( 'Integration for EmailOctopus', 'fw-integration-for-emailoctopus' ),
+			__( 'EO4WP: EmailOctopus for WordPress Settings', 'fw-integration-for-emailoctopus' ),
+			__( 'EO4WP', 'fw-integration-for-emailoctopus' ),
 			'manage_options',
 			'fweo-emailoctopus-settings',
 			array($this, 'settings_page')
@@ -51,7 +51,7 @@ class FWEO_EmailOctopus_Plugin_Settings {
 	private function settings_fields() {
 		$settings['standard'] = array(
 			'title'					=> __( 'General', 'fw-integration-for-emailoctopus' ),
-			'description'			=> __( 'General settings and options for the Integration for EmailOctopus plugin.', 'fw-integration-for-emailoctopus' ),
+			'description'			=> __( 'General settings and options for the EmailOctopus for WordPress plugin.', 'fw-integration-for-emailoctopus' ),
 			'fields'				=> array(
 				array(
 					'id' 			=> 'api_key',

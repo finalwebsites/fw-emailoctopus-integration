@@ -1,6 +1,6 @@
 <?php
 /**
- * Integration for EmailOctopus
+ * EO4WP: EmailOctopus for WordPress
  *
  * @package  Create_EmailOctopus_Forms
  * @category Shortcodes

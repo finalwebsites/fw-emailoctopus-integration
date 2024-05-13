@@ -1,4 +1,4 @@
-# Integration for EmailOctopus
+# EO4WP: EmailOctopus for WordPress
 
 Increase the count of new subscribers for your blog, shop or website by using EmailOctopus and this professional integration plugin for WordPress, Elementor and WooCommerce.
 

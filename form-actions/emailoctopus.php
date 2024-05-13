@@ -1,7 +1,7 @@
 <?php
 
 /**
- * FW EmailOctopus Integration
+ * EO4WP: EmailOctopus for WordPress
  *
  * @package  FWEO_EmailOctopus_Action_After_Submit
  * @category Integration
