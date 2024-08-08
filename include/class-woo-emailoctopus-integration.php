@@ -1,6 +1,6 @@
 <?php
 /**
- * EO4WP: EmailOctopus for WordPress
+ * Integration for EmailOctopus
  *
  * @package  FWS_Woo_EmailOctopus_Integration
  * @category Integration
@@ -91,7 +91,7 @@ class FWEO_Woo_EmailOctopus_Integration extends WC_Integration {
 
 	public function custom_process_admin_options() {    
         parent::process_admin_options();
-     	$settings = get_option('woocommerce_fweo-woo-emailoctopus_settings');
+     	$settings = get_option('woocommerce_fws-woo-emailoctopus_settings');
      	if (isset($settings['list']) && (!empty($settings['em_store_last_purchase']) || !empty($settings['em_send_language']))) {
      		$eo = new FWEO_EmailOctopus_integration();
 			if ($api_response = $eo->get_list_fields($settings['list'], true)) {
@@ -156,7 +156,7 @@ class FWEO_Woo_EmailOctopus_Integration extends WC_Integration {
 		$order = wc_get_order( $order_id );
 		
 
-		$settings = get_option('woocommerce_fweo-woo-emailoctopus_settings');
+		$settings = get_option('woocommerce_fws-woo-emailoctopus_settings');
 		$billing_email  = $order->get_billing_email();
 		$first_name = $order->get_billing_first_name();
 		$last_name = $order->get_billing_last_name();
@@ -166,11 +166,11 @@ class FWEO_Woo_EmailOctopus_Integration extends WC_Integration {
 		}
 		
 		$tags = array();
-		if ($settings['em_store_categories'] == 'yes') {
+		if (isset($settings['em_store_categories']) && $settings['em_store_categories'] == 'yes') {
 			$categs = $this->get_product_categories($order);
 			$tags = $categs;
 		}
-		if ($settings['em_store_used_coupon'] == 'yes') {
+		if (isset($settings['em_store_used_coupon']) && $settings['em_store_used_coupon'] == 'yes') {
 			$coupons = $order->get_coupon_codes();
 			if (count($coupons) > 0) {
 				$tags[] = 'coupon';
@@ -183,17 +183,17 @@ class FWEO_Woo_EmailOctopus_Integration extends WC_Integration {
 		
 		$fields = array('FirstName' => $first_name, 'LastName' => $last_name);
 
-		if ($settings['em_send_language'] == 'yes' && !empty($language)) {
+		if (isset($settings['em_send_language']) && $settings['em_send_language'] == 'yes' && !empty($language)) {
 			$fields['Language'] = $language;
 		}
-		if ($settings['em_store_last_purchase'] == 'yes') {
+		if (isset($settings['em_store_last_purchase']) && $settings['em_store_last_purchase'] == 'yes') {
 			$fields['LastPurchase'] = gmdate('Y-m-d');
 		}
 		if (count($tags) > 0) $fields['tags'] = implode(',', $tags);
 		
 		$handler = new FWEO_EmailOctopus_integration();
 		$response = $handler->add_subscriber($billing_email, $settings['list'], $fields, true);
-		
+
 		if (isset($response['error']['code'])) {
 			$order->add_order_note('EmailOctopus error: '. $response['error']['message']);
 		} else {
