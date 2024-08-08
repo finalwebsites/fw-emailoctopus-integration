@@ -5,7 +5,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: EmailOctopus, integration, elementor, woocommerce, form actions
 Requires at least: 6.0
 Requires PHP: 7.4
-Tested up to: 6.5.2
+Tested up to: 6.5.4
 Stable tag: 1.0.1
 
 Increase the subscribers for your website by using EmailOctopus and this professional integration plugin for WordPress, Elementor and WooCommerce.
@@ -14,7 +14,7 @@ Increase the subscribers for your website by using EmailOctopus and this profess
 
 Email marketing is still one of the best ways to drive traffic to your website. You can use this WordPress plugin to add a newsletter subscription form below your blog, right in your articles or on other places using Elementor forms or a shortcode. Use the WooCommerce integration and submit order related information together with each subscription.
 
-*To use this plugin, you need to create an API key. You can do this via your EmailOctopus account. You can create a free account on the [EmailOctopus](https://emailoctopus.com/?ali=cb359bbf-1b33-11ea-be00-06b4694bee2a) website. The free account allows you to add 2500 active subscribers and has a few limitations on the account features.*
+*To use this plugin, you need to create an API key. You can do this via your EmailOctopus account. You can get a free account from the [EmailOctopus](https://emailoctopus.com/?ali=cb359bbf-1b33-11ea-be00-06b4694bee2a) website. The free account allows you to add 2500 active subscribers and has a few limitations on the account features.*
 
 
 = These are the features =
@@ -25,9 +25,9 @@ Email marketing is still one of the best ways to drive traffic to your website. 
 * Easy to use, custom list fields will be automatically created if the don't exists
 * Efficient spam protection (using JavaScript and cookies)
 * The visitor stays on your website while submitting the form data
-* Support for mutliple mailing lists
+* Support for multiple mailing lists
 * You can change/translate all plugin text by using a localization tool (Loco Translate is our favorite)
-* Support for multilanguage websites (comapatible with [Polylang](https://wordpress.org/plugins/polylang/))
+* Support for multi-language websites (compatible with [Polylang](https://wordpress.org/plugins/polylang/))
 * The form HTML is compatible with the Bootstrap CSS framework (v3)
 * Optional: use the CSS style-sheet (Bootstrap v3 compatible) included with the plugin
 * Track successfully submitted forms in Google Analytics and Clicky
@@ -61,15 +61,15 @@ If your want to use the EmailOctopus integration for WooCommerce, you need to fo
 
 1. Goto WooCommerce > Settings > Integrations > EmailOctopus
 1. Choose the Mailing list you prefer for the subscription feature on your checkout page
-1. Check the other features to include addtional order information with each subscription
-1. Enable the option "Subscribe everyone" if you like to use Emailoctopus for none commercial emails (too).
+1. Check the other features to include additional order information with each subscription
+1. Enable the option "Subscribe everyone" if you like to use EmailOctopus for none commercial emails (too).
 
 === Elementor integration ===
 
 If you use Elementor Pro, it's possible to add the EmailOctopus subscription as form action.
 
 1. Add the Elementor form as usual and choose "EmailOctopus" from "Actions after submit".
-1. Now point the diifferent mailing list fields to the form fields, by entering the field ID.
+1. Now point the different mailing list fields to the form fields, by entering the field ID.
 
 The "Newsletter" option has a special behavior. Use a checkbox in your form and if the checkbox was checked, a tag called "newsletter" will be added to the subscriber in EmailOctopus.
 
@@ -87,7 +87,7 @@ If you use a Clicky premium plan it's possible to track Goals.
 
 = How does the "Subscribe everyone" feature work? =
 
-For webshop owners is it possible to use the WooCommerce integration and EmailOctopus, to send emails related to an order. For example usage instructions or a request for a review. To make this work, you need to sync all email addresses and not only the addresses from people subscibed to the newsletter. Use the Automation feature in EmailOctopus for this kind of after-sale campaigns.
+For webshop owners is it possible to use the WooCommerce integration and EmailOctopus, to send emails related to an order. For example usage instructions or a request for a review. To make this work, you need to sync all email addresses and not only the addresses from people subscribed to the newsletter. Use the Automation feature in EmailOctopus for this kind of after-sale campaigns.
 
 == Screenshots ==
 
@@ -100,15 +100,13 @@ For webshop owners is it possible to use the WooCommerce integration and EmailOc
 
 == Changelog ==
 
-= 1.0.0 =
+= 1.0 =
 * Initial release
 
 = 1.0.1 =
 * Other
 	* The plugin name has been changed in consultation with EmailOctopus
+	* Updated graphics, added documentation link
 
 * Bug fixes
 	* Fixed two option names
-
-
-
