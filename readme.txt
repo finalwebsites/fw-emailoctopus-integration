@@ -5,8 +5,8 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: EmailOctopus, integration, elementor, woocommerce, form actions
 Requires at least: 6.0
 Requires PHP: 7.4
-Tested up to: 6.5.4
-Stable tag: 1.0.1
+Tested up to: 6.6.1
+Stable tag: 1.0.2
 
 Increase the subscribers for your website by using EmailOctopus and this professional integration plugin for WordPress, Elementor and WooCommerce.
 
@@ -110,3 +110,10 @@ For webshop owners is it possible to use the WooCommerce integration and EmailOc
 
 * Bug fixes
 	* Fixed two option names
+
+= 1.0.2 =
+* Other
+	* Version bump WP 6.6
+
+* Bug fixes
+	* Fixed option name for Woo integration
