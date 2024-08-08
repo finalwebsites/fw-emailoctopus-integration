@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: EO4WP: EmailOctopus for WordPress
-Version: 1.0.1
+Version: 1.0.2
 Plugin URI: https://www.finalwebsites.com/emailoctopus-for-wordpress/
 Description: Increase the count of new subscribers for your blog or website by using EmailOctopus and this integration plugin.
 Author: Olaf Lederer
@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 define('FWEO_DIR', plugin_dir_path( __FILE__ ));
-define('FW_EO_VER', '1.0.1');
+define('FW_EO_VER', '1.0.2');
 
 include_once FWEO_DIR.'include/options.php';
 include_once FWEO_DIR.'include/form-shortcodes.php';
