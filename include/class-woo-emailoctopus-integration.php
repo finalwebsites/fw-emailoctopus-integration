@@ -23,7 +23,7 @@ class FWEO_Woo_EmailOctopus_Integration extends WC_Integration {
 		$this->init_settings();	
 		// Actions.
 		add_action( 'woocommerce_update_options_integration_'.$this->id, array( $this, 'custom_process_admin_options' ) ); // callback from parent class
-  		add_action( 'woocommerce_checkout_order_processed', array( $this, 'add_subscriber_callback' ) );
+  		add_action( 'woocommerce_payment_complete', array( $this, 'add_subscriber_callback' ) );
 	}
 
 	public function init_form_fields() {
