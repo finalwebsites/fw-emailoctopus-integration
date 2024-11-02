@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: EO4WP: EmailOctopus for WordPress
-Version: 1.0.3
+Version: 1.0.4
 Plugin URI: https://www.finalwebsites.com/emailoctopus-for-wordpress/
 Description: Increase the count of new subscribers for your blog or website by using EmailOctopus and this integration plugin.
 Author: Olaf Lederer
@@ -319,8 +319,14 @@ class FWEO_EmailOctopus_integration {
 					$thank_you = sanitize_text_field($_POST['thank_you']);
 					$cookie_name = sanitize_text_field($_POST['cookie_name']);
 					if (!empty($_POST['clicky'])) $goal = intval($_POST['clicky']);
-					if (!empty($_POST['newsletter'])) $data['tags'] = 'newsletter';
-
+					if (!empty($_POST['tags'])) $data['tags'] = sanitize_text_field($_POST['tags']);
+					if (!empty($_POST['newsletter'])) {
+						if (!empty($data['tags'])) {
+							$data['tags'] .= ',newsletter';
+						} else {
+							$data['tags'] = 'newsletter';
+						}
+					}
 					$list = get_option('fweo_emailoctopus_list_id');
 					if (!empty($_POST['listid'])) {
 						$list = sanitize_text_field($_POST['listid']);

@@ -35,6 +35,7 @@ class FWEO_Create_EmailOctopus_Forms extends FWEO_EmailOctopus_integration {
 				'container_class' => '',
 				'form_class' => 'form-inline',
 				'source' => '',
+				'tags' => '',
 				'extra_fields' => '',
 				'hidden_fields' => '',
 				'clicky' => get_option('fw_emailoctopus_clicky'),
@@ -137,6 +138,7 @@ class FWEO_Create_EmailOctopus_Forms extends FWEO_EmailOctopus_integration {
 				<input type="hidden" name="action" value="emailoctopus_subscribeform_action" />
 				<input type="hidden" name="thank_you" value="'.esc_attr($atts['thank_you_text']).'" />
 				<input type="hidden" name="report_only" value="'.esc_attr($atts['report_only']).'" />
+				<input type="hidden" name="tags" value="'.esc_attr($atts['tags']).'" />
 				<input type="hidden" name="source" value="'.esc_attr($atts['source']).'" />
 				<input type="hidden" name="cookie_name" value="'.esc_attr($atts['cookie_name']).'" />
 				<input type="hidden" name="clicky" value="'.intval($atts['clicky']).'" />';
