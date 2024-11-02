@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: EO4WP: EmailOctopus for WordPress
-Version: 1.0.1
-Plugin URI: https://www.finalwebsites.com
+Version: 1.0.3
+Plugin URI: https://www.finalwebsites.com/emailoctopus-for-wordpress/
 Description: Increase the count of new subscribers for your blog or website by using EmailOctopus and this integration plugin.
 Author: Olaf Lederer
 Author URI: https://www.olaflederer.com/
@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 define('FWEO_DIR', plugin_dir_path( __FILE__ ));
-define('FW_EO_VER', '1.0.1');
+define('FW_EO_VER', '1.0.3');
 
 include_once FWEO_DIR.'include/options.php';
 include_once FWEO_DIR.'include/form-shortcodes.php';
@@ -72,6 +72,8 @@ class FWEO_EmailOctopus_integration {
 		load_plugin_textdomain( 'fw-integration-for-emailoctopus', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 		add_action('wp_enqueue_scripts', array($this, 'add_assets'));
+
+		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array($this, 'eowp_settings_link') );
 
 		add_action( 'wp_ajax_emailoctopus_subscribeform_action', array($this, 'subform_action_callback') );
 		add_action( 'wp_ajax_nopriv_emailoctopus_subscribeform_action', array($this, 'subform_action_callback') );
@@ -134,6 +136,15 @@ class FWEO_EmailOctopus_integration {
 				wp_enqueue_style('fw-emailoctopus-font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css', array(), FW_EO_VER );
 			}
 		}
+	}
+
+	public function eowp_settings_link( $links ) {
+
+		$links[] = '<a href="https://www.finalwebsites.com/emailoctopus-for-wordpress/" target="_blank">'. __('Doumentation', 'fw-integration-for-emailoctopus'). '</a>';
+		$links[] = '<a href="https://wordpress.org/support/plugin/fw-integration-for-emailoctopus/reviews/#new-post" target="_blank">'. __('Rate it!', 'fw-integration-for-emailoctopus'). '</a>';
+
+	   return $links;
+
 	}
 
 	private function is_valid_api_key() {
