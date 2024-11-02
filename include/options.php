@@ -95,6 +95,13 @@ class FWEO_EmailOctopus_Plugin_Settings {
 					'default'		=> ''
 				),
 				array(
+					'id' 			=> 'include_font_awesome',
+					'label'			=> __( 'Incl. Font Awesome', 'fw-integration-for-emailoctopus' ),
+					'description'	=> __( 'Include the CSS stylesheet for Font Awesome v.6.5.', 'fw-integration-for-emailoctopus' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
+				array(
 					'id' 			=> 'show_all_pages',
 					'label'			=> __( 'Incl. JS/CSS sitewide', 'fw-integration-for-emailoctopus' ),
 					'description'	=> __( 'Use this option if you like to use the form on all your posts and pages.', 'fw-integration-for-emailoctopus' ),
@@ -113,10 +120,10 @@ class FWEO_EmailOctopus_Plugin_Settings {
 				array(
 					'id' 			=> 'google_analytics',
 					'label'			=> __( 'Track in Google Analytics' , 'fw-integration-for-emailoctopus' ),
-					'description'	=> __( 'Track a page view in Google Analytics after the subscription form is submitted.', 'fw-integration-for-emailoctopus' ),
+					'description'	=> __( 'Track an event in Google analytics after the form is submitted. We use the event action "generate_lead" and the event category" "Web forms")', 'fw-integration-for-emailoctopus' ),
 					'type'			=> 'text',
 					'default'		=> '',
-					'placeholder'	=> '/subscription/submitted.html'
+					'placeholder'	=> ''
 				),
 				array(
 					'id' 			=> 'clicky',

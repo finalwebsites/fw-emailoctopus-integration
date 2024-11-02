@@ -74,17 +74,17 @@ class FWEO_Woo_EmailOctopus_Integration extends WC_Integration {
 				'default'           => '',
 				'label'       => __( 'Store the last order date in EmailOctopus.', 'fw-integration-for-emailoctopus' ),
 			),
-			'em_store_all_customers' => array(
-				'title'             => __( 'Subscribe everyone', 'fw-integration-for-emailoctopus' ),
-				'type'              => 'checkbox',
-				'default'           => '',
-				'label'       => __( 'Check this option if you need to send one or more after-sales emails to your customers. For commercial emails it\'s still required to ask for their consent first!', 'fw-integration-for-emailoctopus' ),
-			),
 			'em_send_language' => array(
 				'title'             => __( 'Submit language', 'fw-integration-for-emailoctopus' ),
 				'type'              => 'checkbox',
 				'default'           => '',
 				'label'       => __( 'Submit the language code to Emailoctopus if your shop supports multiple languages. You can use that code to send emails in different languages.', 'fw-integration-for-emailoctopus' ),
+			),
+			'em_store_all_customers' => array(
+				'title'             => __( 'Subscribe everyone', 'fw-integration-for-emailoctopus' ),
+				'type'              => 'checkbox',
+				'default'           => '',
+				'label'       => __( 'Check this option if you need to send one or more after-sales emails to your customers. For commercial emails it\'s still required to ask for their consent first!', 'fw-integration-for-emailoctopus' ),
 			)
 		);
 	}

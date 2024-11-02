@@ -29,7 +29,7 @@ class FWEO_Create_EmailOctopus_Forms extends FWEO_EmailOctopus_integration {
 				'report_only' => 'n',
 				'btnclass' => '',
 				'listid' => '',
-				'bs_icon' => '',
+				'icon' => '',
 				'fsize' => '',
 				'newsletter' => 'n',
 				'container_class' => '',
@@ -49,8 +49,8 @@ class FWEO_Create_EmailOctopus_Forms extends FWEO_EmailOctopus_integration {
 			$field_size = ' input-'.$atts['fsize'];
 			$btn_size = ' btn-'.$atts['fsize'];
 		}
-		if ($atts['bs_icon'] != '') {
-			$btn_lbl = $atts['btnlabel'].' <span class="glyphicon glyphicon-'.$atts['bs_icon'].'" aria-hidden="true"></span>';
+		if ($atts['icon'] != '') {
+			$btn_lbl = $atts['btnlabel'].' <i class="fa-solid '.$atts['icon'].'"></i>';
 		} else {
 			$btn_lbl = $atts['btnlabel'];
 		}

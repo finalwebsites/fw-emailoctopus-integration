@@ -129,6 +129,10 @@ class FWEO_EmailOctopus_integration {
 			if (get_option('fweo_emailoctopus_include_css')) {
 				wp_enqueue_style( 'fw-emailoctopus-style', plugin_dir_url(__FILE__).'include/style.css', array(), FW_EO_VER );
 			}
+			if (get_option('fweo_emailoctopus_include_font_awesome')) {
+				wp_enqueue_style('fw-emailoctopus-fa-solid', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css', array(), FW_EO_VER );
+				wp_enqueue_style('fw-emailoctopus-font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css', array(), FW_EO_VER );
+			}
 		}
 	}
 
