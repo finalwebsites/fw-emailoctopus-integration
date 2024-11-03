@@ -1,0 +1,571 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Integration for EmailOctopus\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-03 09:50+0000\n"
+"PO-Revision-Date: 2024-11-03 10:28+0000\n"
+"Last-Translator: \n"
+"Language-Team: Nederlands\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.10; wp-6.6.2\n"
+"X-Domain: fw-integration-for-emailoctopus"
+
+#: fw-integration-for-emailoctopus.php:399
+#: svn/trunk/fw-integration-for-emailoctopus.php:378
+msgid "A form submission from your website"
+msgstr "Een formulier van je website"
+
+#: include/tpl-options.php:34 svn/trunk/include/tpl-options.php:34
+msgid "Add a shortcode to your pages and posts, here are some examples."
+msgstr ""
+"Voeg een shortcode toe aan je pagina's en berichten, hier zijn enkele "
+"voorbeelden."
+
+#: form-actions/emailoctopus.php:125
+#: svn/trunk/form-actions/emailoctopus.php:125
+msgid "Add comma separated tags"
+msgstr "Voeg comma gescheiden tags toe"
+
+#: include/options.php:131 svn/trunk/include/options.php:124
+msgid ""
+"Add here the goal ID for a manual goal you've already defined in Clicky."
+msgstr ""
+"Voeg hier het doel ID toe voor een handmatige doel dat je al in Clicky hebt "
+"gedefinieerd."
+
+#: include/options.php:84 svn/trunk/include/options.php:84
+msgid ""
+"Add here your text for the additional newsletter subscription checkbox. If "
+"the subscriber has checked the newsletter box a tag with the name "
+"\"newsletter\" will be created for a subscriber in EmailOctopus."
+msgstr ""
+"Vul hier je tekst in voor de aanvullende nieuwsbrief inschrijfbox. Als een "
+"klant de inschrijfbox heeft aangevinkt, wordt een tag met de naam "
+"\"newsletter\" voor een abonnee in EmailOctopus gecreëerd."
+
+#: include/class-woo-emailoctopus-integration.php:20
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:20
+msgid "Add newsletter subscribers to a specific EmailOctopus list"
+msgstr "Voeg nieuwsbrieven abonnees toe aan een specifieke EmailOctopus-lijst"
+
+#: include/class-woo-emailoctopus-integration.php:46
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:46
+msgid "After billing details"
+msgstr "Na de facturatie details"
+
+#: include/class-woo-emailoctopus-integration.php:48
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:48
+msgid "After customer details"
+msgstr "Na de klantgegevens"
+
+#: include/class-woo-emailoctopus-integration.php:47
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:47
+msgid "After shipping details"
+msgstr "Na de verzending details"
+
+#: include/class-woo-emailoctopus-integration.php:49
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:49
+msgid "After terms and conditions"
+msgstr "Na de voorwaarden"
+
+#. %s - https://emailoctopus.com
+#: include/tpl-options.php:14 svn/trunk/include/tpl-options.php:14
+msgid "All"
+msgstr "Alle"
+
+#: fw-integration-for-emailoctopus.php:361
+#: fw-integration-for-emailoctopus.php:376
+#: svn/trunk/fw-integration-for-emailoctopus.php:340
+#: svn/trunk/fw-integration-for-emailoctopus.php:355
+msgid "An unknown error occurred."
+msgstr "Er is een onbekende fout gebeurd."
+
+#: fw-integration-for-emailoctopus.php:300
+#: svn/trunk/fw-integration-for-emailoctopus.php:285
+msgid "Both fields are required to enter."
+msgstr "Beide velden zijn verplicht in te voeren."
+
+#: include/class-woo-emailoctopus-integration.php:137
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:137
+msgid "Can't retrieve any list."
+msgstr "Ik kan geen lijst halen."
+
+#: include/class-woo-emailoctopus-integration.php:87
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:81
+msgid ""
+"Check this option if you need to send one or more after-sales emails to your "
+"customers. For commercial emails it's still required to ask for their "
+"consent first!"
+msgstr ""
+"Controleer deze optie als je één of meer After-Sales e-mails aan je klanten "
+"wil sturen. Voor commerciële e-mails is het nog steeds verplicht om eerst "
+"hun toestemming te vragen!"
+
+#: include/class-woo-emailoctopus-integration.php:131
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:131
+msgid "Choose one..."
+msgstr "Kies een..."
+
+#: include/options.php:75 svn/trunk/include/options.php:75
+msgid "Custom fields"
+msgstr "Aangepaste velden"
+
+#: include/options.php:67 svn/trunk/include/options.php:67
+msgid "Default mailing list"
+msgstr "Standaard mailing lijst"
+
+#: include/options.php:76 svn/trunk/include/options.php:76
+msgid ""
+"Do you use custom fields for your mailing list? Add the fields below. Each "
+"field name must be exact the same as used for the field name in EmailOctopus."
+" If you add such a <strong>field name</strong> as a shortcode <code>"
+"extra_fields</code> attribute, a text field including the label from here "
+"will be created."
+msgstr ""
+"Gebruik je aangepaste velden voor je mailinglijst? Voeg de velden hieronder "
+"toe. Elk veldnaam moet precies hetzelfde zijn als voor de veldnaam in "
+"EmailOctopus. Gebruik je een <strong>veldnaam</strong> als een shortcode "
+"<code>extra_fields</code> eigenschap, dan wordt een invoerveld met label "
+"aangemaakt."
+
+#: fw-integration-for-emailoctopus.php:143
+msgid "Doumentation"
+msgstr "Documentatie"
+
+#: form-actions/emailoctopus.php:142
+#: svn/trunk/form-actions/emailoctopus.php:142
+msgid "Email address"
+msgstr "E-mailadres"
+
+#: fw-integration-for-emailoctopus.php:391
+#: svn/trunk/fw-integration-for-emailoctopus.php:370
+msgid "Email address: "
+msgstr "E-mailadres:"
+
+#: include/class-woo-emailoctopus-integration.php:19
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:19
+msgid "EmailOctopus"
+msgstr "EmailOctopus"
+
+#: include/options.php:58 svn/trunk/include/options.php:58
+msgid "EmailOctopus API Key"
+msgstr "EmailOctopus API sleutel"
+
+#: include/options.php:38
+msgid "EO4WP"
+msgstr "EO4WP"
+
+#. Name of the plugin
+msgid "EO4WP: EmailOctopus for WordPress"
+msgstr "EO4WP: EmailOctopus voor WordPress"
+
+#: include/options.php:37
+msgid "EO4WP: EmailOctopus for WordPress Settings"
+msgstr "EO4WP: EmailOctopus voor WordPress Instellingen"
+
+#: form-actions/emailoctopus.php:95 svn/trunk/form-actions/emailoctopus.php:95
+msgid "Field ID"
+msgstr "Veld ID"
+
+#: form-actions/emailoctopus.php:97 svn/trunk/form-actions/emailoctopus.php:97
+msgid "field ID"
+msgstr "veld ID"
+
+#: form-actions/emailoctopus.php:143
+#: svn/trunk/form-actions/emailoctopus.php:143
+msgid "First Name"
+msgstr "Voornaam"
+
+#: include/options.php:113 svn/trunk/include/options.php:106
+msgid "GDPR text"
+msgstr "AVG tekst"
+
+#: include/options.php:53 svn/trunk/include/options.php:53
+msgid "General"
+msgstr "Algemeen"
+
+#: include/options.php:54
+msgid "General settings and options for the EmailOctopus for WordPress plugin."
+msgstr ""
+"Algemene instellingen en opties voor de EmailOctopus voor WordPress plugin."
+
+#: svn/trunk/include/options.php:54
+msgid ""
+"General settings and options for the Integration for EmailOctopus plugin."
+msgstr ""
+"Algemene instellingen en opties voor de integratie voor EmailOctopus plugin."
+
+#: include/tpl-options.php:33 svn/trunk/include/tpl-options.php:33
+msgid "How to use the shortcode?"
+msgstr "Hoe gebruik ik de shortcode?"
+
+#. URI of the plugin
+msgid "https://www.finalwebsites.com/emailoctopus-for-wordpress/"
+msgstr "https://www.finalwebsites.com/emailoctopus-for-wordpress/"
+
+#. Author URI of the plugin
+msgid "https://www.olaflederer.com/"
+msgstr "https://www.olaflederer.com/"
+
+#: include/options.php:99
+msgid "Incl. Font Awesome"
+msgstr "Incl. Font Awesome"
+
+#: include/options.php:106 svn/trunk/include/options.php:99
+msgid "Incl. JS/CSS sitewide"
+msgstr "Incl. JS/CSS op de gehele site"
+
+#: include/options.php:92 svn/trunk/include/options.php:92
+msgid "Include CSS"
+msgstr "Inbegrepen CSS"
+
+#: include/options.php:100
+msgid "Include the CSS stylesheet for Font Awesome v.6.5."
+msgstr "CSS Stylesheet voor Font Awesome v.6.5 bijvoegen."
+
+#: include/options.php:93 svn/trunk/include/options.php:93
+msgid "Include the plugin's stylesheet for your subscribtion forms."
+msgstr "Voeg het stylesheet van de plugin toe aan je inschrijfformulieren."
+
+#. Description of the plugin
+msgid ""
+"Increase the count of new subscribers for your blog or website by using "
+"EmailOctopus and this integration plugin."
+msgstr ""
+"Verhoog het aantal nieuwe abonnees voor je blog of website met behulp van "
+"EmailOctopus en ons integratie-plugin."
+
+#: include/tpl-options.php:3 svn/trunk/include/options.php:38
+#: svn/trunk/include/tpl-options.php:3
+msgid "Integration for EmailOctopus"
+msgstr "Integratie voor EmailOctopus"
+
+#: svn/trunk/include/options.php:37
+msgid "Integration for EmailOctopus Settings"
+msgstr "Integratie voor EmailOctopus Iinstellingen"
+
+#: fw-integration-for-emailoctopus.php:308
+#: svn/trunk/fw-integration-for-emailoctopus.php:293
+msgid "Invalid form submission, please try again."
+msgstr "Ongeldige formulier inzending, probeer het opnieuw."
+
+#: form-actions/emailoctopus.php:144
+#: svn/trunk/form-actions/emailoctopus.php:144
+msgid "Last Name"
+msgstr "Achternaam"
+
+#: include/class-woo-emailoctopus-integration.php:72
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:72
+msgid "Last order"
+msgstr "Laatste bestelling"
+
+#: include/class-woo-emailoctopus-integration.php:32
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:32
+msgid "List"
+msgstr "Lijst"
+
+#: form-actions/emailoctopus.php:104
+#: svn/trunk/form-actions/emailoctopus.php:104
+msgid "List Field"
+msgstr "Lijstveld"
+
+#: fw-integration-for-emailoctopus.php:396
+#: svn/trunk/fw-integration-for-emailoctopus.php:375
+msgid "List name: "
+msgstr "Lijst naam:"
+
+#: fw-integration-for-emailoctopus.php:124
+#: svn/trunk/fw-integration-for-emailoctopus.php:122
+msgid "Loading..."
+msgstr "Aan het laden..."
+
+#: form-actions/emailoctopus.php:74 svn/trunk/form-actions/emailoctopus.php:74
+msgid "Mailing list"
+msgstr "Mailinglijst"
+
+#: form-actions/emailoctopus.php:86 svn/trunk/form-actions/emailoctopus.php:86
+msgid "Merge Fields"
+msgstr "Merge Fields"
+
+#: form-actions/emailoctopus.php:146
+#: svn/trunk/form-actions/emailoctopus.php:146
+msgid "Newsletter"
+msgstr "Nieuwsbrief"
+
+#. Author of the plugin
+msgid "Olaf Lederer"
+msgstr "Olaf Lederer"
+
+#: form-actions/emailoctopus.php:148
+#: svn/trunk/form-actions/emailoctopus.php:148
+msgid "Phone number"
+msgstr "Telefoonnummer"
+
+#: include/options.php:114 svn/trunk/include/options.php:107
+msgid ""
+"Place here your GDPR info text. Don't change the link HTML code, we use the "
+"privacy URL which is set via \"Settings > Privacy\"."
+msgstr ""
+"Plaats hier je AVG info tekst. Verander de link HTML-code niet, we gebruiken "
+"de privacy URL die is ingesteld via \"Instellingen> Privacy\"."
+
+#: fw-integration-for-emailoctopus.php:126
+#: svn/trunk/fw-integration-for-emailoctopus.php:124
+msgid "Please enter your email address."
+msgstr "Voer je e-mailadres in."
+
+#: fw-integration-for-emailoctopus.php:125
+#: svn/trunk/fw-integration-for-emailoctopus.php:123
+msgid "Please enter your name and email address."
+msgstr "Voer a.u.b. je naam en e-mailadres in."
+
+#: woo-emailoctopus-integration.php:66
+#: svn/trunk/woo-emailoctopus-integration.php:66
+msgid "Please send me your newsletter."
+msgstr "Ik ontvang graag je nieuwsbrief."
+
+#: fw-integration-for-emailoctopus.php:62
+#: svn/trunk/fw-integration-for-emailoctopus.php:62
+msgid "Plugin settings"
+msgstr "Plugin instellingen"
+
+#: include/class-woo-emailoctopus-integration.php:41
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:41
+msgid "Position"
+msgstr "Positie"
+
+#: fw-integration-for-emailoctopus.php:144
+msgid "Rate it!"
+msgstr "Beoordeel!"
+
+#: include/tpl-options.php:29 svn/trunk/include/tpl-options.php:29
+msgid "Save Settings"
+msgstr "Instellingen opslaan"
+
+#: svn/trunk/include/form-shortcodes.php:31
+msgid "Select Mailing List"
+msgstr "Selecteer mailinglijst"
+
+#: include/class-woo-emailoctopus-integration.php:69
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:69
+msgid ""
+"Send the \"coupon\" tag to EmailOctopus whenever a coupon is used during a "
+"checkout."
+msgstr ""
+"Stuur de \"coupon\" tag naar EmailOctopus wanneer een waardebon wordt "
+"gebruikt voor de betaling."
+
+#: include/options.php:46 svn/trunk/include/options.php:46
+msgid "Settings"
+msgstr "Instellingen"
+
+#: form-actions/emailoctopus.php:145
+#: svn/trunk/form-actions/emailoctopus.php:145
+msgid "Source"
+msgstr "Bron"
+
+#: include/class-woo-emailoctopus-integration.php:66
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:66
+msgid "Store coupon"
+msgstr "Waardebon opslaan"
+
+#: include/class-woo-emailoctopus-integration.php:60
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:60
+msgid "Store product categories"
+msgstr "Productencategorieën opslaan"
+
+#: include/class-woo-emailoctopus-integration.php:75
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:75
+msgid "Store the last order date in EmailOctopus."
+msgstr "Bewaar het laatste besteldatum in EmailOctopus."
+
+#: include/class-woo-emailoctopus-integration.php:78
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:84
+msgid "Submit language"
+msgstr "Verzend de taal"
+
+#: include/class-woo-emailoctopus-integration.php:81
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:87
+msgid ""
+"Submit the language code to Emailoctopus if your shop supports multiple "
+"languages. You can use that code to send emails in different languages."
+msgstr ""
+"Stuur de taalcode naar EmailOctopus als je webwinkel meerdere talen "
+"ondersteunt. Je kan dan deze code gebruiken om e-mails in verschillende "
+"talen te versturen."
+
+#: include/form-shortcodes.php:27 svn/trunk/include/form-shortcodes.php:27
+msgid "Subscribe"
+msgstr "Abonneer"
+
+#: include/class-woo-emailoctopus-integration.php:84
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:78
+msgid "Subscribe everyone"
+msgstr "Meld iedereen aan"
+
+#: include/form-shortcodes.php:24 svn/trunk/include/form-shortcodes.php:24
+msgid "Subscribe now!"
+msgstr "Meld je nu aan!"
+
+#: include/form-shortcodes.php:25 svn/trunk/include/form-shortcodes.php:25
+msgid "Subscribe today and get future blog posts your email."
+msgstr ""
+"Meld je vandaag nog aan en ontvang toekomstige blogposts via je e-mail."
+
+#: include/class-woo-emailoctopus-integration.php:53
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:53
+msgid "Subscription label"
+msgstr "Aanmeld label"
+
+#: form-actions/emailoctopus.php:124
+#: svn/trunk/form-actions/emailoctopus.php:124
+msgid "Tags"
+msgstr "Tags"
+
+#: include/options.php:83 svn/trunk/include/options.php:83
+msgid "Text for subscribe checkbox"
+msgstr "Tekst voor de inschrijfbox"
+
+#: fw-integration-for-emailoctopus.php:373
+#: svn/trunk/fw-integration-for-emailoctopus.php:352
+msgid "Thanks, for joining our mailing list!"
+msgstr "Bedankt voor je inschrijving bij onze mailinglijst!"
+
+#: fw-integration-for-emailoctopus.php:356
+#: svn/trunk/fw-integration-for-emailoctopus.php:335
+msgid "Thanks, for your interest."
+msgstr "Bedankt, voor je interesse."
+
+#: include/class-woo-emailoctopus-integration.php:35
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:35
+msgid "The default list which will be taken for new subscribers"
+msgstr "De standaardlijst die voor nieuwe abonnees zal worden gebruikt."
+
+#: include/options.php:68 svn/trunk/include/options.php:68
+msgid ""
+"The default mailing list for your subscribers. You need to enter/save the "
+"API EmailOctopus API key first."
+msgstr ""
+"De standaard mailinglijst voor je abonnees. Je moet eerst een EmailOctopus "
+"API sleutel invoeren/opslaan."
+
+#: fw-integration-for-emailoctopus.php:127
+#: svn/trunk/fw-integration-for-emailoctopus.php:125
+msgid "The entered email address is invalid."
+msgstr "De ingediende e-mailadres is ongeldig."
+
+#: fw-integration-for-emailoctopus.php:359
+#: svn/trunk/fw-integration-for-emailoctopus.php:338
+msgid "The entered email address is not valid."
+msgstr "De ingediende e-mailadres is niet geldig."
+
+#: fw-integration-for-emailoctopus.php:311
+#: svn/trunk/fw-integration-for-emailoctopus.php:296
+msgid "The form is currently closed for an unknown reason."
+msgstr "Het formulier is momenteel uitgeschakeld om een onbekende reden."
+
+#: include/class-woo-emailoctopus-integration.php:57
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:57
+msgid "The text for the subscription on the checkout page."
+msgstr "De tekst voor de aanmelding op de betaalpagina."
+
+#: fw-integration-for-emailoctopus.php:62
+#: svn/trunk/fw-integration-for-emailoctopus.php:62
+msgid ""
+"To use the WP EmailOctopus integration plugin, you need to enter a valid API "
+"key."
+msgstr ""
+"Om de WP EmailOctopus integratie plug-in te gebruiken, moet een geldig API "
+"sleutel worden ingevoerd."
+
+#: svn/trunk/include/options.php:116
+msgid ""
+"Track a page view in Google Analytics after the subscription form is "
+"submitted."
+msgstr ""
+"Stuur een event naar Google Analytics wanneer het inschrijfformulier wordt "
+"ingediend."
+
+#: include/options.php:123
+msgid ""
+"Track an event in Google analytics after the form is submitted. We use the "
+"event action \"generate_lead\" and the event category\" \"Web forms\")"
+msgstr ""
+"Volg een gebeurtenis in Google Analytics nadat het formulier is ingediend. "
+"We gebruiken de event actie \"generate_Lead\" en de event categorie 0\" "
+"\"webformulieren\"."
+
+#: include/options.php:130 svn/trunk/include/options.php:123
+msgid "Track in Clicky"
+msgstr "In Clicky bijhouden"
+
+#: include/options.php:122 svn/trunk/include/options.php:115
+msgid "Track in Google Analytics"
+msgstr "In Google Analytics bijhouden"
+
+#: include/class-woo-emailoctopus-integration.php:63
+#: svn/trunk/include/class-woo-emailoctopus-integration.php:63
+msgid "Use the product categories from an order as tags in EmailOctopus."
+msgstr ""
+"Gebruik de productcategorieën van een bestelling als tags in EmailOctopus."
+
+#: include/options.php:107 svn/trunk/include/options.php:100
+msgid ""
+"Use this option if you like to use the form on all your posts and pages."
+msgstr ""
+"Gebruik deze optie als je het formulier wil gebruiken voor alle berichten en "
+"pagina's."
+
+#: fw-integration-for-emailoctopus.php:303
+#: svn/trunk/fw-integration-for-emailoctopus.php:288
+msgid "Verification error, try again."
+msgstr "Verificatie fout, probeer het nogmaals."
+
+#. %s - the global privacy URL
+#: include/options.php:117 svn/trunk/include/options.php:110
+#, php-format
+msgid ""
+"We use your personal data according our <a href=\"%s\">privacy statement</a>."
+msgstr ""
+"Wij gebruiken je persoonsgegevens zoals omschreven in onze <a href=\"%s\">"
+"Privacyverklaring </a>."
+
+#: form-actions/emailoctopus.php:147
+#: svn/trunk/form-actions/emailoctopus.php:147
+msgid "Website"
+msgstr "Website"
+
+#: include/options.php:86 svn/trunk/include/options.php:86
+msgid "Yes, please add me to your mailing list."
+msgstr "Ja, voeg mij toe aan je mailinglijst."
+
+#: include/options.php:59 svn/trunk/include/options.php:59
+msgid ""
+"You can find this key in your EmailOctopus account on the profile settings "
+"page."
+msgstr ""
+"Je kan deze sleutel vinden in je EmailOctopus-account op de "
+"profielinstellingen pagina."
+
+#: include/form-shortcodes.php:115 include/form-shortcodes.php:116
+#: svn/trunk/include/form-shortcodes.php:115
+#: svn/trunk/include/form-shortcodes.php:116
+msgid "Your email address"
+msgstr "Je e-mailadres"
+
+#: include/form-shortcodes.php:101 include/form-shortcodes.php:104
+#: svn/trunk/include/form-shortcodes.php:101
+#: svn/trunk/include/form-shortcodes.php:104
+msgid "Your first name"
+msgstr "Je voornaam"
+
+#: include/form-shortcodes.php:109 include/form-shortcodes.php:110
+#: svn/trunk/include/form-shortcodes.php:109
+#: svn/trunk/include/form-shortcodes.php:110
+msgid "Your last name"
+msgstr "Je achternaam"

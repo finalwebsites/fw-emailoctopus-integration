@@ -6,7 +6,7 @@ Tags: EmailOctopus, integration, elementor, woocommerce, form actions
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 
 Increase the subscribers for your website by using EmailOctopus and this professional integration plugin for WordPress, Elementor and WooCommerce.
 
@@ -54,6 +54,8 @@ The quickest method for installing the plugin is:
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 1. Create in EmailOctopus one ore more mailing lists and add also an API key.
 1. Enter your EmailOctopus API key, choose the mailing list ID and the other options on the plugin settings page.
+
+Check here the [complete documentation](https://www.finalwebsites.com/emailoctopus-for-wordpress/) for both integrations and the EO4WP shortcode.
 
 === WooCommerce integration ===
 
@@ -126,3 +128,7 @@ For webshop owners is it possible to use the WooCommerce integration and EmailOc
 * Improvements
 	* Added Font awesome support (replaced Glyphicons)
 	* Extened the form shortode to handle tags. Add comma seperated tags and submit them together with the other subscriber data.
+
+= 1.0.5 =
+* Improvements
+	* Added Dutch translations

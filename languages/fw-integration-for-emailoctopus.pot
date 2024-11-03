@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Integration for EmailOctopus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-02 19:17+0000\n"
+"POT-Creation-Date: 2024-11-03 09:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -66,6 +66,7 @@ msgid "All"
 msgstr ""
 
 #: ../../../../../../../versiebeheer/wp_dev/plugins/fw-emailoctopus-integration/fw-integration-for-emailoctopus.php:340
+#:  
 #: ../../../../../../../versiebeheer/wp_dev/plugins/fw-emailoctopus-integration/fw-integration-for-emailoctopus.php:355
 msgid "An unknown error occurred."
 msgstr ""
@@ -179,6 +180,7 @@ msgstr ""
 
 #. Name of the plugin
 #: ../../../../../../../versiebeheer/wp_dev/plugins/fw-emailoctopus-integration/include/tpl-options.php:3
+#:  
 #: ../../../../../../../versiebeheer/wp_dev/plugins/fw-emailoctopus-integration/include/options.php:38
 msgid "Integration for EmailOctopus"
 msgstr ""
@@ -422,16 +424,19 @@ msgid ""
 msgstr ""
 
 #: ../../../../../../../versiebeheer/wp_dev/plugins/fw-emailoctopus-integration/include/form-shortcodes.php:115
+#:  
 #: ../../../../../../../versiebeheer/wp_dev/plugins/fw-emailoctopus-integration/include/form-shortcodes.php:116
 msgid "Your email address"
 msgstr ""
 
 #: ../../../../../../../versiebeheer/wp_dev/plugins/fw-emailoctopus-integration/include/form-shortcodes.php:101
+#:  
 #: ../../../../../../../versiebeheer/wp_dev/plugins/fw-emailoctopus-integration/include/form-shortcodes.php:104
 msgid "Your first name"
 msgstr ""
 
 #: ../../../../../../../versiebeheer/wp_dev/plugins/fw-emailoctopus-integration/include/form-shortcodes.php:109
+#:  
 #: ../../../../../../../versiebeheer/wp_dev/plugins/fw-emailoctopus-integration/include/form-shortcodes.php:110
 msgid "Your last name"
 msgstr ""
